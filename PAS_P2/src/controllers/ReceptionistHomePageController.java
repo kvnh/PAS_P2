@@ -91,6 +91,21 @@ public class ReceptionistHomePageController implements Initializable {
 		}
 
 	}
+	/**
+	 * Button to send user to patient info screen
+	 * @param event
+	 * @throws IOException
+	 */
+	@FXML
+	private void btnPatientInfo(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("FXMLPatientInfo.fxml"));
+		loader.load();
+		Parent p = loader.getRoot();
+		Stage stage = new Stage();
+		stage.setScene(new Scene(p));
+		stage.show();
+	}
 
 	/**
 	 * button to send user back to login screen

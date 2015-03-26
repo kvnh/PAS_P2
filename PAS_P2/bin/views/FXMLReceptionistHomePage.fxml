@@ -41,6 +41,7 @@
                   <Button fx:id="button" mnemonicParsing="false" onAction="#searchButtonAction" text="Search" />
                </children>
             </HBox>
+            <Button layoutX="814.0" layoutY="383.0" mnemonicParsing="false" onAction="#btnPatientInfo" text="Patient Info" />
          </children></Pane>
    </children>
 </AnchorPane>
