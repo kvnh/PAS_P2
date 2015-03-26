@@ -97,15 +97,15 @@ public class ReceptionistHomePageController implements Initializable {
 	 * @throws IOException
 	 */
 	@FXML
-	private void btnPatientInfo(ActionEvent event) throws IOException {
+	private void btnPatientInfo(ActionEvent event) throws IOException {	
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("FXMLPatientInfo.fxml"));
-		loader.load();
-		Parent p = loader.getRoot();
-		Stage stage = new Stage();
-		stage.setScene(new Scene(p));
-		stage.show();
-	}
+			loader.setLocation(getClass().getResource("/views/FXMLPatientInformationPage.fxml"));
+			loader.load();
+			Parent p = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(p));
+			stage.show();
+		}
 
 	/**
 	 * button to send user back to login screen
