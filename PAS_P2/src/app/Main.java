@@ -22,9 +22,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	// liam's comment
-	// removed David's comment
-	// ciaran gollogly edit
+
 	public static void main(String[] args) {
 		launch(args);
 	}

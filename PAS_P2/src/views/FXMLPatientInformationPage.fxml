@@ -7,11 +7,22 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PatientInfoController">
    <children>
-      <Pane layoutX="15.0" prefHeight="401.0" prefWidth="390.0">
+      <Pane prefHeight="401.0" prefWidth="398.0">
          <children>
-            <Label layoutX="133.0" layoutY="74.0" text="Patient Information" />
+            <Label layoutX="139.0" layoutY="28.0" text="Patient Information" />
             <Button layoutX="236.0" layoutY="322.0" mnemonicParsing="false" onAction="#btnCancel" text="Cancel" />
             <Button layoutX="94.0" layoutY="322.0" mnemonicParsing="false" onAction="#btnConfirm" text="Confirm" />
+            <Label fx:id="firstNameLabel" layoutX="85.0" layoutY="122.0" text="Label" />
+            <Label fx:id="lastNameLabel" layoutX="132.0" layoutY="122.0" text="Label" />
+            <Label layoutX="32.0" layoutY="67.0" text="NHS Number" />
+            <Label layoutX="32.0" layoutY="100.0" text="Name:" />
+            <Label layoutX="32.0" layoutY="158.0" text="Address" />
+            <Label fx:id="streetNumberLabel" layoutX="32.0" layoutY="182.0" text="streetNumberLabel" />
+            <Label fx:id="streetNameLabel" layoutX="32.0" layoutY="207.0" text="streetNameLabel" />
+            <Label fx:id="cityLabel" layoutX="32.0" layoutY="234.0" text="cityLabel" />
+            <Label fx:id="postCodeLabel" layoutX="32.0" layoutY="259.0" text="postCodeLabel" />
+            <Label fx:id="titleLabel" layoutX="32.0" layoutY="122.0" text="Label" />
+            <Label fx:id="nhsNumberLabel" layoutX="148.0" layoutY="67.0" text="Label" />
          </children>
       </Pane>
    </children>

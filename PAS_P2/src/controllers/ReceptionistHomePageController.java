@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-
 import models.ConnectionFactory;
 import models.DbUtil;
 import app.Patient;
@@ -91,21 +90,6 @@ public class ReceptionistHomePageController implements Initializable {
 		}
 
 	}
-	/**
-	 * Button to send user to patient info screen
-	 * @param event
-	 * @throws IOException
-	 */
-	@FXML
-	private void btnPatientInfo(ActionEvent event) throws IOException {	
-		FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/views/FXMLPatientInformationPage.fxml"));
-			loader.load();
-			Parent p = loader.getRoot();
-			Stage stage = new Stage();
-			stage.setScene(new Scene(p));
-			stage.show();
-		}
 
 	/**
 	 * button to send user back to login screen
@@ -195,6 +179,70 @@ public class ReceptionistHomePageController implements Initializable {
 		}
 
 		return query;
+	}
+
+	/**
+	 * Button to open patient information screen using the highlighted row in receptionist search table
+	 * @param event
+	 * @throws IOException
+	 */
+	@FXML
+	private void btnPatientInfo(ActionEvent event) throws IOException {
+
+		System.out.println("Changing to patient info screen");
+
+		ResultSet rs = null;
+
+		Patient patient = null;
+
+		try {
+			connection = ConnectionFactory.getConnection();
+			statement = connection.createStatement();
+
+			String query = "SELECT * FROM patient WHERE nhsNumber = " + "'"
+					+ tableView.getSelectionModel().getSelectedItem().getNhsNumber() + "'" + ";";
+
+			rs = statement.executeQuery(query);
+
+			while (rs.next()) {
+
+				patient = new Patient();
+
+				patient.setNhsNumber(rs.getString("nhsNumber"));
+				patient.setTitle(rs.getString("title"));
+				patient.setFirstName(rs.getString("firstName"));
+				patient.setLastName(rs.getString("lastName"));
+				patient.setStreetNumber(rs.getString("streetNumber"));
+				patient.setStreetName(rs.getString("streetName"));
+				patient.setCity(rs.getString("city"));
+				patient.setPostCode(rs.getString("postCode"));
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Error on Building Data");
+		} finally {
+			DbUtil.close(rs);
+			DbUtil.close(statement);
+			DbUtil.close(connection);
+		}
+
+		System.out.println("Operation done successfully");
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FXMLPatientInformation.fxml"));
+		loader.setLocation(getClass().getResource("/views/FXMLPatientInformationPage.fxml"));
+		loader.load();
+		Parent p = loader.getRoot();
+		Stage stage = new Stage();
+		stage.setScene(new Scene(p));
+
+		// instance of the patient info controller is created
+		// set it equal to the FXMLLoader controller that was just loaded
+		PatientInfoController patientInfoController = loader.<PatientInfoController> getController();
+		patientInfoController.setPatientInfo(patient);
+
+		stage.show();
 	}
 
 }
