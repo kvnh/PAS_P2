@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginPageController">
+<AnchorPane prefHeight="501.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginPageController">
    <children>
-      <Pane layoutX="87.0" prefHeight="700.0" prefWidth="1000.0">
+      <Pane layoutX="14.0" prefHeight="500.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="usernameBox" layoutX="451.0" layoutY="190.0" onAction="#handleUsernameBox" prefHeight="40.0" prefWidth="200.0" promptText="EmployeeID" />
-            <PasswordField fx:id="passwordBox" layoutX="451.0" layoutY="294.0" onAction="#handlePasswordBox" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
-            <Button fx:id="button" layoutX="497.0" layoutY="429.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="37.0" prefWidth="108.0" text="Login">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b9cbdb" height="353.0" layoutX="81.0" layoutY="81.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-pane" width="346.0" />
+            <TextField fx:id="usernameBox" layoutX="154.0" layoutY="144.0" onAction="#handleUsernameBox" prefHeight="40.0" prefWidth="200.0" promptText="EmployeeID" />
+            <PasswordField fx:id="passwordBox" layoutX="154.0" layoutY="248.0" onAction="#handlePasswordBox" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
+            <Button fx:id="button" layoutX="154.0" layoutY="375.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="37.0" prefWidth="200.0" text="Login">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label layoutX="451.0" layoutY="127.0" prefHeight="63.0" prefWidth="162.0" text="Login" textFill="#2d0bee">
+            <Label layoutX="154.0" layoutY="81.0" prefHeight="63.0" prefWidth="162.0" styleClass="label-title" text="Login" textFill="#2d0bee">
                <font>
                   <Font size="39.0" />
                </font>
             </Label>
-            <Label fx:id="invalidLabel" layoutX="385.0" layoutY="340.0" prefHeight="81.0" prefWidth="333.0" />
+            <Label fx:id="invalidLabel" layoutX="154.0" layoutY="294.0" prefHeight="81.0" prefWidth="333.0" styleClass="label-message" />
          </children>
       </Pane>
    </children>

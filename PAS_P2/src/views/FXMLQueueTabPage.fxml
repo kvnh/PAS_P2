@@ -7,21 +7,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="770.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="770.0" prefWidth="1000.0" stylesheets="@../app/QueueTabPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="164.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1000.0" />
-      <Label layoutX="436.0" layoutY="63.0" text="A&amp;E Queue">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
-      <TableView layoutX="242.0" layoutY="276.0" prefHeight="395.0" prefWidth="600.0">
+      <TableView layoutX="242.0" layoutY="276.0" prefHeight="384.0" prefWidth="718.0">
         <columns>
-          <TableColumn prefWidth="101.0" text="First name" />
-          <TableColumn prefWidth="83.0" text="Last name" />
-            <TableColumn prefWidth="137.0" text="Time waiting" />
-            <TableColumn prefWidth="161.0" text="Triage Category" />
+          <TableColumn prefWidth="122.0" text="First name" />
+          <TableColumn prefWidth="144.0" text="Last name" />
+            <TableColumn prefWidth="158.0" text="Time waiting" />
+            <TableColumn prefWidth="289.0" text="Triage Category" />
         </columns>
       </TableView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="156.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-pane" width="1065.0" />
+      <Label layoutX="349.0" layoutY="62.0" styleClass="label-queueTitle" text="Accident &amp; Emergency Queue">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
