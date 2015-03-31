@@ -56,6 +56,54 @@ public class LoginPageController implements Initializable {
 			invalidLabel.setText("Sorry, invalid credentials");
 		}
 	}
+	/**
+	 * Enter key event for password text field
+	 * @param event
+	 * @throws IOException
+	 */
+	@FXML
+	private void handlePasswordBox(ActionEvent event) throws IOException {
+		System.out.println("Login button selected");
+		Parent homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistHomePage.fxml"));
+		Scene homePageScene = new Scene(homePageParent);
+		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+		if (isValidCredentials()) {
+			appStage.hide(); // optional
+			appStage.setScene(homePageScene);
+			appStage.show();
+		} else {
+			usernameBox.clear();
+			passwordBox.clear();
+			invalidLabel.setText("Sorry, invalid credentials");
+		}
+		
+		
+	}
+	/**
+	 * Enter key event for username text field
+	 * @param event
+	 * @throws IOException
+	 */
+	@FXML
+	private void handleUsernameBox(ActionEvent event) throws IOException {
+		System.out.println("Login button selected");
+		Parent homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistHomePage.fxml"));
+		Scene homePageScene = new Scene(homePageParent);
+		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+		if (isValidCredentials()) {
+			appStage.hide(); // optional
+			appStage.setScene(homePageScene);
+			appStage.show();
+		} else {
+			usernameBox.clear();
+			passwordBox.clear();
+			invalidLabel.setText("Sorry, invalid credentials");
+		}
+		
+		
+	}
 
 	private boolean isValidCredentials() {
 		boolean letIn = false;

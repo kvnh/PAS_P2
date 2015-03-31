@@ -10,8 +10,8 @@
    <children>
       <Pane layoutX="87.0" prefHeight="700.0" prefWidth="1000.0">
          <children>
-            <TextField fx:id="usernameBox" layoutX="451.0" layoutY="190.0" prefHeight="40.0" prefWidth="200.0" promptText="EmployeeID" />
-            <PasswordField fx:id="passwordBox" layoutX="451.0" layoutY="294.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
+            <TextField fx:id="usernameBox" layoutX="451.0" layoutY="190.0" onAction="#handleUsernameBox" prefHeight="40.0" prefWidth="200.0" promptText="EmployeeID" />
+            <PasswordField fx:id="passwordBox" layoutX="451.0" layoutY="294.0" onAction="#handlePasswordBox" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
             <Button fx:id="button" layoutX="497.0" layoutY="429.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="37.0" prefWidth="108.0" text="Login">
                <font>
                   <Font size="14.0" />

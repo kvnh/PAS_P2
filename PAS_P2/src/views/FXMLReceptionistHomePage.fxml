@@ -8,40 +8,58 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReceptionistHomePageController">
+<AnchorPane prefHeight="662.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReceptionistHomePageController">
    <children>
-      <Pane layoutX="14.0" layoutY="-58.0" prefHeight="700.0" prefWidth="1000.0">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="156.0" layoutX="-14.0" layoutY="52.0" stroke="BLACK" strokeType="INSIDE" width="1014.0" />
-            <Label layoutX="390.0" layoutY="110.0" text="Patient Search">
-               <font>
-                  <Font size="35.0" />
-               </font>
-            </Label>
-            <Button layoutX="922.0" layoutY="86.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
-            <Text fx:id="lblLoggedIn" layoutX="840.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="135.13671875">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
-            <TableView fx:id="tableView" layoutX="75.0" layoutY="307.0" prefHeight="393.0" prefWidth="700.0">
-              <columns>
-                <TableColumn fx:id="firstNameColumn" prefWidth="100.0" text="First name" />
-                <TableColumn fx:id="lastNameColumn" prefWidth="100.0" text="Last name" />
-                <TableColumn fx:id="postCodeColumn" prefWidth="100.0" text="Postcode" />
-                 <TableColumn fx:id="streetNumberColumn" prefWidth="100.0" text="Street number" />
-                  <TableColumn fx:id="streetNameColumn" prefWidth="200.0" text="Street Name" />
-              </columns>
-            </TableView>
-            <HBox layoutX="75.0" layoutY="247.0" prefHeight="37.0" prefWidth="674.0" spacing="20.0">
-               <children>
-                  <TextField fx:id="firstNameSearch" promptText="First Name" />
-                  <TextField fx:id="lastNameSearch" promptText="Last Name" />
-                  <TextField fx:id="postCodeSearch" promptText="Postcode" />
-                  <Button fx:id="button" mnemonicParsing="false" onAction="#searchButtonAction" text="Search" />
-               </children>
-            </HBox>
-            <Button layoutX="814.0" layoutY="383.0" mnemonicParsing="false" onAction="#btnPatientInfo" text="Patient Info" />
-         </children></Pane>
+      <TabPane prefHeight="812.0" prefWidth="1022.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Patient search">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="763.0" prefWidth="998.0">
+                     <children>
+                        <Pane prefHeight="770.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="156.0" layoutX="-14.0" stroke="BLACK" strokeType="INSIDE" width="1014.0" />
+                              <Label layoutX="393.0" layoutY="53.0" text="Patient Search">
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="922.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
+                              <Text fx:id="lblLoggedIn" layoutX="840.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="135.13671875">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <TableView fx:id="tableView" layoutX="75.0" layoutY="307.0" prefHeight="395.0" prefWidth="600.0">
+                                <columns>
+                                  <TableColumn fx:id="firstNameColumn" prefWidth="100.0" text="First name" />
+                                  <TableColumn fx:id="lastNameColumn" prefWidth="100.0" text="Last name" />
+                                  <TableColumn fx:id="postCodeColumn" prefWidth="100.0" text="Postcode" />
+                                   <TableColumn fx:id="streetNumberColumn" prefWidth="100.0" text="Street number" />
+                                    <TableColumn fx:id="streetNameColumn" prefWidth="200.0" text="Street Name" />
+                                </columns>
+                              </TableView>
+                              <HBox layoutX="75.0" layoutY="247.0" prefHeight="37.0" prefWidth="674.0" spacing="20.0">
+                                 <children>
+                                    <TextField fx:id="firstNameSearch" promptText="First Name" />
+                                    <TextField fx:id="lastNameSearch" promptText="Last Name" />
+                                    <TextField fx:id="postCodeSearch" onAction="#handlePostcodeSearch" promptText="Postcode" />
+                                    <Button fx:id="button" mnemonicParsing="false" onAction="#searchButtonAction" text="Search" />
+                                 </children>
+                              </HBox>
+                              <Button layoutX="814.0" layoutY="383.0" mnemonicParsing="false" onAction="#btnPatientInfo" text="Patient Info" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Queue">
+               <content>
+                  <fx:include source="FXMLQueueTabPage.fxml" />
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

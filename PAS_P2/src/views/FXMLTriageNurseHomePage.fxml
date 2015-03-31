@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="770.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TriageNurseHomePage">
+   <children>
+      <TabPane prefHeight="770.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Triage Assessment">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="514.0" prefWidth="581.0">
+                     <children>
+                        <Pane layoutX="6.0" layoutY="6.0" prefHeight="770.0" prefWidth="1000.0">
+                           <children>
+                              <TableView layoutX="50.0" layoutY="100.0" prefHeight="395.0" prefWidth="600.0">
+                                <columns>
+                                  <TableColumn prefWidth="95.0" text="Patient number" />
+                                  <TableColumn prefWidth="89.0" text="First name" />
+                                    <TableColumn prefWidth="104.0" text="Last name" />
+                                    <TableColumn prefWidth="64.0" text="D.O.B" />
+                                    <TableColumn prefWidth="159.0" text="Triage Assessment" />
+                                </columns>
+                              </TableView>
+                              <Label layoutX="247.0" layoutY="35.0" text="Triage Assessment">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="611.0" layoutY="59.0" mnemonicParsing="false" onAction="#btnAssess" text="Assess" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Queue">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

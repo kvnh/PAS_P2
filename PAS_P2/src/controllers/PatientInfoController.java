@@ -61,6 +61,9 @@ public class PatientInfoController implements Initializable {
 	 */
 	@FXML
 	private void btnConfirm(ActionEvent event) {
+		Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+		stage.close();
+		
 	}
 
 	/**

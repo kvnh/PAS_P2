@@ -111,6 +111,11 @@ public class ReceptionistHomePageController implements Initializable {
 
 	private ObservableList<Patient> data;
 
+	/**
+	 * searches database when user clicks search button
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	private void searchButtonAction(ActionEvent event) throws IOException {
 
@@ -157,6 +162,58 @@ public class ReceptionistHomePageController implements Initializable {
 			DbUtil.close(connection);
 		}
 	}
+	/**
+	 * Searches database when user presses enter at postcode text field
+	 * @param event
+	 * @throws IOException
+	 */
+	@FXML
+	private void handlePostcodeSearch(ActionEvent event) throws IOException {
+
+		String firstNameValue = firstNameSearch.getText();
+		String lastNameValue = lastNameSearch.getText();
+		String postCodeValue = postCodeSearch.getText();
+
+		data = FXCollections.observableArrayList();
+
+		ResultSet rs = null;
+
+		String query = buildQuery(firstNameValue, lastNameValue, postCodeValue);
+
+		try {
+			connection = ConnectionFactory.getConnection();
+			statement = connection.createStatement();
+
+			// String query = "SELECT * FROM patient WHERE firstName = '" + firstNameValue +
+			// "' OR lastName = '"
+			// + lastNameValue + "'";
+
+			System.out.println("Inserting\n" + query);
+
+			rs = statement.executeQuery(query);
+
+			while (rs.next()) {
+				Patient patient = new Patient();
+				patient.setNhsNumber(rs.getString("nhsNumber"));
+				patient.setTitle(rs.getString("title"));
+				patient.setFirstName(rs.getString("firstName"));
+				patient.setLastName(rs.getString("lastName"));
+				patient.setPostCode(rs.getString("postCode"));
+				patient.setStreetNumber(rs.getString("streetNumber"));
+				patient.setStreetName(rs.getString("streetName"));
+				data.add(patient);
+			}
+			tableView.setItems(data);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Error on Building Data");
+		} finally {
+			DbUtil.close(rs);
+			DbUtil.close(statement);
+			DbUtil.close(connection);
+		}
+	
+	}
 
 	private String buildQuery(String firstNameValue, String lastNameValue, String postCodeValue) {
 		String query = "";
@@ -180,6 +237,7 @@ public class ReceptionistHomePageController implements Initializable {
 
 		return query;
 	}
+
 
 	/**
 	 * Button to open patient information screen using the highlighted row in receptionist search table
