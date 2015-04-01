@@ -2,6 +2,7 @@ package app;
 
 /**
  * class to represent a patient in the PAS
+ * 
  * @author KHackett
  *
  */
@@ -48,6 +49,12 @@ public class Patient {
 	private String postCode;
 
 	/**
+	 * Enum to represent triage status
+	 */
+
+	private Status triage;
+
+	/**
 	 * default constructor
 	 */
 	public Patient() {
@@ -55,11 +62,13 @@ public class Patient {
 
 	/**
 	 * constructor with args
+	 * 
 	 * @param firstName
 	 * @param lastName
 	 */
-	public Patient(String firstName, String lastName, String nhsNumber, String title, String streetNumber,
-			String streetName, String city, String postCode) {
+	public Patient(String firstName, String lastName, String nhsNumber,
+			String title, String streetNumber, String streetName, String city,
+			String postCode, Status triage) {
 		this.nhsNumber = nhsNumber;
 		this.title = title;
 		this.firstName = firstName;
@@ -68,6 +77,7 @@ public class Patient {
 		this.streetName = streetName;
 		this.city = city;
 		this.postCode = postCode;
+		this.triage = triage;
 	}
 
 	/**
@@ -78,7 +88,8 @@ public class Patient {
 	}
 
 	/**
-	 * @param nhsNumber the nhsNumber to set
+	 * @param nhsNumber
+	 *            the nhsNumber to set
 	 */
 	public void setNhsNumber(String nhsNumber) {
 		this.nhsNumber = nhsNumber;
@@ -92,7 +103,8 @@ public class Patient {
 	}
 
 	/**
-	 * @param title the title to set
+	 * @param title
+	 *            the title to set
 	 */
 	public void setTitle(String title) {
 		this.title = title;
@@ -106,7 +118,8 @@ public class Patient {
 	}
 
 	/**
-	 * @param firstName the firstName to set
+	 * @param firstName
+	 *            the firstName to set
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -120,7 +133,8 @@ public class Patient {
 	}
 
 	/**
-	 * @param lastName the lastName to set
+	 * @param lastName
+	 *            the lastName to set
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -134,7 +148,8 @@ public class Patient {
 	}
 
 	/**
-	 * @param streetNumber the streetNumber to set
+	 * @param streetNumber
+	 *            the streetNumber to set
 	 */
 	public void setStreetNumber(String streetNumber) {
 		this.streetNumber = streetNumber;
@@ -148,7 +163,8 @@ public class Patient {
 	}
 
 	/**
-	 * @param streetName the streetName to set
+	 * @param streetName
+	 *            the streetName to set
 	 */
 	public void setStreetName(String streetName) {
 		this.streetName = streetName;
@@ -162,7 +178,8 @@ public class Patient {
 	}
 
 	/**
-	 * @param city the city to set
+	 * @param city
+	 *            the city to set
 	 */
 	public void setCity(String city) {
 		this.city = city;
@@ -176,10 +193,42 @@ public class Patient {
 	}
 
 	/**
-	 * @param postCode the postCode to set
+	 * @param postCode
+	 *            the postCode to set
 	 */
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
+	}
+
+	public Status getTriage() {
+		return triage;
+	}
+
+	public void setTriage(Status triage) {
+		this.triage = triage;
+	}
+
+	/**
+	 * method to allow comparison of patients by triage status
+	 * 
+	 * @param p
+	 * @return
+	 */
+	public int compareTriage(Patient p) {
+
+		Status compare = p.triage;
+
+		if (this.triage.equals(compare)) {
+			//if triage status is same, add to next slot in queue
+			return 0;
+		} else if (this.triage.compareTo(compare) > 0) {
+			//if triage status is greater add above
+			return 1;
+
+		} else {
+			//if triage status is less, add below.
+			return -1;
+		}
 	}
 
 }
