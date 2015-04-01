@@ -214,6 +214,14 @@ public class ReceptionistHomePageController implements Initializable {
 		}
 	
 	}
+	
+	@FXML
+	private void clearButtonAction(ActionEvent event) throws IOException {
+		firstNameSearch.clear();
+		lastNameSearch.clear();
+		postCodeSearch.clear();
+	}
+	
 
 	private String buildQuery(String firstNameValue, String lastNameValue, String postCodeValue) {
 		String query = "";

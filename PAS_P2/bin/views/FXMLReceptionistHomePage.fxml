@@ -50,6 +50,7 @@
                               </HBox>
                               <Button layoutX="865.0" layoutY="371.0" mnemonicParsing="false" onAction="#btnPatientInfo" text="Patient Info" />
                               <Button layoutX="865.0" layoutY="663.0" mnemonicParsing="false" styleClass="button-emergency" text="EMERGENCY" />
+                              <Button layoutX="663.0" layoutY="255.0" mnemonicParsing="false" onAction="#clearButtonAction" prefHeight="41.0" prefWidth="192.0" text="Clear" />
                            </children>
                         </Pane>
                      </children>
