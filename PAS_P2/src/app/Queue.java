@@ -9,22 +9,33 @@ public class Queue implements Comparable<Patient> {
 	 */
 	public static LinkedList<Patient> queue = new LinkedList<Patient>();
 
-	
 	/**
 	 * method to add a patient to the queue
+	 * 
 	 * @param p
 	 */
-	public static void addToQueue(Patient p){
-		
-		//check to see if queue is full
-		if(queue.size()<10){
-			//add patient if there is room in queue
+	public static void addToQueue(Patient p) {
+
+		// check to see if queue is full
+		if (queue.size() < 10) {
+			// add patient if there is room in queue
 			queue.add(p);
-		}else {
-			//queue may be full
+		} else {
+			// queue may be full
 			System.out.println("Queue is full");
-			//alert on call team and hospital manager
+			// alert on call team and hospital manager
 		}
+	}
+
+	/**
+	 * method to remove a patient from the queue
+	 * 
+	 * @param p
+	 */
+	public static void removefromQueue(Patient p) {
+
+		// remove patient from queue
+		queue.remove(p);
 	}
 
 	/**
@@ -34,8 +45,7 @@ public class Queue implements Comparable<Patient> {
 	public int compareTo(Patient o) {
 		return 0;
 	}
-	
-	
-	
-	
+
+
+
 }
