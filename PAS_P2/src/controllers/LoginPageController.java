@@ -12,8 +12,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,9 +19,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBoxBuilder;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class LoginPageController implements Initializable {
@@ -43,8 +38,6 @@ public class LoginPageController implements Initializable {
 	private Label invalidLabel;
 	@FXML
 	private Button button;
-	
-	private boolean valid = false;
 
 	@FXML
 	private void handleButtonAction(ActionEvent event) throws IOException {
@@ -84,8 +77,9 @@ public class LoginPageController implements Initializable {
 			passwordBox.clear();
 			invalidLabel.setText("Sorry, invalid credentials");
 		}
+		
+		
 	}
-	
 	/**
 	 * Enter key event for username text field
 	 * @param event
@@ -94,20 +88,21 @@ public class LoginPageController implements Initializable {
 	@FXML
 	private void handleUsernameBox(ActionEvent event) throws IOException {
 		System.out.println("Login button selected");
+		Parent homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistHomePage.fxml"));
+		Scene homePageScene = new Scene(homePageParent);
+		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
 		if (isValidCredentials()) {
-			Parent homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistHomePage.fxml"));
-			Scene homePageScene = new Scene(homePageParent);
-			Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			appStage.hide(); // optional
 			appStage.setScene(homePageScene);
 			appStage.show();
 		} else {
 			usernameBox.clear();
 			passwordBox.clear();
-			
-			//Insert Dailog box in here
 			invalidLabel.setText("Sorry, invalid credentials");
 		}
+		
+		
 	}
 
 	private boolean isValidCredentials() {
