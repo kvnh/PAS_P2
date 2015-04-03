@@ -41,6 +41,9 @@ public class LoginPageController implements Initializable {
 	@FXML
 	private Button button;
 	
+	/**
+	 * Object needed to be created to communicate with the Business Layer from this GUI layer
+	 */
 	public BusinessAccessLogin bal = new BusinessAccessLogin();
 
 	@FXML
@@ -49,8 +52,15 @@ public class LoginPageController implements Initializable {
 		Parent homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistHomePage.fxml"));
 		Scene homePageScene = new Scene(homePageParent);
 		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
+		/*
+		 * All Exceptions caught at the GUI not at the other two layers.
+		 */
 		try {
+			/*
+			 *  Reference 'bal' to Object BusinessAccessLogin sends parameters to Business Layer
+			 *  calling method login() which passes the TextBox parameters usernameBox and passwordBox 
+			 *  down the layers.
+			 */
 			if (bal.login(usernameBox, passwordBox)) {
 				appStage.hide(); // optional
 				appStage.setScene(homePageScene);
@@ -76,8 +86,16 @@ public class LoginPageController implements Initializable {
 		Parent homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistHomePage.fxml"));
 		Scene homePageScene = new Scene(homePageParent);
 		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
+		/*
+		 * All Exceptions caught at the GUI not at the other two layers.
+		 */
 		try {
+			
+			/*
+			 *  Reference 'bal' to Object BusinessAccessLogin sends parameters to Business Layer
+			 *  calling method login() which passes the TextBox parameters usernameBox and passwordBox 
+			 *  down the layers.
+			 */
 			if (bal.login(usernameBox, passwordBox)) {
 				appStage.hide(); // optional
 				appStage.setScene(homePageScene);
@@ -106,7 +124,15 @@ public class LoginPageController implements Initializable {
 		Scene homePageScene = new Scene(homePageParent);
 		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		BusinessAccessLogin bal = new BusinessAccessLogin();
+		/*
+		 * All Exceptions caught at the GUI not at the other two layers.
+		 */
 		try {
+			/*
+			 *  Reference 'bal' to Object BusinessAccessLogin sends parameters to Business Layer
+			 *  calling method login() which passes the TextBox parameters usernameBox and passwordBox 
+			 *  down the layers.
+			 */
 			if (bal.login(usernameBox, passwordBox)) {
 				appStage.hide(); // optional
 				appStage.setScene(homePageScene);

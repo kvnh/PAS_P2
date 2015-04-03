@@ -8,10 +8,21 @@ import java.sql.Statement;
 
 import javafx.scene.control.TextField;
 
+/**
+ * 
+ * @author Andrew Walmsley
+ *
+ */
 public class LoginDA {
 	
 
-	
+	/**
+	 * Queries are made here and ALL exceptions are thrown up the tiers/layers/levels...
+	 * @param usernameBox
+	 * @param passwordBox
+	 * @return
+	 * @throws SQLException
+	 */
 	public static boolean loginCredentials(TextField usernameBox, TextField passwordBox) throws SQLException {
 		boolean letIn = false;
 		System.out.println("SELECT * FROM LoginUsers WHERE USERNAME= " + "'" + usernameBox.getText() + "'"
