@@ -5,9 +5,11 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
+import businessLayer.BusinessAccessLogin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +40,8 @@ public class LoginPageController implements Initializable {
 	private Label invalidLabel;
 	@FXML
 	private Button button;
+	
+	public BusinessAccessLogin bal = new BusinessAccessLogin();
 
 	@FXML
 	private void handleButtonAction(ActionEvent event) throws IOException {
@@ -46,14 +50,19 @@ public class LoginPageController implements Initializable {
 		Scene homePageScene = new Scene(homePageParent);
 		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-		if (isValidCredentials()) {
-			appStage.hide(); // optional
-			appStage.setScene(homePageScene);
-			appStage.show();
-		} else {
-			usernameBox.clear();
-			passwordBox.clear();
-			invalidLabel.setText("Sorry, invalid credentials");
+		try {
+			if (bal.login(usernameBox, passwordBox)) {
+				appStage.hide(); // optional
+				appStage.setScene(homePageScene);
+				appStage.show();
+			} else {
+				usernameBox.clear();
+				passwordBox.clear();
+				invalidLabel.setText("Sorry, invalid credentials");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	/**
@@ -68,14 +77,19 @@ public class LoginPageController implements Initializable {
 		Scene homePageScene = new Scene(homePageParent);
 		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-		if (isValidCredentials()) {
-			appStage.hide(); // optional
-			appStage.setScene(homePageScene);
-			appStage.show();
-		} else {
-			usernameBox.clear();
-			passwordBox.clear();
-			invalidLabel.setText("Sorry, invalid credentials");
+		try {
+			if (bal.login(usernameBox, passwordBox)) {
+				appStage.hide(); // optional
+				appStage.setScene(homePageScene);
+				appStage.show();
+			} else {
+				usernameBox.clear();
+				passwordBox.clear();
+				invalidLabel.setText("Sorry, invalid credentials");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		
@@ -91,58 +105,24 @@ public class LoginPageController implements Initializable {
 		Parent homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistHomePage.fxml"));
 		Scene homePageScene = new Scene(homePageParent);
 		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-		if (isValidCredentials()) {
-			appStage.hide(); // optional
-			appStage.setScene(homePageScene);
-			appStage.show();
-		} else {
-			usernameBox.clear();
-			passwordBox.clear();
-			invalidLabel.setText("Sorry, invalid credentials");
-		}
-		
-		
-	}
-
-	private boolean isValidCredentials() {
-		boolean letIn = false;
-		System.out.println("SELECT * FROM LoginUsers WHERE USERNAME= " + "'" + usernameBox.getText() + "'"
-				+ " AND PASSWORD= " + "'" + passwordBox.getText() + "'");
-
-		Connection c = null;
-		Statement stmt = null;
+		BusinessAccessLogin bal = new BusinessAccessLogin();
 		try {
-			c = DriverManager.getConnection("jdbc:sqlite:src/models/pas.db");
-			c.setAutoCommit(false);
-
-			System.out.println("Opened database successfully");
-			stmt = c.createStatement();
-
-			ResultSet rs = stmt.executeQuery("SELECT * FROM LoginUsers WHERE USERNAME= " + "'" + usernameBox.getText()
-					+ "'" + " AND PASSWORD= " + "'" + passwordBox.getText() + "'");
-
-			while (rs.next()) {
-				if (rs.getString("USERNAME") != null && rs.getString("PASSWORD") != null) {
-					String username = rs.getString("USERNAME");
-					System.out.println("USERNAME = " + username);
-					String password = rs.getString("PASSWORD");
-					System.out.println("PASSWORD = " + password);
-					letIn = true;
-				}
+			if (bal.login(usernameBox, passwordBox)) {
+				appStage.hide(); // optional
+				appStage.setScene(homePageScene);
+				appStage.show();
+			} else {
+				usernameBox.clear();
+				passwordBox.clear();
+				invalidLabel.setText("Sorry, invalid credentials");
 			}
-			rs.close();
-			stmt.close();
-			c.close();
-		} catch (Exception e) {
-			System.err.println(e.getClass().getName() + ": " + e.getMessage());
-			System.exit(0);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		System.out.println("isValidCredentials completed successfully");
-		return letIn;
-		
-		/** Andrew Testing upload onto git */
 	}
+
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
