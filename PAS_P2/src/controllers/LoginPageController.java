@@ -50,7 +50,7 @@ public class LoginPageController implements Initializable {
 	 * this GUI layer
 	 */
 	public BusinessAccessLogin bal = new BusinessAccessLogin();
-	private int count = 0;
+	private int count = 4;
 
 	@FXML
 	private void handleButtonAction(ActionEvent event) throws IOException {
@@ -68,17 +68,17 @@ public class LoginPageController implements Initializable {
 			 *  down the layers.
 			 */
 		
-			if (bal.login(usernameBox, passwordBox) && (count <= 3)) {
+			if (bal.login(usernameBox, passwordBox) && (count > 0 )) {
 				appStage.hide(); // optional
 				appStage.setScene(homePageScene);
 				appStage.show();
 			} else {
 				usernameBox.clear();
 				passwordBox.clear();
-				count++;
+				--count;
 				invalidLabel.setText("Sorry, invalid details");
 				
-				if(count > 3){
+				if(count < 1){
 					invalidLabel.setText("You have been locked out of system");
 					appStage.close();
 				
