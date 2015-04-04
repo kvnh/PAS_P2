@@ -2,14 +2,9 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
-import businessLayer.BusinessAccessLogin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import businessLayer.BusinessAccessLogin;
 
 public class LoginPageController implements Initializable {
 
@@ -38,21 +34,31 @@ public class LoginPageController implements Initializable {
 	private TextField passwordBox;
 	@FXML
 	private Label invalidLabel;
+	
+	@FXML
+	private Label attemptLabel;
+	
 	@FXML
 	private Button button;
-	
+
+	private Parent homePageParent;
+	private Scene homePageScene;
+	private Stage appStage;
+
 	/**
-	 * Object needed to be created to communicate with the Business Layer from this GUI layer
+	 * Object needed to be created to communicate with the Business Layer from
+	 * this GUI layer
 	 */
 	public BusinessAccessLogin bal = new BusinessAccessLogin();
+	private int count = 0;
 
 	@FXML
 	private void handleButtonAction(ActionEvent event) throws IOException {
 		System.out.println("Login button selected");
-		Parent homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistHomePage.fxml"));
-		Scene homePageScene = new Scene(homePageParent);
-		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		/*
+		homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistHomePage.fxml"));
+		homePageScene = new Scene(homePageParent);
+		appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				/*
 		 * All Exceptions caught at the GUI not at the other two layers.
 		 */
 		try {
@@ -61,97 +67,60 @@ public class LoginPageController implements Initializable {
 			 *  calling method login() which passes the TextBox parameters usernameBox and passwordBox 
 			 *  down the layers.
 			 */
-			if (bal.login(usernameBox, passwordBox)) {
+		
+			if (bal.login(usernameBox, passwordBox) && (count <= 3)) {
 				appStage.hide(); // optional
 				appStage.setScene(homePageScene);
 				appStage.show();
 			} else {
 				usernameBox.clear();
 				passwordBox.clear();
-				invalidLabel.setText("Sorry, invalid credentials");
-			}
+				count++;
+				invalidLabel.setText("Sorry, invalid details");
+				
+				if(count > 3){
+					invalidLabel.setText("You have been locked out of system");
+					appStage.close();
+				
+				}
+				attemptLabel.setText("ATTEMPTS LEFT : "+count);
+				System.out.println("ATTEMPTS LEFT : "+count);
+				}
+				
+	
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * Enter key event for password text field
+	 * 
 	 * @param event
 	 * @throws IOException
 	 */
 	@FXML
 	private void handlePasswordBox(ActionEvent event) throws IOException {
-		System.out.println("Login button selected");
-		Parent homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistHomePage.fxml"));
-		Scene homePageScene = new Scene(homePageParent);
-		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		/*
-		 * All Exceptions caught at the GUI not at the other two layers.
-		 */
-		try {
-			
-			/*
-			 *  Reference 'bal' to Object BusinessAccessLogin sends parameters to Business Layer
-			 *  calling method login() which passes the TextBox parameters usernameBox and passwordBox 
-			 *  down the layers.
-			 */
-			if (bal.login(usernameBox, passwordBox)) {
-				appStage.hide(); // optional
-				appStage.setScene(homePageScene);
-				appStage.show();
-			} else {
-				usernameBox.clear();
-				passwordBox.clear();
-				invalidLabel.setText("Sorry, invalid credentials");
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
+
 	}
+
 	/**
 	 * Enter key event for username text field
+	 * 
 	 * @param event
 	 * @throws IOException
 	 */
 	@FXML
 	private void handleUsernameBox(ActionEvent event) throws IOException {
-		System.out.println("Login button selected");
-		Parent homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistHomePage.fxml"));
-		Scene homePageScene = new Scene(homePageParent);
-		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		BusinessAccessLogin bal = new BusinessAccessLogin();
-		/*
-		 * All Exceptions caught at the GUI not at the other two layers.
-		 */
-		try {
-			/*
-			 *  Reference 'bal' to Object BusinessAccessLogin sends parameters to Business Layer
-			 *  calling method login() which passes the TextBox parameters usernameBox and passwordBox 
-			 *  down the layers.
-			 */
-			if (bal.login(usernameBox, passwordBox)) {
-				appStage.hide(); // optional
-				appStage.setScene(homePageScene);
-				appStage.show();
-			} else {
-				usernameBox.clear();
-				passwordBox.clear();
-				invalidLabel.setText("Sorry, invalid credentials");
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 	}
-
-
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

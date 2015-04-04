@@ -15,6 +15,8 @@ import javafx.scene.control.TextField;
  */
 public class LoginDA {
 	
+	private static Connection conn = null;
+	private static Statement stmt = null;
 
 	/**
 	 * Queries are made here and ALL exceptions are thrown up the tiers/layers/levels...
@@ -28,34 +30,35 @@ public class LoginDA {
 		System.out.println("SELECT * FROM LoginUsers WHERE USERNAME= " + "'" + usernameBox.getText() + "'"
 				+ " AND PASSWORD= " + "'" + passwordBox.getText() + "'");
 
-		Connection c = null;
-		Statement stmt = null;
-			c = DriverManager.getConnection("jdbc:sqlite:src/models/pas.db");
-			c.setAutoCommit(false);
-
-			System.out.println("Opened database successfully");
-			stmt = c.createStatement();
+			conn = DriverManager.getConnection("jdbc:sqlite:src/models/pas.db");
+			conn.setAutoCommit(false);
+			System.out.println("Opened connection successfully");
+			
+			stmt = conn.createStatement();
+			
 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM LoginUsers WHERE USERNAME= " + "'" + usernameBox.getText()
 					+ "'" + " AND PASSWORD= " + "'" + passwordBox.getText() + "'");
-
+		
 			while (rs.next()) {
-				if (rs.getString("USERNAME") != null && rs.getString("PASSWORD") != null) {
+				if (rs.getString("USERNAME").equals(usernameBox.getText()) && 
+						rs.getString("PASSWORD").equals(passwordBox.getText())) {
 					String username = rs.getString("USERNAME");
 					System.out.println("USERNAME = " + username);
 					String password = rs.getString("PASSWORD");
 					System.out.println("PASSWORD = " + password);
 					letIn = true;
+				}else{
+					System.out.println("INVALID DETAILS");
+					letIn = false;
 				}
 			}
 			rs.close();
 			stmt.close();
-			c.close();
+			conn.close();
 	
-		System.out.println("isValidCredentials completed successfully");
 		return letIn;
-		
-		/** Andrew Testing upload onto git */
 	}
+	
 
 }
