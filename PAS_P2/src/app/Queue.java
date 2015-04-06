@@ -1,20 +1,21 @@
 package app;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Queue implements Comparable<Patient> {
 
 	/**
 	 * linked list of patient objects to represent queue
 	 */
-	public static LinkedList<Patient> queue = new LinkedList<Patient>();
+	public static List<Patient> queue = new LinkedList<Patient>();
 
 	/**
 	 * method to add a patient to the queue
 	 * 
 	 * @param p
 	 */
-	public static void addToQueue(Patient p) {
+	public static List<Patient> addToQueue(Patient p) {
 
 		// check to see if queue is full
 		if (queue.size() < 10) {
@@ -25,6 +26,9 @@ public class Queue implements Comparable<Patient> {
 			System.out.println("Queue is full");
 			// alert on call team and hospital manager
 		}
+
+		return queue;
+		//test.displayQueue(queue);
 	}
 
 	/**
@@ -45,7 +49,5 @@ public class Queue implements Comparable<Patient> {
 	public int compareTo(Patient o) {
 		return 0;
 	}
-
-
 
 }

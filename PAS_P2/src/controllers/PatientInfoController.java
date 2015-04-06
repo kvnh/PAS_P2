@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import app.Patient;
@@ -9,8 +10,11 @@ import app.Queue;
 import app.Status;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -24,7 +28,6 @@ public class PatientInfoController implements Initializable {
 	private TableColumn<Patient, String> firstNameColumn;
 	@FXML
 	private TableColumn<Patient, String> lastNameColumn;
-
 	@FXML
 	private Label nhsNumberLabel;
 	@FXML
@@ -44,6 +47,7 @@ public class PatientInfoController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		assert personTable != null : "fx:id=\"tableView\" was not injected: check your FXML file 'PatientInfoPage.fxml'";
 	}
 
 	/**
@@ -54,30 +58,52 @@ public class PatientInfoController implements Initializable {
 	 */
 	@FXML
 	private void btnCancel(ActionEvent event) throws IOException {
-		Stage stage = (Stage) ((Node) (event.getSource())).getScene()
-				.getWindow();
+		Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
 		stage.close();
 	}
+	
+	// private Parent queuePageParent;
 
+	public static List<Patient> queue;
+	
+	// public static QueueTabPageController queueTabPageController = new QueueTabPageController();
+	
 	/**
 	 * Button to confirm patient and send them to triage/waiting queue
 	 * 
 	 * @param event
 	 */
 	@FXML
-	private void btnConfirm(ActionEvent event) {
-		Stage stage = (Stage) ((Node) (event.getSource())).getScene()
-				.getWindow();
-		Patient p = new Patient(firstNameLabel.getText(),
-				lastNameLabel.getText(), nhsNumberLabel.getText(),
-				titleLabel.getText(), streetNumberLabel.getText(),
-				streetNameLabel.getText(), cityLabel.getText(),
+	private void btnConfirm(ActionEvent event) throws IOException{
+		Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+		// patientservicesclass psc = new patientservicesclass
+
+		// test.enqueue("test");
+		// psc.getPatientById(nhsNumberLabel.getText())
+		Patient p = new Patient(firstNameLabel.getText(), lastNameLabel.getText(), nhsNumberLabel.getText(),
+				titleLabel.getText(), streetNumberLabel.getText(), streetNameLabel.getText(), cityLabel.getText(),
 				postCodeLabel.getText(), Status.EMERGENCY);
+
+		queue = Queue.addToQueue(p);
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FXMLQueueTabPage.fxml"));
+		loader.setLocation(getClass().getResource("/views/FXMLQueueTabPage.fxml"));
+		loader.load();
+		Parent parent = loader.getRoot();
+		Stage stageQueue = new Stage();
+		stageQueue.setScene(new Scene(parent));
+
+		// instance of the queueTabPage controller is created
+		// set it equal to the FXMLLoader controller that was just loaded
+		QueueTabPageController queueTabPageController = loader.<QueueTabPageController> getController();
+		queueTabPageController.displayQueue(queue);
 		
-		Queue queue = new Queue();
+		stageQueue.show();
 		
-		queue.addToQueue(p);
+		// ========================================================
+		
 		stage.close();
+		
 	}
 
 	/**

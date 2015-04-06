@@ -55,7 +55,7 @@ public class LoginPageController implements Initializable {
 	@FXML
 	private void handleButtonAction(ActionEvent event) throws IOException {
 		System.out.println("Login button selected");
-		homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistHomePage.fxml"));
+		homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistPage.fxml"));
 		homePageScene = new Scene(homePageParent);
 		appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				/*
@@ -87,8 +87,6 @@ public class LoginPageController implements Initializable {
 				System.out.println("ATTEMPTS LEFT : "+count);
 				}
 				
-	
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

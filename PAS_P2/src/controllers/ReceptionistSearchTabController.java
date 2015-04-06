@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+
 import models.ConnectionFactory;
 import models.DbUtil;
 import app.Patient;
@@ -25,8 +26,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class ReceptionistHomePageController implements Initializable {
-
+public class ReceptionistSearchTabController implements Initializable {
+	
 	@FXML
 	private TableView<Patient> tableView;
 
@@ -60,11 +61,11 @@ public class ReceptionistHomePageController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'FXMLReceptionistHomePage.fxml'";
+		assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'FXMLReceptionistSearchTabPage.fxml'";
 
+		System.out.println("initialising all columns in the receptionist's table view");
 		// initialize all columns in the receptionist's table view
-		// nhsNumberColumn.setCellValueFactory(new PropertyValueFactory<Patient,
-		// String>("nhsNumber"));
+		// nhsNumberColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("nhsNumber"));
 		// titleColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("title"));
 		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
@@ -162,6 +163,7 @@ public class ReceptionistHomePageController implements Initializable {
 			DbUtil.close(connection);
 		}
 	}
+
 	/**
 	 * Searches database when user presses enter at postcode text field
 	 * @param event
@@ -212,16 +214,15 @@ public class ReceptionistHomePageController implements Initializable {
 			DbUtil.close(statement);
 			DbUtil.close(connection);
 		}
-	
+
 	}
-	
+
 	@FXML
 	private void clearButtonAction(ActionEvent event) throws IOException {
 		firstNameSearch.clear();
 		lastNameSearch.clear();
 		postCodeSearch.clear();
 	}
-	
 
 	private String buildQuery(String firstNameValue, String lastNameValue, String postCodeValue) {
 		String query = "";
@@ -245,7 +246,6 @@ public class ReceptionistHomePageController implements Initializable {
 
 		return query;
 	}
-
 
 	/**
 	 * Button to open patient information screen using the highlighted row in receptionist search table
@@ -296,7 +296,7 @@ public class ReceptionistHomePageController implements Initializable {
 
 		System.out.println("Operation done successfully");
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FXMLPatientInformation.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FXMLPatientInformationPage.fxml"));
 		loader.setLocation(getClass().getResource("/views/FXMLPatientInformationPage.fxml"));
 		loader.load();
 		Parent p = loader.getRoot();

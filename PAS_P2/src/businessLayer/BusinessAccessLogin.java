@@ -25,6 +25,7 @@ public class BusinessAccessLogin {
 	}
 	
 	
-	
+	//public patient GetPatientById(string nhs number
+	// go to the dal and return the patient for that id
 
 }
