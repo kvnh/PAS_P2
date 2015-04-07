@@ -10,11 +10,8 @@ import app.Queue;
 import app.Status;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -62,11 +59,10 @@ public class PatientInfoController implements Initializable {
 		stage.close();
 	}
 	
-	// private Parent queuePageParent;
 
 	public static List<Patient> queue;
 	
-	// public static QueueTabPageController queueTabPageController = new QueueTabPageController();
+	public static QueueTabPageController queueTabPageController;
 	
 	/**
 	 * Button to confirm patient and send them to triage/waiting queue
@@ -74,8 +70,8 @@ public class PatientInfoController implements Initializable {
 	 * @param event
 	 */
 	@FXML
-	private void btnConfirm(ActionEvent event) throws IOException{
-		Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+	private void btnConfirmClick(ActionEvent event) throws IOException{
+		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		// patientservicesclass psc = new patientservicesclass
 
 		// test.enqueue("test");
@@ -85,25 +81,9 @@ public class PatientInfoController implements Initializable {
 				postCodeLabel.getText(), Status.EMERGENCY);
 
 		queue = Queue.addToQueue(p);
+		
+		appStage.hide();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FXMLQueueTabPage.fxml"));
-		loader.setLocation(getClass().getResource("/views/FXMLQueueTabPage.fxml"));
-		loader.load();
-		Parent parent = loader.getRoot();
-		Stage stageQueue = new Stage();
-		stageQueue.setScene(new Scene(parent));
-
-		// instance of the queueTabPage controller is created
-		// set it equal to the FXMLLoader controller that was just loaded
-		QueueTabPageController queueTabPageController = loader.<QueueTabPageController> getController();
-		queueTabPageController.displayQueue(queue);
-		
-		stageQueue.show();
-		
-		// ========================================================
-		
-		stage.close();
-		
 	}
 
 	/**
@@ -124,5 +104,6 @@ public class PatientInfoController implements Initializable {
 		postCodeLabel.setText(patient.getPostCode());
 
 	}
+
 
 }

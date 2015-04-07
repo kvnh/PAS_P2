@@ -11,7 +11,7 @@
          <children>
             <Label layoutX="25.0" layoutY="41.0" styleClass="label-PInfo" stylesheets="@../styles/PatientInformationPage.css" text="Patient Information" />
             <Button layoutX="236.0" layoutY="340.0" mnemonicParsing="false" onAction="#btnCancel" stylesheets="@../styles/PatientInformationPage.css" text="Cancel" />
-            <Button layoutX="94.0" layoutY="340.0" mnemonicParsing="false" onAction="#btnConfirm" stylesheets="@../styles/PatientInformationPage.css" text="Confirm" />
+            <Button layoutX="94.0" layoutY="340.0" mnemonicParsing="false" onAction="#btnConfirmClick" stylesheets="@../styles/PatientInformationPage.css" text="Confirm" />
             <Label fx:id="firstNameLabel" layoutX="79.0" layoutY="147.0" stylesheets="@../styles/PatientInformationPage.css" text="Label" />
             <Label fx:id="lastNameLabel" layoutX="126.0" layoutY="147.0" stylesheets="@../styles/PatientInformationPage.css" text="Label" />
             <Label layoutX="26.0" layoutY="92.0" styleClass="label-subTitle" stylesheets="@../styles/PatientInformationPage.css" text="NHS Number" />

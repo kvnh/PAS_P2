@@ -22,5 +22,6 @@
             <TableColumn fx:id="postCodeColumn" prefWidth="158.0" text="Time waiting" />
         </columns>
       </TableView>
+      <Button fx:id="btnRefreshQueue" layoutX="242.0" layoutY="211.0" mnemonicParsing="false" onAction="#btnRefreshQueueClick" text="Refresh Queue" />
    </children>
 </AnchorPane>
