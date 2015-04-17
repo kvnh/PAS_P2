@@ -66,7 +66,8 @@ public class TriageNurseHomePageController implements Initializable {
 		
 		System.out.println("Changing to assess patient for triage screen");
 		
-		Patient patient = new Patient();
+		// Patient patient = new Patient();
+		Patient patient = tableView.getSelectionModel().getSelectedItem();
 		
 		System.out.println("Changing to patient assessment screen");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FXMLPatientAssessmentPage.fxml"));
