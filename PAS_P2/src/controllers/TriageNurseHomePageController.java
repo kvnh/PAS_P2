@@ -27,13 +27,13 @@ public class TriageNurseHomePageController implements Initializable {
 	private TableView<Patient> tableView;
 	
 	@FXML
+	private TableColumn<Patient, String> nhsNumberColumn;
+	
+	@FXML
 	private TableColumn<Patient, String> firstNameColumn;
 
 	@FXML
 	private TableColumn<Patient, String> lastNameColumn;
-	
-	@FXML
-	private TableColumn<Patient, String> patientNumberColumn;
 	
 	@FXML
 	private TableColumn<Patient, String> dobColumn;
@@ -49,8 +49,10 @@ public class TriageNurseHomePageController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'FXMLTriageNurseHomePage.fxml'";
 
+		nhsNumberColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("nhsNumber"));
 		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
+		triageAssessmentColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("triage"));
 		// timeEnteredColumn.setCellValueFactory(new PropertyValueFactory<Patient, Date>("timeStamp"));
 	}
 	

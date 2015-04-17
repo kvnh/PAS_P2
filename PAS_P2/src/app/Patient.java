@@ -25,11 +25,9 @@ public class Patient extends Person {
 	 * @param firstName
 	 * @param lastName
 	 */
-	public Patient(String nhsNumber, String title, String firstName,
-			String lastName, String streetNumber, String streetName,
-			String city, String postCode, Status triage) {
-		super(nhsNumber, title, firstName, lastName, streetNumber, streetName,
-				city, postCode);
+	public Patient(String nhsNumber, String title, String firstName, String lastName, String streetNumber,
+			String streetName, String city, String postCode, Status triage) {
+		super(nhsNumber, title, firstName, lastName, streetNumber, streetName, city, postCode);
 		this.triage = triage;
 	}
 
