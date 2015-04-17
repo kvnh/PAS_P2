@@ -3,7 +3,6 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import app.Patient;
@@ -19,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class TriageNurseHomePageController implements Initializable {
@@ -32,16 +32,25 @@ public class TriageNurseHomePageController implements Initializable {
 	@FXML
 	private TableColumn<Patient, String> lastNameColumn;
 	
+	@FXML
+	private TableColumn<Patient, String> patientNumberColumn;
+	
+	@FXML
+	private TableColumn<Patient, String> dobColumn;
+	
+	@FXML
+	private TableColumn<Patient, String> triageAssessmentColumn;
+	
 	private ObservableList<Patient> tableData;
-	public static LinkedList<Patient> displayQueue;
+	// public static LinkedList<Patient> displayQueue;
 	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'FXMLTriageNurseHomePage.fxml'";
 
-		// firstNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
-		// lastNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
+		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
+		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
 		// timeEnteredColumn.setCellValueFactory(new PropertyValueFactory<Patient, Date>("timeStamp"));
 	}
 	
@@ -76,11 +85,10 @@ public class TriageNurseHomePageController implements Initializable {
 	
 	@FXML
 	private void btnRefreshQueueClick(ActionEvent event) throws IOException{
-		displayQueue = Queue.queue;
-		displayQueue(displayQueue);
+		displayQueue(Queue.queue);
 	}
 
-	public void displayQueue(List<Patient> queue) {
+	public void displayQueue(LinkedList<Patient> queue) {
 		tableData = FXCollections.observableArrayList(queue);
 		tableView.setItems(tableData);
 	}

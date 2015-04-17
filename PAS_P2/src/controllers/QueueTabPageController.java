@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import app.Patient;
@@ -37,7 +36,7 @@ public class QueueTabPageController implements Initializable {
 
 	private ObservableList<Patient> tableData;
 	
-	public static LinkedList<Patient> displayQueue;
+	// public static LinkedList<Patient> displayQueue;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -52,11 +51,10 @@ public class QueueTabPageController implements Initializable {
 	
 	@FXML
 	private void btnRefreshQueueClick(ActionEvent event) throws IOException{
-		displayQueue = Queue.queue;
-		displayQueue(displayQueue);
+		displayQueue(Queue.queue);
 	}
 
-	public void displayQueue(List<Patient> queue) {
+	public void displayQueue(LinkedList<Patient> queue) {
 		tableData = FXCollections.observableArrayList(queue);
 		tableView.setItems(tableData);
 	}
