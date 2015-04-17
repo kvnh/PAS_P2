@@ -2,6 +2,8 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -28,14 +30,14 @@ public class QueueTabPageController implements Initializable {
 	private TableColumn<Patient, String> lastNameColumn;
 
 	@FXML
-	private TableColumn<Patient, String> postCodeColumn;
+	private TableColumn<Patient, Date> timeEnteredColumn;
 
 	@FXML
 	private QueueTabPageController queueTabPageController;
 
 	private ObservableList<Patient> tableData;
 	
-	public static List<Patient> displayQueue;
+	public static LinkedList<Patient> displayQueue;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -44,7 +46,7 @@ public class QueueTabPageController implements Initializable {
 
 		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
-		postCodeColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("postCode"));
+		timeEnteredColumn.setCellValueFactory(new PropertyValueFactory<Patient, Date>("timeStamp"));
 
 	}
 	

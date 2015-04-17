@@ -2,12 +2,12 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import businessLayer.PatientServices;
 import app.Patient;
 import app.Queue;
-import app.Status;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,48 +42,31 @@ public class PatientInfoController implements Initializable {
 	@FXML
 	private Label postCodeLabel;
 
+	// create an instance of the PatientServices service layer
+	public PatientServices ps = new PatientServices();
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		assert personTable != null : "fx:id=\"tableView\" was not injected: check your FXML file 'PatientInfoPage.fxml'";
 	}
 
 	/**
-	 * Button to send user back to receptionist homepage
-	 * 
+	 * Button to confirm patient and add them to the triage/waiting queue
 	 * @param event
-	 * @throws IOException
+	 * @throws SQLException 
 	 */
 	@FXML
-	private void btnCancel(ActionEvent event) throws IOException {
-		Stage stage = (Stage) ((Node) (event.getSource())).getScene()
-				.getWindow();
-		stage.close();
-	}
+	private void btnConfirmClick(ActionEvent event) throws IOException, SQLException {
+		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-	public static List<Patient> queue;
+		// pass the nhsNumber from the nhsNumberLabel on PatientInfo screen
+		// to the getPatientByNHSNumber method in the service layer
+		Patient p = ps.getPatientByNHSNumber(nhsNumberLabel.getText());
 
-	public static QueueTabPageController queueTabPageController;
+		// add this patient, p, to the queue
+		Queue.addToQueue(p);
 
-	/**
-	 * Button to confirm patient and send them to triage/waiting queue
-	 * 
-	 * @param event
-	 */
-	@FXML
-	private void btnConfirmClick(ActionEvent event) throws IOException {
-		Stage appStage = (Stage) ((Node) event.getSource()).getScene()
-				.getWindow();
-		// patientservicesclass psc = new patientservicesclass
-
-		// test.enqueue("test");
-		// psc.getPatientById(nhsNumberLabel.getText())
-		Patient p = new Patient(titleLabel.getText(), nhsNumberLabel.getText(),
-				firstNameLabel.getText(), lastNameLabel.getText(),
-				streetNumberLabel.getText(), streetNameLabel.getText(),
-				cityLabel.getText(), postCodeLabel.getText(), Status.EMERGENCY);
-
-		queue = Queue.addToQueue(p);
-
+		// close the PatientInfo screen
 		appStage.hide();
 
 	}
@@ -104,7 +87,17 @@ public class PatientInfoController implements Initializable {
 		streetNameLabel.setText(patient.getStreetName());
 		cityLabel.setText(patient.getCity());
 		postCodeLabel.setText(patient.getPostCode());
+	}
 
+	/**
+	 * Button to send user back to receptionist homepage
+	 * @param event
+	 * @throws IOException
+	 */
+	@FXML
+	private void btnCancel(ActionEvent event) throws IOException {
+		Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+		stage.close();
 	}
 
 }

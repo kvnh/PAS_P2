@@ -33,7 +33,7 @@ public class TriageNurseHomePageController implements Initializable {
 	private TableColumn<Patient, String> lastNameColumn;
 	
 	private ObservableList<Patient> tableData;
-	public static List<Patient> displayQueue;
+	public static LinkedList<Patient> displayQueue;
 	
 	
 	@Override

@@ -27,7 +27,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class ReceptionistSearchTabController implements Initializable {
-	
+
 	@FXML
 	private TableView<Patient> tableView;
 
@@ -65,7 +65,8 @@ public class ReceptionistSearchTabController implements Initializable {
 
 		System.out.println("initialising all columns in the receptionist's table view");
 		// initialize all columns in the receptionist's table view
-		// nhsNumberColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("nhsNumber"));
+		// nhsNumberColumn.setCellValueFactory(new PropertyValueFactory<Patient,
+		// String>("nhsNumber"));
 		// titleColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("title"));
 		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
@@ -186,10 +187,6 @@ public class ReceptionistSearchTabController implements Initializable {
 			connection = ConnectionFactory.getConnection();
 			statement = connection.createStatement();
 
-			// String query = "SELECT * FROM patient WHERE firstName = '" + firstNameValue +
-			// "' OR lastName = '"
-			// + lastNameValue + "'";
-
 			System.out.println("Inserting\n" + query);
 
 			rs = statement.executeQuery(query);
@@ -217,11 +214,17 @@ public class ReceptionistSearchTabController implements Initializable {
 
 	}
 
+	/**
+	 * When clear button is selected, all text fields and observableList (search results) will clear
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	private void clearButtonAction(ActionEvent event) throws IOException {
 		firstNameSearch.clear();
 		lastNameSearch.clear();
 		postCodeSearch.clear();
+		data.removeAll(data);
 	}
 
 	private String buildQuery(String firstNameValue, String lastNameValue, String postCodeValue) {

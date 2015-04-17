@@ -5,6 +5,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import dataAccessLayer.LoginDA;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import businessLayer.BusinessAccessLogin;
 
+/**
+ * 
+ * @author Andrew Walmsley
+ *
+ */
 public class LoginPageController implements Initializable {
 
 	public LoginPageController() {
@@ -34,19 +40,20 @@ public class LoginPageController implements Initializable {
 	private TextField passwordBox;
 	@FXML
 	private Label invalidLabel;
-	
+
 	@FXML
 	private Label attemptLabel;
-	
+
 	@FXML
 	private Button button;
 
 	private Parent homePageParent;
 	private Scene homePageScene;
 	private Stage appStage;
-
+		
 	/**
-	 * Object needed to be created to communicate with the Business Layer from
+	 * Object needed to be created to communicate 
+	 * with the Business Layer from
 	 * this GUI layer
 	 */
 	public BusinessAccessLogin bal = new BusinessAccessLogin();
@@ -55,40 +62,66 @@ public class LoginPageController implements Initializable {
 	@FXML
 	private void handleButtonAction(ActionEvent event) throws IOException {
 		System.out.println("Login button selected");
-		homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistPage.fxml"));
-		homePageScene = new Scene(homePageParent);
-		appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-				/*
+	
+		/*
 		 * All Exceptions caught at the GUI not at the other two layers.
 		 */
 		try {
 			/*
-			 *  Reference 'bal' to Object BusinessAccessLogin sends parameters to Business Layer
-			 *  calling method login() which passes the TextBox parameters usernameBox and passwordBox 
-			 *  down the layers.
+			 * Reference 'bal' to Object BusinessAccessLogin sends parameters to Business Layer
+			 * calling method login() which passes the TextBox parameters usernameBox and
+			 * passwordBox down the layers.
 			 */
-		
-			if (bal.login(usernameBox, passwordBox) && (count > 0 )) {
-				appStage.hide(); // optional
+			if (bal.login(usernameBox, passwordBox) && (count > 0)) {
+				
+				/*
+				 * Switch statement so that: user cat 1 -> Reception screen;
+				 * user cat 2 'Nurses' -> triage screen ; & user cat 3 'Doctors -> treatment room 
+				 */
+				switch(LoginDA.staffEntitlements(usernameBox, passwordBox)){
+				case 1:
+					System.out.println("Staff Category ONE");
+					homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistPage.fxml"));
+					homePageScene = new Scene(homePageParent);
+					appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+					break;
+				case 2:
+					System.out.println("Staff Category TWO");
+					homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLTriageNurseHomePage.fxml"));
+					homePageScene = new Scene(homePageParent);
+					appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+					break;
+				case 3:
+					System.out.println("Staff Category THREE");
+					homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLDoctorAssessmentPage.fxml"));
+					homePageScene = new Scene(homePageParent);
+					appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+					break;
+				}
+				
 				appStage.setScene(homePageScene);
 				appStage.show();
+				
 			} else {
 				usernameBox.clear();
 				passwordBox.clear();
 				--count;
 				invalidLabel.setText("Sorry, invalid details");
-				
-				if(count < 1){
+
+				if (count < 1) {
 					invalidLabel.setText("You have been locked out of system");
 					appStage.close();
-				
+
 				}
-				attemptLabel.setText("ATTEMPTS LEFT : "+count);
-				System.out.println("ATTEMPTS LEFT : "+count);
-				}
-				
+				attemptLabel.setText("ATTEMPTS LEFT : " + count);
+				System.out.println("ATTEMPTS LEFT : " + count);
+			}
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		} catch (Exception e){
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -121,4 +154,8 @@ public class LoginPageController implements Initializable {
 
 	}
 
+	public static void displayTriage(){
+		
+	}
+		
 }

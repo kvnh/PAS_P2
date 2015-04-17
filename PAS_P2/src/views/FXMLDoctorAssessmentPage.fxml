@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000" stylesheets="@../styles/DoctorAssessmentPage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="91.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-pane" width="1001.0" />
+      <Label fx:id="nhsNumberLabel" layoutX="168.0" layoutY="176.0" prefHeight="17.0" prefWidth="61.0" text="Label" />
+      <Label fx:id="titleLabel" layoutX="72.0" layoutY="228.0" text="Label" />
+      <Label fx:id="allergiesLabel" layoutX="72.0" layoutY="365.0" text="allergiesLabel" />
+      <Label layoutX="72.0" layoutY="340.0" text="Allergies:" />
+      <Label fx:id="bloodTypeLabel" layoutX="72.0" layoutY="288.0" text="bloodTypeLabel" />
+      <Label layoutX="72.0" layoutY="264.0" text="Blood type:" />
+      <Label layoutX="72.0" layoutY="206.0" text="Name:" />
+      <Label layoutX="72.0" layoutY="173.0" text="NHS Number" />
+      <Label fx:id="lastNameLabel" layoutX="172.0" layoutY="228.0" text="Label" />
+      <Label fx:id="firstNameLabel" layoutX="125.0" layoutY="228.0" text="Label" />
+      <Button layoutX="662.0" layoutY="471.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="161.0" styleClass="button-extension" text="5+ minutes" />
+      <Button layoutX="836.0" layoutY="471.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="161.0" text="Finalise Patient" />
+      <Label layoutX="457.0" layoutY="26.0" text="Patient Assessment">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextArea layoutX="241.0" layoutY="135.0" prefHeight="321.0" prefWidth="270.0" promptText="Triage assessment" />
+      <Label layoutX="514.0" layoutY="53.0" text="Doctor">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label id="label-subTitle1" layoutX="71.0" layoutY="135.0" text="Patient">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextArea layoutX="535.0" layoutY="135.0" prefHeight="321.0" prefWidth="287.0" promptText="Doctor assessment" />
+      <Button layoutX="836.0" layoutY="135.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="137.0" text="Next Patient" />
+      <Label fx:id="timeSpentLabel" layoutX="539.0" layoutY="498.0" prefHeight="21.0" prefWidth="66.0" text="Label" />
+      <Label layoutX="422.0" layoutY="498.0" prefHeight="25.0" prefWidth="89.0" text="Time spent:" />
+      <Button layoutX="874.0" layoutY="34.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="113.0" text="Log out" />
+      <Label fx:id="triageCategoryLabel" layoutX="22.0" layoutY="102.0" text="triageCategoryLabel">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

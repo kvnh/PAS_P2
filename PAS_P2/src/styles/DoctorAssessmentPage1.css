@@ -1,7 +1,4 @@
-
-
 .root{
-	
 	-fx-spacing: 30;
 	-fx-background-color: #B9CBDB;
 	-fx-font-size: 12pt;
@@ -11,39 +8,15 @@
 	-fx-background-color: #B9CBDB;
 }
 
-.label-tab1{
-	-fx-background-color: #B9CBDB;
-	-fx-font-size: 12pt;
-	-fx-font-family: "Segoe UI Semibold";
-	
-}
-
-.label-tab2{
-	-fx-background-color: #B9CBDB;
-	-fx-font-size: 12pt;
-	-fx-font-family: "Segoe UI Semibold";
-	
-	
-}
-
 .label {
     -fx-font-size: 12pt;
     -fx-font-family: "Helvetica bold";
-    -fx-text-fill: #ffffff;
-    
+    -fx-text-fill: #000000;
     }
 
 
 .rectangle-pane{
-	 -fx-border-color: #507CA6;
-}
-    
- .text-field {
-    -fx-font-size: 12pt; 
-    -fx-border-width: 1.5;
-    -fx-text-fill: #3F527E;
-    -fx-border-color: #004E8A;
-    -fx-font-family: "Segoe UI Semibold";
+	 -fx-border-color: #ffffff;
 }
 .button {
     -fx-padding: 5 22 5 22;   
@@ -74,7 +47,7 @@
     -fx-border-insets: 1 1 1 1, 0;
 }
 
-.button-emergency{
+.button-extension{
 	-fx-padding: 5 22 5 22;   
     -fx-border-color: #F5CCCC;
     -fx-border-width: 2;
@@ -86,56 +59,26 @@
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
-.button-emergency:hover {
+.button-extension:hover {
     -fx-background-color: #EB9999;
 }
 
-.button-emergency:pressed, .button:default:hover:pressed {
+.button-extension:pressed, .button:default:hover:pressed {
   -fx-background-color: #CC0000;
   -fx-text-fill: #f4f4ff;
 }
 
-.button-emergency:focused {
+.button-extension:focused {
     -fx-border-color: white, white;
     -fx-border-width: 1, 1;
     -fx-border-style: solid, segments(1, 1);
     -fx-border-radius: 0, 0;
     -fx-border-insets: 1 1 1 1, 0;
 }
-
-.table-view {
-    -fx-base: transparent;
-    -fx-control-inner-background: transparent;
-    -fx-background-color: #507CA6;
-    -fx-padding: 5;
-}
-
-.table-view .column-header-background {
-    -fx-background-color: transparent;
-}
-
-.table-view .column-header, .table-view .filler {
-    -fx-size: 35;
-    -fx-border-width: 0 0 1 0;
-    -fx-background-color: transparent;
-    -fx-border-color: #B4D9FD;
-    -fx-border-insets: 0 10 1 0;
-}
-
-.table-view .column-header .label {
-    -fx-font-size: 14pt;
-    -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: white;
-    -fx-alignment: center-left;
-    -fx-opacity: 1;
-}
-
-.table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: #273D51;
-}
-
-.label-patientTitle{
-	-fx-font-size: 30pt;
-    -fx-font-family: "Segoe UI bold";
-    -fx-text-fill: white;
-}
+.label-subTitle {
+    -fx-font-size: 40pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #385774;
+    -fx-opacity: 0.6;
+    
+    }

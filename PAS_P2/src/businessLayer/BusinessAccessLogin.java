@@ -23,9 +23,5 @@ public class BusinessAccessLogin {
 	public boolean login(TextField usernameBox, TextField passwordBox) throws SQLException{
 		return LoginDA.loginCredentials(usernameBox, passwordBox);
 	}
-	
-	
-	//public patient GetPatientById(string nhs number
-	// go to the dal and return the patient for that id
 
 }
