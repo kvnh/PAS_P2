@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="410.0" prefWidth="653.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="410.0" prefWidth="653.0" stylesheets="@../styles/PatientAssessmentPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PatientAssessmentPageController">
    <children>
       <Label fx:id="nhsNumberLabel" layoutX="158.0" layoutY="77.0" text="Label" />
       <Label fx:id="titleLabel" layoutX="42.0" layoutY="132.0" text="Label" />
@@ -19,8 +18,8 @@
       <Label layoutX="42.0" layoutY="77.0" text="NHS Number" />
       <Label fx:id="lastNameLabel" layoutX="142.0" layoutY="132.0" text="Label" />
       <Label fx:id="firstNameLabel" layoutX="95.0" layoutY="132.0" text="Label" />
-      <Button layoutX="494.0" layoutY="336.0" mnemonicParsing="false" onAction="#btnConfirm" text="Confirm" />
-      <Button layoutX="582.0" layoutY="336.0" mnemonicParsing="false" onAction="#btnCancel" text="Cancel" />
+      <Button layoutX="406.0" layoutY="336.0" mnemonicParsing="false" onAction="#btnConfirm" text="Confirm" />
+      <Button layoutX="548.0" layoutY="336.0" mnemonicParsing="false" onAction="#btnCancel" text="Cancel" />
       <Label layoutX="245.0" layoutY="30.0" text="Patient Assessment">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -30,7 +29,7 @@
       <VBox layoutX="482.0" layoutY="85.0" prefHeight="224.0" prefWidth="150.0" spacing="30.0">
          <children>
             <RadioButton fx:id="emergencyRButton" mnemonicParsing="false" text="EMERGENCY" />
-            <RadioButton mnemonicParsing="false" onAction="#urgentRButton" text="URGENT" />
+            <RadioButton fx:id="urgentRButton" mnemonicParsing="false" text="URGENT" />
             <RadioButton fx:id="semiUrgentRButton" mnemonicParsing="false" text="SEMI-URGENT" />
             <RadioButton fx:id="nonUrgentRButton" mnemonicParsing="false" text="NON-URGENT" />
             <RadioButton fx:id="notAssessedRButton" mnemonicParsing="false" text="NOT-ASSESSED" />

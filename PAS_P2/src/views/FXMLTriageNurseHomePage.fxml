@@ -1,36 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="770.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TriageNurseHomePage">
+<AnchorPane prefHeight="767.0" prefWidth="1000.0" stylesheets="@../styles/TriageNurseHomePage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TriageNurseHomePageController">
    <children>
-      <TabPane prefHeight="770.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+      <Label styleClass="label-patientTitle" text="Patient Search">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="156.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-pane" width="1039.0" />
+      <TabPane prefHeight="770.0" prefWidth="1039.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Triage Assessment">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="514.0" prefWidth="581.0">
                      <children>
-                        <Pane layoutX="6.0" layoutY="6.0" prefHeight="770.0" prefWidth="1000.0">
+                        <Pane layoutX="6.0" prefHeight="776.0" prefWidth="973.0">
                            <children>
-                              <TableView layoutX="50.0" layoutY="100.0" prefHeight="395.0" prefWidth="600.0">
+                              <TableView fx:id="tableView" layoutX="64.0" layoutY="243.0" prefHeight="491.0" prefWidth="668.0">
                                 <columns>
-                                  <TableColumn prefWidth="95.0" text="Patient number" />
-                                  <TableColumn prefWidth="89.0" text="First name" />
-                                    <TableColumn prefWidth="104.0" text="Last name" />
-                                    <TableColumn prefWidth="64.0" text="D.O.B" />
-                                    <TableColumn prefWidth="159.0" text="Triage Assessment" />
+                                  <TableColumn prefWidth="146.0" text="Patient number" />
+                                  <TableColumn fx:id="firstNameColumn" prefWidth="117.0" text="First name" />
+                                    <TableColumn fx:id="lastNameColumn" prefWidth="116.0" text="Last name" />
+                                    <TableColumn prefWidth="90.0" text="D.O.B" />
+                                    <TableColumn prefWidth="170.0" text="Triage Assessment" />
                                 </columns>
                               </TableView>
-                              <Label layoutX="247.0" layoutY="35.0" text="Triage Assessment">
+                              <Label layoutX="435.0" layoutY="51.0" text="Triage Assessment">
                                  <font>
-                                    <Font size="25.0" />
+                                    <Font size="35.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="611.0" layoutY="59.0" mnemonicParsing="false" onAction="#btnAssess" text="Assess" />
+                              <Button fx:id="btnAssess" layoutX="638.0" layoutY="178.0" mnemonicParsing="false" onAction="#btnAssess" text="Assess" />
+                              <Button layoutX="832.0" layoutY="44.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
+                              <Button fx:id="btnRefresh" layoutX="500.0" layoutY="178.0" mnemonicParsing="false" text="Refresh" />
                            </children>
                         </Pane>
                      </children>
