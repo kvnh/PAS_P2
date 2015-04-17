@@ -6,52 +6,11 @@ package app;
  * @author KHackett
  *
  */
-public class Patient {
-
-	/**
-	 * String to represent the NHS number of patient
-	 */
-	private String nhsNumber;
-
-	/**
-	 * String to represent the title of a patient
-	 */
-	private String title;
-
-	/**
-	 * String to represent the first name of patient
-	 */
-	private String firstName;
-
-	/**
-	 * String to represent the last name of a patient
-	 */
-	private String lastName;
-
-	/**
-	 * String to represent the street number of a patient
-	 */
-	private String streetNumber;
-
-	/**
-	 * String to represent the street name of a patient
-	 */
-	private String streetName;
-
-	/**
-	 * String to represent the city of a patient
-	 */
-	private String city;
-
-	/**
-	 * String to represent the post code of a patient
-	 */
-	private String postCode;
+public class Patient extends Person {
 
 	/**
 	 * Enum to represent triage status
 	 */
-
 	private Status triage;
 
 	/**
@@ -66,144 +25,27 @@ public class Patient {
 	 * @param firstName
 	 * @param lastName
 	 */
-	public Patient(String firstName, String lastName, String nhsNumber,
-			String title, String streetNumber, String streetName, String city,
-			String postCode, Status triage) {
-		this.nhsNumber = nhsNumber;
-		this.title = title;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.streetNumber = streetNumber;
-		this.streetName = streetName;
-		this.city = city;
-		this.postCode = postCode;
+	public Patient(String nhsNumber, String title, String firstName,
+			String lastName, String streetNumber, String streetName,
+			String city, String postCode, Status triage) {
+		super(nhsNumber, title, firstName, lastName, streetNumber, streetName,
+				city, postCode);
 		this.triage = triage;
 	}
 
 	/**
-	 * @return the nhsNumber
+	 * 
+	 * @return the triage
 	 */
-	public String getNhsNumber() {
-		return nhsNumber;
-	}
-
-	/**
-	 * @param nhsNumber
-	 *            the nhsNumber to set
-	 */
-	public void setNhsNumber(String nhsNumber) {
-		this.nhsNumber = nhsNumber;
-	}
-
-	/**
-	 * @return the title
-	 */
-	public String getTitle() {
-		return title;
-	}
-
-	/**
-	 * @param title
-	 *            the title to set
-	 */
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	/**
-	 * @return the firstName
-	 */
-	public String getFirstName() {
-		return firstName;
-	}
-
-	/**
-	 * @param firstName
-	 *            the firstName to set
-	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	/**
-	 * @return the lastName
-	 */
-	public String getLastName() {
-		return lastName;
-	}
-
-	/**
-	 * @param lastName
-	 *            the lastName to set
-	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	/**
-	 * @return the streetNumber
-	 */
-	public String getStreetNumber() {
-		return streetNumber;
-	}
-
-	/**
-	 * @param streetNumber
-	 *            the streetNumber to set
-	 */
-	public void setStreetNumber(String streetNumber) {
-		this.streetNumber = streetNumber;
-	}
-
-	/**
-	 * @return the streetName
-	 */
-	public String getStreetName() {
-		return streetName;
-	}
-
-	/**
-	 * @param streetName
-	 *            the streetName to set
-	 */
-	public void setStreetName(String streetName) {
-		this.streetName = streetName;
-	}
-
-	/**
-	 * @return the city
-	 */
-	public String getCity() {
-		return city;
-	}
-
-	/**
-	 * @param city
-	 *            the city to set
-	 */
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	/**
-	 * @return the postCode
-	 */
-	public String getPostCode() {
-		return postCode;
-	}
-
-	/**
-	 * @param postCode
-	 *            the postCode to set
-	 */
-	public void setPostCode(String postCode) {
-		this.postCode = postCode;
-	}
-
 	public Status getTriage() {
 		return triage;
 	}
 
+	/**
+	 * 
+	 * @param triage
+	 *            the triage to set
+	 */
 	public void setTriage(Status triage) {
 		this.triage = triage;
 	}
@@ -219,14 +61,14 @@ public class Patient {
 		Status compare = p.triage;
 
 		if (this.triage.equals(compare)) {
-			//if triage status is same, add to next slot in queue
+			// if triage status is same, add to next slot in queue
 			return 0;
 		} else if (this.triage.compareTo(compare) > 0) {
-			//if triage status is greater add above
+			// if triage status is greater add above
 			return 1;
 
 		} else {
-			//if triage status is less, add below.
+			// if triage status is less, add below.
 			return -1;
 		}
 	}

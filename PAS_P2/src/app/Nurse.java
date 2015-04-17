@@ -3,24 +3,29 @@
  */
 package app;
 
-import java.sql.Date;
-
 /**
+ * Nurse class that extends Staff
+ * 
  * @author My Acer
  *
  */
 public class Nurse extends Staff {
 
-	private boolean isTriage;
-	
 	/**
-	 * 
+	 * boolean to determine whether or not the nurse is a triage nurse
+	 */
+	private boolean isTriage;
+
+	/**
+	 * default constructor
 	 */
 	public Nurse() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**
+	 * Nurse constructor with args
+	 * 
 	 * @param nhsNumber
 	 * @param title
 	 * @param firstName
@@ -35,17 +40,25 @@ public class Nurse extends Staff {
 	 * @param atWork
 	 */
 	public Nurse(String nhsNumber, String title, String firstName,
-			String lastName, Date dob, String streetNumber, String streetName,
-			String city, String postCode, int id, int phone, boolean atWork, boolean isTriage) {
-		super(nhsNumber, title, firstName, lastName, dob, streetNumber,
-				streetName, city, postCode, id, phone, atWork);
+			String lastName, String streetNumber, String streetName,
+			String city, String postCode, int id, int phone, boolean atWork,
+			boolean isTriage) {
+		super(nhsNumber, title, firstName, lastName, streetNumber, streetName,
+				city, postCode, id, phone, atWork);
 		this.isTriage = isTriage;
 	}
 
+	/**
+	 * @return the isTriage
+	 */
 	public boolean isTriage() {
 		return isTriage;
 	}
 
+	/**
+	 * @param isTriage
+	 *            the isTriage to return
+	 */
 	public void setTriage(boolean isTriage) {
 		this.isTriage = isTriage;
 	}

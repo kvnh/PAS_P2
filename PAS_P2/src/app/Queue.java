@@ -17,6 +17,11 @@ public class Queue implements Comparable<Patient> {
 	 */
 	public static List<Patient> addToQueue(Patient p) {
 
+		// check to see if queue already contains this patient
+		if (queue.contains(p)) {
+			// prevent patient from being added to queue
+			//queue.
+		}
 		// check to see if queue is full
 		if (queue.size() < 10) {
 			// add patient if there is room in queue

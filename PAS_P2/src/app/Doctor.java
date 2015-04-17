@@ -6,23 +6,28 @@ package app;
 import java.sql.Date;
 
 /**
+ * Doctor class that extends Staff
+ * 
  * @author My Acer
  *
  */
 public class Doctor extends Staff {
 
-	private String speciality;
-	
-	private boolean isAvailable;
-	
 	/**
-	 * 
+	 * String to represent the doctors speciality
+	 */
+	private String speciality;
+
+	/**
+	 * default constructor
 	 */
 	public Doctor() {
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
+	 * Doctor constructor with args
+	 * 
 	 * @param nhsNumber
 	 * @param title
 	 * @param firstName
@@ -38,11 +43,11 @@ public class Doctor extends Staff {
 	 */
 	public Doctor(String nhsNumber, String title, String firstName,
 			String lastName, Date dob, String streetNumber, String streetName,
-			String city, String postCode, int id, int phone, boolean atWork, String speciality, boolean isAvailable) {
-		super(nhsNumber, title, firstName, lastName, dob, streetNumber,
+			String city, String postCode, int id, int phone, boolean atWork,
+			String speciality) {
+		super(nhsNumber, title, firstName, lastName, streetNumber,
 				streetName, city, postCode, id, phone, atWork);
 		this.speciality = speciality;
-		this.isAvailable = isAvailable;
 	}
 
 	/**
@@ -53,18 +58,11 @@ public class Doctor extends Staff {
 	}
 
 	/**
-	 * @param speciality the speciality to set
+	 * @param speciality
+	 *            the speciality to set
 	 */
 	public void setSpeciality(String speciality) {
 		this.speciality = speciality;
-	}
-
-	public boolean isAvailable() {
-		return isAvailable;
-	}
-
-	public void setAvailable(boolean isAvailable) {
-		this.isAvailable = isAvailable;
 	}
 
 }

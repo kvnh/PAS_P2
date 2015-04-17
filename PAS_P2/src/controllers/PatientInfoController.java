@@ -55,33 +55,35 @@ public class PatientInfoController implements Initializable {
 	 */
 	@FXML
 	private void btnCancel(ActionEvent event) throws IOException {
-		Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+		Stage stage = (Stage) ((Node) (event.getSource())).getScene()
+				.getWindow();
 		stage.close();
 	}
-	
 
 	public static List<Patient> queue;
-	
+
 	public static QueueTabPageController queueTabPageController;
-	
+
 	/**
 	 * Button to confirm patient and send them to triage/waiting queue
 	 * 
 	 * @param event
 	 */
 	@FXML
-	private void btnConfirmClick(ActionEvent event) throws IOException{
-		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	private void btnConfirmClick(ActionEvent event) throws IOException {
+		Stage appStage = (Stage) ((Node) event.getSource()).getScene()
+				.getWindow();
 		// patientservicesclass psc = new patientservicesclass
 
 		// test.enqueue("test");
 		// psc.getPatientById(nhsNumberLabel.getText())
-		Patient p = new Patient(firstNameLabel.getText(), lastNameLabel.getText(), nhsNumberLabel.getText(),
-				titleLabel.getText(), streetNumberLabel.getText(), streetNameLabel.getText(), cityLabel.getText(),
-				postCodeLabel.getText(), Status.EMERGENCY);
+		Patient p = new Patient(titleLabel.getText(), nhsNumberLabel.getText(),
+				firstNameLabel.getText(), lastNameLabel.getText(),
+				streetNumberLabel.getText(), streetNameLabel.getText(),
+				cityLabel.getText(), postCodeLabel.getText(), Status.EMERGENCY);
 
 		queue = Queue.addToQueue(p);
-		
+
 		appStage.hide();
 
 	}
@@ -104,6 +106,5 @@ public class PatientInfoController implements Initializable {
 		postCodeLabel.setText(patient.getPostCode());
 
 	}
-
 
 }

@@ -1,18 +1,38 @@
 package app;
 
-import java.sql.Date;
-
+/**
+ * 
+ * Abstract class to represent a person
+ * 
+ * @author My Acer
+ *
+ */
 public abstract class Person {
 
-	private String nhsNumbers;
+	/**
+	 * String to represent NHS number
+	 */
+	private String nhsNumber;
 
+	/**
+	 * String to represent title
+	 */
 	private String title;
 
+	/**
+	 * String to represent first name
+	 */
 	private String firstName;
 
+	/**
+	 * String to represent last name
+	 */
 	private String lastName;
 
-	private Date dob;
+	/**
+	 * Date to represent date of birth
+	 */
+	// private Date dob;
 
 	/**
 	 * String to represent the street number of a patient
@@ -42,15 +62,16 @@ public abstract class Person {
 	}
 
 	/**
-	 * constructor with arguments
+	 * Person constructor with arguments
 	 */
 	public Person(String nhsNumber, String title, String firstName,
-			String lastName, Date dob, String streetNumber, String streetName,
+			String lastName, String streetNumber, String streetName,
 			String city, String postCode) {
+		this.nhsNumber = nhsNumber;
 		this.title = title;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.dob = dob;
+		// this.dob = dob;
 		this.streetNumber = streetNumber;
 		this.streetName = streetName;
 		this.city = city;
@@ -105,31 +126,31 @@ public abstract class Person {
 	/**
 	 * @return the dob
 	 */
-	public Date getDob() {
-		return dob;
-	}
+	// public Date getDob() {
+	// return dob;
+	// }
 
 	/**
 	 * @param dob
 	 *            the dob to set
 	 */
-	public void setDob(Date dob) {
-		this.dob = dob;
-	}
+	// public void setDob(Date dob) {
+	// this.dob = dob;
+	// }
 
 	/**
 	 * @return the nhsNumbers
 	 */
-	public String getNhsNumbers() {
-		return nhsNumbers;
+	public String getNhsNumber() {
+		return nhsNumber;
 	}
 
 	/**
 	 * @param nhsNumbers
 	 *            the nhsNumbers to set
 	 */
-	public void setNhsNumbers(String nhsNumbers) {
-		this.nhsNumbers = nhsNumbers;
+	public void setNhsNumber(String nhsNumber) {
+		this.nhsNumber = nhsNumber;
 	}
 
 	/**
