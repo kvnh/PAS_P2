@@ -18,7 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import businessLayer.BusinessAccessLogin;
+import businessLayer.LoginAccess;
 
 /**
  * 
@@ -56,7 +56,7 @@ public class LoginPageController implements Initializable {
 	 * with the Business Layer from
 	 * this GUI layer
 	 */
-	public BusinessAccessLogin bal = new BusinessAccessLogin();
+	public LoginAccess bal = new LoginAccess();
 	private int count = 4;
 
 	@FXML
@@ -78,7 +78,7 @@ public class LoginPageController implements Initializable {
 				 * Switch statement so that: user cat 1 -> Reception screen;
 				 * user cat 2 'Nurses' -> triage screen ; & user cat 3 'Doctors -> treatment room 
 				 */
-				switch(LoginDA.staffEntitlements(usernameBox, passwordBox)){
+				switch(bal.staffAccess(usernameBox, passwordBox)){
 				case 1:
 					System.out.println("Staff Category ONE");
 					homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLReceptionistPage.fxml"));

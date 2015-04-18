@@ -10,7 +10,7 @@ import dataAccessLayer.LoginDA;
  * @author Andrew Walmsley
  *	Middle Tier logic aka BusinessLogic
  */
-public class BusinessAccessLogin {
+public class LoginAccess {
 	
 	/**
 	 * Method passes the parameters to Data Access where all Database queries are made
@@ -22,6 +22,11 @@ public class BusinessAccessLogin {
 	 */
 	public boolean login(TextField usernameBox, TextField passwordBox) throws SQLException{
 		return LoginDA.loginCredentials(usernameBox, passwordBox);
+	}
+	
+	public int staffAccess(TextField usernameBox, TextField passwordBox) throws SQLException{
+		return LoginDA.staffEntitlements(usernameBox, passwordBox);
+		
 	}
 
 }
