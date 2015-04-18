@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="550.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginPageController">
+   <children>
+      <TableView prefHeight="200.0" prefWidth="660.0">
+        <columns>
+          <TableColumn prefWidth="150.0" text="EmployeeID" />
+            <TableColumn prefWidth="150.0" text="firstName" />
+            <TableColumn prefWidth="150.0" text="LastName" />
+            <TableColumn prefWidth="209.0" text="StaffPostion" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
