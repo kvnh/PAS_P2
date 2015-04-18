@@ -5,8 +5,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import objects.Patient;
 import businessLayer.PatientServices;
-import app.Patient;
 import app.Queue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

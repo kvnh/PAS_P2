@@ -1,7 +1,7 @@
 /**
  * 
  */
-package app;
+package objects;
 
 import java.sql.Date;
 

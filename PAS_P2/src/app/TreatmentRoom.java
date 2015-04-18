@@ -1,5 +1,7 @@
 package app;
 
+import objects.Patient;
+
 /**
  * class to represent a treatment room in the PAS
  * @author KHackett

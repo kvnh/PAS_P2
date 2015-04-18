@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
-import app.Patient;
+import objects.Patient;
 import app.Queue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

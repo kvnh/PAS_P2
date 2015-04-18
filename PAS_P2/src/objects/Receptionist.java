@@ -1,7 +1,7 @@
 /**
  * 
  */
-package app;
+package objects;
 
 /**
  * @author My Acer

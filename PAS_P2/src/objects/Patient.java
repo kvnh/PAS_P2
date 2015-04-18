@@ -1,4 +1,6 @@
-package app;
+package objects;
+
+import app.Status;
 
 /**
  * class to represent a patient in the PAS

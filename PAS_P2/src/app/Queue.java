@@ -2,6 +2,8 @@ package app;
 
 import java.util.LinkedList;
 
+import objects.Patient;
+
 public class Queue implements Comparable<Patient> {
 
 	/**

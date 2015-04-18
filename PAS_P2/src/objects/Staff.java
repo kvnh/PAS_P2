@@ -1,7 +1,7 @@
 /**
  * 
  */
-package app;
+package objects;
 
 /**
  * Staff class that extends Person

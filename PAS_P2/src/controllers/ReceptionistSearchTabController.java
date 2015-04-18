@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
+import objects.Patient;
 import models.ConnectionFactory;
 import models.DbUtil;
-import app.Patient;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package app;
+package objects;
 
 /**
  * Nurse class that extends Staff

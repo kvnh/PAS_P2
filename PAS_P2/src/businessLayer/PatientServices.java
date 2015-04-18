@@ -2,7 +2,7 @@ package businessLayer;
 
 import java.sql.SQLException;
 
-import app.Patient;
+import objects.Patient;
 import dataAccessLayer.PatientDA;
 
 /**
