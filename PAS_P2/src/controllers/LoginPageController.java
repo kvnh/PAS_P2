@@ -97,6 +97,12 @@ public class LoginPageController implements Initializable {
 					homePageScene = new Scene(homePageParent);
 					appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 					break;
+				case 4:
+					System.out.println("Staff Category FOUR");
+					homePageParent = FXMLLoader.load(getClass().getResource("/views/FXMLHospitalManagerPage.fxml"));
+					homePageScene = new Scene(homePageParent);
+					appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+					break;
 				}
 				
 				appStage.setScene(homePageScene);

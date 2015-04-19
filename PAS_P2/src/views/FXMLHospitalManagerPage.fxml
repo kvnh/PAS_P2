@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="550.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginPageController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HospitalManagerController">
    <children>
-      <TableView prefHeight="200.0" prefWidth="660.0">
+      <TableView layoutX="14.0" layoutY="386.0" prefHeight="200.0" prefWidth="660.0">
         <columns>
           <TableColumn prefWidth="150.0" text="EmployeeID" />
             <TableColumn prefWidth="150.0" text="firstName" />
@@ -15,5 +17,20 @@
             <TableColumn prefWidth="209.0" text="StaffPostion" />
         </columns>
       </TableView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="91.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-pane" width="1001.0" />
+      <Label layoutX="344.0" layoutY="29.0" text="Hospital Manager">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Pane layoutX="14.0" layoutY="100.0" prefHeight="229.0" prefWidth="256.0">
+         <children>
+            <Button layoutX="178.0" layoutY="190.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Add" />
+            <ChoiceBox layoutX="13.0" layoutY="136.0" prefWidth="150.0" />
+            <TextField layoutX="14.0" layoutY="46.0" />
+            <TextField layoutX="14.0" layoutY="88.0" />
+         </children>
+      </Pane>
+      <Button layoutX="486.0" layoutY="353.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Remove" />
    </children>
 </AnchorPane>

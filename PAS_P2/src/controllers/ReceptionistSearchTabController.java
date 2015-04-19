@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
+import dataAccessLayer.ReceptionDA;
 import objects.Patient;
 import models.ConnectionFactory;
 import models.DbUtil;
@@ -111,7 +112,6 @@ public class ReceptionistSearchTabController implements Initializable {
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
 
-	private ObservableList<Patient> data;
 
 	/**
 	 * searches database when user clicks search button
@@ -124,45 +124,8 @@ public class ReceptionistSearchTabController implements Initializable {
 		String firstNameValue = firstNameSearch.getText();
 		String lastNameValue = lastNameSearch.getText();
 		String postCodeValue = postCodeSearch.getText();
-
-		data = FXCollections.observableArrayList();
-
-		ResultSet rs = null;
-
-		String query = buildQuery(firstNameValue, lastNameValue, postCodeValue);
-
-		try {
-			connection = ConnectionFactory.getConnection();
-			statement = connection.createStatement();
-
-			// String query = "SELECT * FROM patient WHERE firstName = '" + firstNameValue +
-			// "' OR lastName = '"
-			// + lastNameValue + "'";
-
-			System.out.println("Inserting\n" + query);
-
-			rs = statement.executeQuery(query);
-
-			while (rs.next()) {
-				Patient patient = new Patient();
-				patient.setNhsNumber(rs.getString("nhsNumber"));
-				patient.setTitle(rs.getString("title"));
-				patient.setFirstName(rs.getString("firstName"));
-				patient.setLastName(rs.getString("lastName"));
-				patient.setPostCode(rs.getString("postCode"));
-				patient.setStreetNumber(rs.getString("streetNumber"));
-				patient.setStreetName(rs.getString("streetName"));
-				data.add(patient);
-			}
-			tableView.setItems(data);
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Error on Building Data");
-		} finally {
-			DbUtil.close(rs);
-			DbUtil.close(statement);
-			DbUtil.close(connection);
-		}
+		
+		tableView.setItems(ReceptionDA.searchButton(firstNameValue, lastNameValue, postCodeValue ));
 	}
 
 	/**
@@ -177,40 +140,8 @@ public class ReceptionistSearchTabController implements Initializable {
 		String lastNameValue = lastNameSearch.getText();
 		String postCodeValue = postCodeSearch.getText();
 
-		data = FXCollections.observableArrayList();
-
-		ResultSet rs = null;
-
-		String query = buildQuery(firstNameValue, lastNameValue, postCodeValue);
-
-		try {
-			connection = ConnectionFactory.getConnection();
-			statement = connection.createStatement();
-
-			System.out.println("Inserting\n" + query);
-
-			rs = statement.executeQuery(query);
-
-			while (rs.next()) {
-				Patient patient = new Patient();
-				patient.setNhsNumber(rs.getString("nhsNumber"));
-				patient.setTitle(rs.getString("title"));
-				patient.setFirstName(rs.getString("firstName"));
-				patient.setLastName(rs.getString("lastName"));
-				patient.setPostCode(rs.getString("postCode"));
-				patient.setStreetNumber(rs.getString("streetNumber"));
-				patient.setStreetName(rs.getString("streetName"));
-				data.add(patient);
-			}
-			tableView.setItems(data);
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Error on Building Data");
-		} finally {
-			DbUtil.close(rs);
-			DbUtil.close(statement);
-			DbUtil.close(connection);
-		}
+		tableView.setItems(ReceptionDA.postCodeSearch(firstNameValue, lastNameValue, postCodeValue));
+ 
 
 	}
 
@@ -224,31 +155,11 @@ public class ReceptionistSearchTabController implements Initializable {
 		firstNameSearch.clear();
 		lastNameSearch.clear();
 		postCodeSearch.clear();
-		data.removeAll(data);
+		//data.removeAll(data);
+		ReceptionDA.clearTable();
 	}
 
-	private String buildQuery(String firstNameValue, String lastNameValue, String postCodeValue) {
-		String query = "";
 
-		if (firstNameValue != null && !firstNameValue.isEmpty()) {
-			query = "SELECT * FROM patient WHERE firstName LIKE'" + firstNameValue + "%'";
-		}
-
-		if (lastNameValue != null && !lastNameValue.isEmpty()) {
-			query = "SELECT * FROM patient WHERE lastName LIKE'" + lastNameValue + "%'";
-		}
-
-		if (postCodeValue != null && !postCodeValue.isEmpty()) {
-			query = "SELECT * FROM patient WHERE postCode LIKE'" + postCodeValue + "%'";
-		}
-
-		if (firstNameValue != null && !firstNameValue.isEmpty() && lastNameValue != null && !lastNameValue.isEmpty()) {
-			query = "SELECT * FROM patient WHERE firstName LIKE'" + firstNameValue + "%' AND lastName LIKE '"
-					+ lastNameValue + "%'";
-		}
-
-		return query;
-	}
 
 	/**
 	 * Button to open patient information screen using the highlighted row in receptionist search table
