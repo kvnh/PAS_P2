@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -98,7 +99,12 @@ public class ReceptionistSearchTabController implements Initializable {
 		String lastNameValue = lastNameSearch.getText();
 		String postCodeValue = postCodeSearch.getText();
 		
-		tableView.setItems(bal.searchButtonBAL(firstNameValue, lastNameValue, postCodeValue ));
+		try {
+			tableView.setItems(bal.searchButtonBAL(firstNameValue, lastNameValue, postCodeValue ));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -113,7 +119,12 @@ public class ReceptionistSearchTabController implements Initializable {
 		String lastNameValue = lastNameSearch.getText();
 		String postCodeValue = postCodeSearch.getText();
 
-		tableView.setItems(bal.postCodeSearchBAL(firstNameValue, lastNameValue, postCodeValue));
+		try {
+			tableView.setItems(bal.postCodeSearchBAL(firstNameValue, lastNameValue, postCodeValue));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -149,7 +160,12 @@ public class ReceptionistSearchTabController implements Initializable {
 		// instance of the patient info controller is created
 		// set it equal to the FXMLLoader controller that was just loaded
 		PatientInfoController patientInfoController = loader.<PatientInfoController> getController();
-		patientInfoController.setPatientInfo(bal.patientInfoBAL(tableView));
+		try {
+			patientInfoController.setPatientInfo(bal.patientInfoBAL(tableView));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("Operation done successfully");		
 
 		stage.show();

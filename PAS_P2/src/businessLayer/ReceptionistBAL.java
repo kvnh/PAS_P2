@@ -1,5 +1,7 @@
 package businessLayer;
 
+import java.sql.SQLException;
+
 import dataAccessLayer.ReceptionDA;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
@@ -18,8 +20,9 @@ public class ReceptionistBAL {
 	 * @param lastNameValue
 	 * @param postCodeValue
 	 * @return
+	 * @throws SQLException 
 	 */
-	public  ObservableList<Patient> searchButtonBAL(String firstNameValue, String lastNameValue, String postCodeValue){
+	public ObservableList<Patient> searchButtonBAL(String firstNameValue, String lastNameValue, String postCodeValue) throws SQLException{
 		return ReceptionDA.searchButton(firstNameValue, lastNameValue, postCodeValue);
 	}
 	
@@ -29,8 +32,9 @@ public class ReceptionistBAL {
 	 * @param lastNameValue
 	 * @param postCodeValue
 	 * @return
+	 * @throws SQLException 
 	 */
-	public ObservableList<Patient>  postCodeSearchBAL(String firstNameValue, String lastNameValue, String postCodeValue){
+	public ObservableList<Patient>  postCodeSearchBAL(String firstNameValue, String lastNameValue, String postCodeValue) throws SQLException{
 		return ReceptionDA.postCodeSearch(firstNameValue, lastNameValue, postCodeValue);	
 	}
 	
@@ -43,8 +47,9 @@ public class ReceptionistBAL {
 	
 	/**
 	 * Retrieve the patient info when the search starts
+	 * @throws SQLException 
 	 */
-	public Patient patientInfoBAL(TableView<?> tableView){
+	public Patient patientInfoBAL(TableView<?> tableView) throws SQLException{
 		return ReceptionDA.retrievePatientInfo(tableView);
 	}
 }

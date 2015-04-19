@@ -2,13 +2,13 @@ package dataAccessLayer;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 import models.ConnectionFactory;
-import models.DbUtil;
 import objects.Patient;
 import objects.Person;
 
@@ -29,10 +29,11 @@ public class ReceptionDA {
 	 * @param lastNameValue
 	 * @param postCodeValue
 	 * @return
+	 * @throws SQLException 
 	 */
-	public static ObservableList<Patient> searchButton(String firstNameValue, String lastNameValue, String postCodeValue){
+	public static ObservableList<Patient> searchButton(String firstNameValue, String lastNameValue, String postCodeValue) throws SQLException{
 		ResultSet rs = null;
-		try {
+//		try {
 			
 			data = FXCollections.observableArrayList();
 
@@ -57,14 +58,14 @@ public class ReceptionDA {
 				data.add(patient);
 			}
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Error on Building Data");
-		} finally {
-			DbUtil.close(rs);
-			DbUtil.close(stat);
-			DbUtil.close(conn);
-		}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			System.out.println("Error on Building Data");
+//		} finally {
+//			DbUtil.close(rs);
+//			DbUtil.close(stat);
+//			DbUtil.close(conn);
+//		}
 		return data;
 	}
 	
@@ -83,15 +84,16 @@ public class ReceptionDA {
 	 * @param lastNameValue
 	 * @param postCodeValue
 	 * @return
+	 * @throws SQLException 
 	 */
-	public static ObservableList<Patient> postCodeSearch(String firstNameValue, String lastNameValue, String postCodeValue){
+	public static ObservableList<Patient> postCodeSearch(String firstNameValue, String lastNameValue, String postCodeValue) throws SQLException{
 		data = FXCollections.observableArrayList();
 
 		ResultSet rs = null;
 
 		String query = buildQuery(firstNameValue, lastNameValue, postCodeValue);
 
-		try {
+	//	try {
 			conn = ConnectionFactory.getConnection();
 			stat = conn.createStatement();
 
@@ -110,14 +112,14 @@ public class ReceptionDA {
 				patient.setStreetName(rs.getString("streetName"));
 				data.add(patient);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Error on Building Data");
-		} finally {
-			DbUtil.close(rs);
-			DbUtil.close(stat);
-			DbUtil.close(conn);
-		}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			System.out.println("Error on Building Data");
+//		} finally {
+//			DbUtil.close(rs);
+//			DbUtil.close(stat);
+//			DbUtil.close(conn);
+//		}
 		return data;
 	}
 	
@@ -126,14 +128,15 @@ public class ReceptionDA {
 	 * Retrieve the patient info from the database
 	 * @param tableView
 	 * @return
+	 * @throws SQLException 
 	 */
-	public static Patient retrievePatientInfo(TableView<?> tableView){
+	public static Patient retrievePatientInfo(TableView<?> tableView) throws SQLException{
 		
 		ResultSet rs = null;
 
 		Patient patient = null;
 
-		try {
+		//try {
 			conn = ConnectionFactory.getConnection();
 			stat = conn.createStatement();
 
@@ -157,14 +160,14 @@ public class ReceptionDA {
 
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Error on Building Data");
-		} finally {
-			DbUtil.close(rs);
-			DbUtil.close(stat);
-			DbUtil.close(conn);
-		}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			System.out.println("Error on Building Data");
+//		} finally {
+//			DbUtil.close(rs);
+//			DbUtil.close(stat);
+//			DbUtil.close(conn);
+//		}
 		return patient;
 		
 	}
