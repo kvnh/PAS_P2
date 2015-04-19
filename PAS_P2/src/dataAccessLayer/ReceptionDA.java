@@ -12,13 +12,24 @@ import models.DbUtil;
 import objects.Patient;
 import objects.Person;
 
+/**
+ * Data Access for the Receptionist Page
+ * @author Andrew Walmsley
+ *
+ */
 public class ReceptionDA {
 	
 	private static Connection conn;
 	private static Statement stat;
 	private static ObservableList<Patient> data;
 
-	
+	/**
+	 * Retrieve data via the use of the search button
+	 * @param firstNameValue
+	 * @param lastNameValue
+	 * @param postCodeValue
+	 * @return
+	 */
 	public static ObservableList<Patient> searchButton(String firstNameValue, String lastNameValue, String postCodeValue){
 		ResultSet rs = null;
 		try {
@@ -57,11 +68,22 @@ public class ReceptionDA {
 		return data;
 	}
 	
+	/**
+	 * Remove rows ffrom the TableView
+	 * @return
+	 */
 	public static boolean  clearTable(){
 		return data.removeAll(data);
 		
 	}
 	
+	/**
+	 * Carryout search using the postcode, retrieve data from the database
+	 * @param firstNameValue
+	 * @param lastNameValue
+	 * @param postCodeValue
+	 * @return
+	 */
 	public static ObservableList<Patient> postCodeSearch(String firstNameValue, String lastNameValue, String postCodeValue){
 		data = FXCollections.observableArrayList();
 
@@ -99,7 +121,13 @@ public class ReceptionDA {
 		return data;
 	}
 	
-	public static Patient getPatientInfo(TableView<?> tableView){
+	
+	/**
+	 * Retrieve the patient info from the database
+	 * @param tableView
+	 * @return
+	 */
+	public static Patient retrievePatientInfo(TableView<?> tableView){
 		
 		ResultSet rs = null;
 

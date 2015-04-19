@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import businessLayer.PatientServices;
-import businessLayer.ReceptionistBAL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import objects.Patient;
-import dataAccessLayer.ReceptionDA;
+import businessLayer.ReceptionistBAL;
 
 public class ReceptionistSearchTabController implements Initializable {
 
@@ -48,7 +46,8 @@ public class ReceptionistSearchTabController implements Initializable {
 	@FXML
 	private TextField postCodeSearch;
 
-	PatientServices bal = new PatientServices();
+	ReceptionistBAL bal = new ReceptionistBAL();
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -99,7 +98,7 @@ public class ReceptionistSearchTabController implements Initializable {
 		String lastNameValue = lastNameSearch.getText();
 		String postCodeValue = postCodeSearch.getText();
 		
-		tableView.setItems(ReceptionistBAL.searchButtonBAL(firstNameValue, lastNameValue, postCodeValue ));
+		tableView.setItems(bal.searchButtonBAL(firstNameValue, lastNameValue, postCodeValue ));
 	}
 
 	/**
@@ -114,7 +113,7 @@ public class ReceptionistSearchTabController implements Initializable {
 		String lastNameValue = lastNameSearch.getText();
 		String postCodeValue = postCodeSearch.getText();
 
-		tableView.setItems(ReceptionDA.postCodeSearch(firstNameValue, lastNameValue, postCodeValue));
+		tableView.setItems(bal.postCodeSearchBAL(firstNameValue, lastNameValue, postCodeValue));
 	}
 
 	/**
@@ -128,7 +127,7 @@ public class ReceptionistSearchTabController implements Initializable {
 		lastNameSearch.clear();
 		postCodeSearch.clear();
 		//data.removeAll(data);
-		ReceptionDA.clearTable();
+		bal.clearTableBAL();
 	}
 
 	/**
@@ -150,7 +149,7 @@ public class ReceptionistSearchTabController implements Initializable {
 		// instance of the patient info controller is created
 		// set it equal to the FXMLLoader controller that was just loaded
 		PatientInfoController patientInfoController = loader.<PatientInfoController> getController();
-		patientInfoController.setPatientInfo(ReceptionDA.getPatientInfo(tableView));
+		patientInfoController.setPatientInfo(bal.patientInfoBAL(tableView));
 		System.out.println("Operation done successfully");		
 
 		stage.show();
