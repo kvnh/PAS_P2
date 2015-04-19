@@ -10,7 +10,7 @@ import dataAccessLayer.LoginDA;
  * @author Andrew Walmsley
  *	Middle Tier logic aka BusinessLogic
  */
-public class LoginAccess {
+public class LoginBAL {
 	
 	/**
 	 * Method passes the parameters to Data Access where all Database queries are made

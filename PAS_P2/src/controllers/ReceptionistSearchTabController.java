@@ -2,18 +2,10 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
-import dataAccessLayer.ReceptionDA;
-import objects.Patient;
-import models.ConnectionFactory;
-import models.DbUtil;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import businessLayer.PatientServices;
+import businessLayer.ReceptionistBAL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +18,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import objects.Patient;
+import dataAccessLayer.ReceptionDA;
 
 public class ReceptionistSearchTabController implements Initializable {
 
@@ -54,11 +48,8 @@ public class ReceptionistSearchTabController implements Initializable {
 	@FXML
 	private TextField postCodeSearch;
 
-	// private Logger logger;
-
-	private Connection connection;
-	private Statement statement;
-
+	PatientServices bal = new PatientServices();
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -74,23 +65,6 @@ public class ReceptionistSearchTabController implements Initializable {
 		postCodeColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("postCode"));
 		streetNumberColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("streetNumber"));
 		streetNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("streetName"));
-
-		try {
-			connection = ConnectionFactory.getConnection();
-			statement = connection.createStatement();
-			// con.setAutoCommit(false);
-			System.out.println("Database opened successfully");
-
-		} catch (SQLException sqlex) {
-			sqlex.printStackTrace();
-			// logger.info(ce.toString());
-		} catch (Exception ex) {
-			System.err.println(ex.getClass().getName() + ": " + ex.getMessage());
-			System.exit(0);
-		} finally {
-			DbUtil.close(statement);
-			DbUtil.close(connection);
-		}
 
 	}
 
@@ -125,7 +99,7 @@ public class ReceptionistSearchTabController implements Initializable {
 		String lastNameValue = lastNameSearch.getText();
 		String postCodeValue = postCodeSearch.getText();
 		
-		tableView.setItems(ReceptionDA.searchButton(firstNameValue, lastNameValue, postCodeValue ));
+		tableView.setItems(ReceptionistBAL.searchButtonBAL(firstNameValue, lastNameValue, postCodeValue ));
 	}
 
 	/**
@@ -141,8 +115,6 @@ public class ReceptionistSearchTabController implements Initializable {
 		String postCodeValue = postCodeSearch.getText();
 
 		tableView.setItems(ReceptionDA.postCodeSearch(firstNameValue, lastNameValue, postCodeValue));
- 
-
 	}
 
 	/**
@@ -159,8 +131,6 @@ public class ReceptionistSearchTabController implements Initializable {
 		ReceptionDA.clearTable();
 	}
 
-
-
 	/**
 	 * Button to open patient information screen using the highlighted row in receptionist search table
 	 * @param event
@@ -170,46 +140,6 @@ public class ReceptionistSearchTabController implements Initializable {
 	private void btnPatientInfo(ActionEvent event) throws IOException {
 
 		System.out.println("Changing to patient info screen");
-
-		ResultSet rs = null;
-
-		Patient patient = null;
-
-		try {
-			connection = ConnectionFactory.getConnection();
-			statement = connection.createStatement();
-
-			String query = "SELECT * FROM patient WHERE nhsNumber = " + "'"
-					+ tableView.getSelectionModel().getSelectedItem().getNhsNumber() + "'" + ";";
-
-			rs = statement.executeQuery(query);
-
-			while (rs.next()) {
-
-				patient = new Patient();
-
-				patient.setNhsNumber(rs.getString("nhsNumber"));
-				patient.setTitle(rs.getString("title"));
-				patient.setFirstName(rs.getString("firstName"));
-				patient.setLastName(rs.getString("lastName"));
-				patient.setStreetNumber(rs.getString("streetNumber"));
-				patient.setStreetName(rs.getString("streetName"));
-				patient.setCity(rs.getString("city"));
-				patient.setPostCode(rs.getString("postCode"));
-
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Error on Building Data");
-		} finally {
-			DbUtil.close(rs);
-			DbUtil.close(statement);
-			DbUtil.close(connection);
-		}
-
-		System.out.println("Operation done successfully");
-
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FXMLPatientInformationPage.fxml"));
 		loader.setLocation(getClass().getResource("/views/FXMLPatientInformationPage.fxml"));
 		loader.load();
@@ -220,7 +150,8 @@ public class ReceptionistSearchTabController implements Initializable {
 		// instance of the patient info controller is created
 		// set it equal to the FXMLLoader controller that was just loaded
 		PatientInfoController patientInfoController = loader.<PatientInfoController> getController();
-		patientInfoController.setPatientInfo(patient);
+		patientInfoController.setPatientInfo(ReceptionDA.getPatientInfo(tableView));
+		System.out.println("Operation done successfully");		
 
 		stage.show();
 	}

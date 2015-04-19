@@ -5,7 +5,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import dataAccessLayer.LoginDA;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import businessLayer.LoginAccess;
+import businessLayer.LoginBAL;
 
 /**
  * 
@@ -56,7 +55,7 @@ public class LoginPageController implements Initializable {
 	 * with the Business Layer from
 	 * this GUI layer
 	 */
-	public LoginAccess bal = new LoginAccess();
+	public LoginBAL bal = new LoginBAL();
 	private int count = 4;
 
 	@FXML
