@@ -2,6 +2,7 @@ package app;
 
 import java.util.LinkedList;
 
+import dataAccessLayer.QueueDA;
 import objects.Patient;
 
 public class Queue implements Comparable<Patient> {
@@ -16,25 +17,27 @@ public class Queue implements Comparable<Patient> {
 	 * 
 	 * @param p
 	 */
-	public static LinkedList<Patient> addToQueue(Patient p) {
+	public static void addToQueue(Patient p) {
 
-		// check to see if queue already contains this patient
+		// check to see if queue already contains this patient to prevent
+		// duplicate addition
 		if (queue.contains(p)) {
-			// prevent patient from being added to queue
-			//queue.
+
 		}
 		// check to see if queue is full
 		if (queue.size() < 10) {
 			// add patient if there is room in queue
 			queue.add(p);
+
+			// add patient details to database
+			QueueDA.addToQueueTable(p);
+
 		} else {
 			// queue may be full
 			System.out.println("Queue is full");
 			// alert on call team and hospital manager
 		}
 
-		return queue;
-		//test.displayQueue(queue);
 	}
 
 	/**
@@ -46,8 +49,16 @@ public class Queue implements Comparable<Patient> {
 
 		// remove patient from queue
 		queue.remove(p);
+
+		// remove details from database
+		QueueDA.removeFromQueueTable(p);
 	}
 
+	
+	public static void viewQueue(){
+		
+	}
+	
 	/**
 	 * overriden method to allow comparison by triage status
 	 */
