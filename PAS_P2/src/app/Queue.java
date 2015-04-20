@@ -1,6 +1,7 @@
 package app;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 import dataAccessLayer.QueueDA;
 import objects.Patient;
@@ -23,9 +24,12 @@ public class Queue implements Comparable<Patient> {
 		// duplicate addition
 		if (queue.contains(p)) {
 
+			System.out.println("Patient is already in the Queue");
+
 		}
+
 		// check to see if queue is full
-		if (queue.size() < 10) {
+		else if (queue.size() < 10) {
 			// add patient if there is room in queue
 			queue.add(p);
 
@@ -54,11 +58,29 @@ public class Queue implements Comparable<Patient> {
 		QueueDA.removeFromQueueTable(p);
 	}
 
-	
-	public static void viewQueue(){
-		
+	/**
+	 * method to display the queue
+	 * 
+	 * @param queue
+	 */
+	public static void viewQueue(LinkedList<Patient> queue) {
+
+		// create iterator for the queue
+		ListIterator<Patient> listIterator = queue.listIterator();
+		while (listIterator.hasNext()) {
+
+			// count to progress through queue linked list
+			int count = 0;
+
+			// call method to display patient information in database
+			QueueDA.displayQueueData(queue.get(count));
+
+			count++;
+
+		}
+
 	}
-	
+
 	/**
 	 * overriden method to allow comparison by triage status
 	 */

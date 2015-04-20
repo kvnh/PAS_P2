@@ -10,7 +10,6 @@ import java.sql.Statement;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-
 import models.DbUtil;
 import objects.Patient;
 
