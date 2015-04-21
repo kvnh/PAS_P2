@@ -82,6 +82,7 @@ public class ReceptionistSearchTabController implements Initializable {
 		Stage stage = new Stage();
 		stage.setScene(new Scene(p));
 		stage.show();
+		stage.centerOnScreen();
 		// hides current page
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}

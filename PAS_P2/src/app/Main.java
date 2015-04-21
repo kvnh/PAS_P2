@@ -11,7 +11,6 @@ public class Main extends Application {
 	// compiler looks for start, this is the starting point for JavaFX applications
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/views/FXMLLoginPage.fxml"));
 			Scene scene = new Scene(root);
@@ -19,22 +18,14 @@ public class Main extends Application {
 			scene.getStylesheets().add(getClass().getResource("/styles/loginPage1.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			primaryStage.centerOnScreen();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void main(String[] args) throws InterruptedException {
-		Heartbeat hb = new Heartbeat();
-		
-		Thread HeartBeatThread = new Thread(hb);
-		
-		HeartBeatThread.start();
-		HeartBeatThread.sleep(1000);
-		
+	public static void main(String[] args) {
 		launch(args);
-		
-		
 	}
 
 }

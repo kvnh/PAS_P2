@@ -106,6 +106,7 @@ public class LoginPageController implements Initializable {
 				
 				appStage.setScene(homePageScene);
 				appStage.show();
+				appStage.centerOnScreen();
 				
 			} else {
 				usernameBox.clear();
