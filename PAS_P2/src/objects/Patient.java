@@ -11,6 +11,26 @@ import app.Status;
 public class Patient extends Person {
 
 	/**
+	 * Boolean to represent Patient has been in the queue previously
+	 */
+	private boolean previouslyInQueue;
+
+	/**
+	 * Boolean to represent Patient waiting time
+	 */
+	private boolean waitingTime;
+
+	/**
+	 * String to represent Patient blood type
+	 */
+	private String bloodType;
+
+	/**
+	 * String to represent Patient allergies
+	 */
+	private String allergies;
+
+	/**
 	 * Enum to represent triage status
 	 */
 	private Status triage;
@@ -27,9 +47,17 @@ public class Patient extends Person {
 	 * @param firstName
 	 * @param lastName
 	 */
-	public Patient(String nhsNumber, String title, String firstName, String lastName, String streetNumber,
-			String streetName, String city, String postCode, Status triage) {
-		super(nhsNumber, title, firstName, lastName, streetNumber, streetName, city, postCode);
+	public Patient(String nhsNumber, String title, String firstName,
+			String lastName, String streetNumber, String streetName,
+			String city, String postCode, boolean previouslyInQueue,
+			boolean waitingTime, String bloodType, String allergies,
+			Status triage) {
+		super(nhsNumber, title, firstName, lastName, streetNumber, streetName,
+				city, postCode);
+		this.previouslyInQueue = previouslyInQueue;
+		this.waitingTime = waitingTime;
+		this.bloodType = bloodType;
+		this.allergies = allergies;
 		this.triage = triage;
 	}
 
@@ -71,6 +99,66 @@ public class Patient extends Person {
 			// if triage status is less, add below.
 			return -1;
 		}
+	}
+
+	/**
+	 * @return the beenInQueue
+	 */
+	public boolean isPreviouslyInQueue() {
+		return previouslyInQueue;
+	}
+
+	/**
+	 * @param beenInQueue
+	 *            the beenInQueue to set
+	 */
+	public void setPreviouslyInQueue(boolean previouslyInQueue) {
+		this.previouslyInQueue = previouslyInQueue;
+	}
+
+	/**
+	 * @return the waitingTime
+	 */
+	public boolean isWaitingTime() {
+		return waitingTime;
+	}
+
+	/**
+	 * @param waitingTime
+	 *            the waitingTime to set
+	 */
+	public void setWaitingTime(boolean waitingTime) {
+		this.waitingTime = waitingTime;
+	}
+
+	/**
+	 * @return the bloodType
+	 */
+	public String getBloodType() {
+		return bloodType;
+	}
+
+	/**
+	 * @param bloodType
+	 *            the bloodType to set
+	 */
+	public void setBloodType(String bloodType) {
+		this.bloodType = bloodType;
+	}
+
+	/**
+	 * @return the allergies
+	 */
+	public String getAllergies() {
+		return allergies;
+	}
+
+	/**
+	 * @param allergies
+	 *            the allergies to set
+	 */
+	public void setAllergies(String allergies) {
+		this.allergies = allergies;
 	}
 
 }
