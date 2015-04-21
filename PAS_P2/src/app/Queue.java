@@ -40,6 +40,7 @@ public class Queue implements Comparable<Patient> {
 			// queue may be full
 			System.out.println("Queue is full");
 			// alert on call team and hospital manager
+			MailClient.contactOnCall();
 		}
 
 	}
