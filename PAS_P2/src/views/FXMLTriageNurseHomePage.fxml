@@ -9,12 +9,6 @@
 
 <AnchorPane prefHeight="767.0" prefWidth="1000.0" stylesheets="@../styles/TriageNurseHomePage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TriageNurseHomePageController">
    <children>
-      <Label styleClass="label-patientTitle" text="Patient Search">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="156.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-pane" width="1039.0" />
       <TabPane prefHeight="770.0" prefWidth="1039.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Triage Assessment">
@@ -42,14 +36,15 @@
                               <Button fx:id="btnRefresh" layoutX="500.0" layoutY="178.0" mnemonicParsing="false" onAction="#btnRefreshQueueClick" text="Refresh" />
                            </children>
                         </Pane>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="156.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-pane" width="1039.0" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
           <Tab text="Queue">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
+               <content>
+                  <fx:include source="FXMLQueueTabPage.fxml" />
+               </content>
           </Tab>
         </tabs>
       </TabPane>

@@ -11,18 +11,10 @@
     -fx-background-color: #B9CBDB;
 }
 
-.label-tab1{
+.tab{
     -fx-background-color: #B9CBDB;
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
-    
-}
-
-.label-tab2{
-    -fx-background-color: #B9CBDB;
-    -fx-font-size: 12pt;
-    -fx-font-family: "Segoe UI Semibold";
-    
     
 }
 
