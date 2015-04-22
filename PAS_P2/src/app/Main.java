@@ -11,7 +11,7 @@ public class Main extends Application {
 	// compiler looks for start, this is the starting point for JavaFX applications
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		try {
+		try { //comment
 			Parent root = FXMLLoader.load(getClass().getResource("/views/FXMLLoginPage.fxml"));
 			Scene scene = new Scene(root);
 			// load css file
