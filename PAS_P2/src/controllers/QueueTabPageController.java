@@ -50,9 +50,16 @@ public class QueueTabPageController implements Initializable {
 
 	}
 	
+	/**
+	 * Problem right here as it is not communicating with the database when it should be.
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	private void btnRefreshQueueClick(ActionEvent event) throws IOException{
 		displayQueue(Queue.queue);
+		
+		//Query database
 	}
 
 	public void displayQueue(LinkedList<Patient> queue) {

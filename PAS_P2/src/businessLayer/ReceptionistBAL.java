@@ -26,6 +26,11 @@ public class ReceptionistBAL {
 		return ReceptionDA.searchButton(firstNameValue, lastNameValue, postCodeValue);
 	}
 	
+	public ObservableList<Patient> selectAllBAL() throws SQLException{
+		return ReceptionDA.selectAllData();
+	}
+	
+	
 	/**
 	 * Retrieves patient data that matches with the entered postcode.
 	 * @param firstNameValue
@@ -41,8 +46,8 @@ public class ReceptionistBAL {
 	/**
 	 * Clear all data from the visible table
 	 */
-	public void clearTableBAL(){
-		ReceptionDA.clearTable();
+	public boolean clearTableBAL(){
+		return ReceptionDA.clearTable();
 	}
 	
 	/**

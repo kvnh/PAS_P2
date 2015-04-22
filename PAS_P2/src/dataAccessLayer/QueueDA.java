@@ -58,7 +58,7 @@ public class QueueDA {
 			stmt.executeUpdate(sql);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 			System.out.println("Error on Building Data");
 		} finally {
 			// close all open resources in the database

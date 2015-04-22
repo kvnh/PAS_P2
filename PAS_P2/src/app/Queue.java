@@ -2,7 +2,6 @@ package app;
 
 import java.util.LinkedList;
 import java.util.ListIterator;
-
 import dataAccessLayer.QueueDA;
 import objects.Patient;
 
@@ -16,13 +15,13 @@ public class Queue implements Comparable<Patient> {
 	/**
 	 * method to add a patient to the queue
 	 * 
-	 * @param p
+	 * @param patient
 	 */
-	public static void addToQueue(Patient p) {
+	public static void addToQueue(Patient patient) {
 
 		// check to see if queue already contains this patient to prevent
 		// duplicate addition
-		if (queue.contains(p)) {
+		if (queue.contains(patient)) {
 
 			System.out.println("Patient is already in the Queue");
 
@@ -31,10 +30,10 @@ public class Queue implements Comparable<Patient> {
 		// check to see if queue is full
 		else if (queue.size() < 10) {
 			// add patient if there is room in queue
-			queue.add(p);
+			queue.add(patient);
 
 			// add patient details to database
-			QueueDA.addToQueueTable(p);
+			QueueDA.addToQueueTable(patient);
 
 		} else {
 			// queue may be full

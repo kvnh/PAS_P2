@@ -65,7 +65,13 @@ public class ReceptionistSearchTabController implements Initializable {
 		postCodeColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("postCode"));
 		streetNumberColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("streetNumber"));
 		streetNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("streetName"));
-
+		
+		try {
+			tableView.setItems(bal.selectAllBAL());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -86,7 +92,6 @@ public class ReceptionistSearchTabController implements Initializable {
 		// hides current page
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
-
 
 	/**
 	 * searches database when user clicks search button
@@ -140,6 +145,12 @@ public class ReceptionistSearchTabController implements Initializable {
 		postCodeSearch.clear();
 		//data.removeAll(data);
 		bal.clearTableBAL();
+		try {
+			tableView.setItems(bal.selectAllBAL());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**

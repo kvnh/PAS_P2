@@ -22,6 +22,7 @@ public class ReceptionDA {
 	private static Connection conn;
 	private static Statement stat;
 	private static ObservableList<Patient> data;
+	private static ObservableList<Patient> startUpData;
 
 	/**
 	 * Retrieve data via the use of the search button
@@ -57,17 +58,36 @@ public class ReceptionDA {
 				patient.setStreetName(rs.getString("streetName"));
 				data.add(patient);
 			}
-			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			System.out.println("Error on Building Data");
-//		} finally {
-//			DbUtil.close(rs);
-//			DbUtil.close(stat);
-//			DbUtil.close(conn);
-//		}
 		return data;
 	}
+	
+	public static ObservableList<Patient> selectAllData() throws SQLException{
+		ResultSet rs = null;
+			
+			data = FXCollections.observableArrayList();
+
+			String query = "select nhsNumber ,title, firstName, lastName, postCode, streetNumber, streetName from patient;";
+
+			conn = ConnectionFactory.getConnection();
+			stat = conn.createStatement();
+
+			System.out.println("Inserting\n" + query);
+
+			rs = stat.executeQuery(query);
+
+			while (rs.next()) {
+				Patient patient = new Patient();
+				patient.setNhsNumber(rs.getString("nhsNumber"));
+				patient.setTitle(rs.getString("title"));
+				patient.setFirstName(rs.getString("firstName"));
+				patient.setLastName(rs.getString("lastName"));
+				patient.setPostCode(rs.getString("postCode"));
+				patient.setStreetNumber(rs.getString("streetNumber"));
+				patient.setStreetName(rs.getString("streetName"));
+				data.add(patient);
+			}
+		return data;
+	}	
 	
 	/**
 	 * Remove rows ffrom the TableView
@@ -112,14 +132,6 @@ public class ReceptionDA {
 				patient.setStreetName(rs.getString("streetName"));
 				data.add(patient);
 			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			System.out.println("Error on Building Data");
-//		} finally {
-//			DbUtil.close(rs);
-//			DbUtil.close(stat);
-//			DbUtil.close(conn);
-//		}
 		return data;
 	}
 	
@@ -159,15 +171,6 @@ public class ReceptionDA {
 				patient.setPostCode(rs.getString("postCode"));
 
 			}
-
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			System.out.println("Error on Building Data");
-//		} finally {
-//			DbUtil.close(rs);
-//			DbUtil.close(stat);
-//			DbUtil.close(conn);
-//		}
 		return patient;
 		
 	}
