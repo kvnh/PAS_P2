@@ -7,9 +7,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+
+import models.ConnectionFactory;
 import models.DbUtil;
 import objects.Patient;
 
@@ -43,13 +46,12 @@ public class QueueDA {
 		try {
 
 			// open connection to database
-			conn = DriverManager.getConnection("jdbc:sqlite:src/models/pas.db");
-			conn.setAutoCommit(false);
+			conn = ConnectionFactory.getConnection();
 
 			// create statement
 			stmt = conn.createStatement();
 
-			String sql = "insert into queue values('" + p.getNhsNumber()
+			String sql = "insert into queueTime values('" + p.getNhsNumber()
 					+ "', CURRENT_TIMESTAMP)";
 
 			// execute update
@@ -76,13 +78,13 @@ public class QueueDA {
 		try {
 
 			// open connection to database
-			conn = DriverManager.getConnection("jdbc:sqlite:src/models/pas.db");
-			conn.setAutoCommit(false);
+			conn = ConnectionFactory.getConnection();
+
 
 			// create statement
 			stmt = conn.createStatement();
 
-			String sql = "delete from queue where NHSNumber = '"
+			String sql = "delete from queueTime where NHSNumber = '"
 					+ p.getNhsNumber() + "'";
 
 			// execute update
@@ -109,24 +111,22 @@ public class QueueDA {
 		try {
 
 			// open connection to database
-			conn = DriverManager.getConnection("jdbc:sqlite:src/models/pas.db");
-			conn.setAutoCommit(false);
+			conn = ConnectionFactory.getConnection();
 
 			// create statement
 			stmt = conn.createStatement();
 
 			// result set to pull information from database
 			ResultSet rs = stmt
-					.executeQuery("select * from queue where NHSNumber = '"
+					.executeQuery("select * from queueTime where NHSNumber = '"
 							+ p.getNhsNumber() + "'");
 
 			while (rs.next()) {
 
 				// convert timestamp to String
-				String ts = rs.getString("admitted");
+				String ts = rs.getString("Timestamp");
 
 				// print result set
-				System.out.print(rs.getString(1) + "\t");
 				System.out.print(ts + "\t");
 
 				// format for date time
