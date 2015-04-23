@@ -7,21 +7,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="770.0" prefWidth="1000.0" stylesheets="@../styles/QueueTabPage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QueueTabPageController">
+<AnchorPane prefHeight="665.0" prefWidth="1385.0" stylesheets="@../styles/QueueTabPage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QueueTabPageController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="156.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-pane" width="1065.0" />
-      <Label layoutX="349.0" layoutY="62.0" styleClass="label-queueTitle" text="Accident &amp; Emergency Queue">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="90.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane" width="1385.0" />
+      <Label layoutX="336.0" layoutY="16.0" styleClass="label-queueTitle" text="Accident &amp; Emergency Queue">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <TableView fx:id="tableView" layoutX="242.0" layoutY="276.0" prefHeight="384.0" prefWidth="718.0">
+      <TableView fx:id="tableView" layoutX="242.0" layoutY="199.0" prefHeight="384.0" prefWidth="718.0">
         <columns>
           <TableColumn fx:id="firstNameColumn" prefWidth="122.0" text="First name" />
           <TableColumn fx:id="lastNameColumn" prefWidth="144.0" text="Last name" />
             <TableColumn fx:id="timeEnteredColumn" prefWidth="158.0" text="Time Entered" />
         </columns>
       </TableView>
-      <Button fx:id="btnRefreshQueue" layoutX="242.0" layoutY="211.0" mnemonicParsing="false" onAction="#btnRefreshQueueClick" text="Refresh Queue" />
+      <Button fx:id="btnRefreshQueue" layoutX="242.0" layoutY="134.0" mnemonicParsing="false" onAction="#btnRefreshQueueClick" text="Refresh Queue" />
    </children>
 </AnchorPane>

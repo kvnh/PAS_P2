@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="662.0" prefWidth="786.0" stylesheets="@../styles/ReceptionistHomepage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReceptionistSearchTabController">
+<AnchorPane prefHeight="665.0" prefWidth="1385.0" stylesheets="@../styles/ReceptionistHomepage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReceptionistSearchTabController">
 	<children>
-								<Pane prefHeight="616.0" prefWidth="1382.0" styleClass="background" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+								<Pane prefHeight="615.0" prefWidth="1385.0" styleClass="background" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
 									<children>
             <Pane prefHeight="90.0" prefWidth="1383.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="90.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane" width="1383.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="90.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane" width="1385.0" />
                </children>
             </Pane>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72b2ee" height="373.0" layoutX="56.0" layoutY="148.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane2" width="202.0" />

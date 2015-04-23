@@ -13,16 +13,25 @@
 
 .tab{
     -fx-background-color: #B9CBDB;
-    -fx-font-size: 12pt;
-    -fx-font-family: "Segoe UI Semibold";
-    
 }
+
+.tab-pane > .tab-header-area > .headers-region > .tab:selected > .tab-container > .tab-label {  
+    -fx-alignment: CENTER;  
+    -fx-text-fill: #2381E9;  
+    -fx-font-weight: bold;  
+    -fx-font-family: "Segoe UI Semibold"; 
+}  
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label {  
+    -fx-alignment: CENTER;  
+    -fx-text-fill: #ffffff;  
+    -fx-font-weight: bold;  
+} 
 
 .label {
     -fx-font-size: 12pt;
     -fx-font-family: "Helvetica bold";
     -fx-text-fill: #ffffff;
-    
     }
 
 
