@@ -1,5 +1,13 @@
 package sortQueue;
 
+/**
+ * This is a chained comparator that is used to sort a list by multiple
+ * attributes by chaining a sequence of comparators of individual fields
+ * together.
+ * @author cgollogly
+ *
+ */
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;

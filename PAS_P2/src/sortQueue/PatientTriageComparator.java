@@ -1,5 +1,10 @@
 package sortQueue;
 
+/**
+ * This comparator compares two patients by triage status
+ * @author cgollogly
+ */
+
 import java.util.Comparator;
 
 import objects.Patient;

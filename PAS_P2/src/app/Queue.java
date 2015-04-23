@@ -1,11 +1,17 @@
 package app;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.ListIterator;
+
 import dataAccessLayer.QueueDA;
 import objects.Patient;
+import sortQueue.PatientComparator;
+import sortQueue.PatientInQueueComparator;
+import sortQueue.PatientTriageComparator;
+import sortQueue.PatientWaitTimeComparator;
 
-public class Queue implements Comparable<Patient> {
+public class Queue  {
 
 	/**
 	 * linked list of patient objects to represent queue
@@ -65,6 +71,8 @@ public class Queue implements Comparable<Patient> {
 	 */
 	public static void viewQueue(LinkedList<Patient> queue) {
 
+		// sort queue by requirement criteria
+		sortQueue();
 		// create iterator for the queue
 		ListIterator<Patient> listIterator = queue.listIterator();
 		while (listIterator.hasNext()) {
@@ -80,13 +88,22 @@ public class Queue implements Comparable<Patient> {
 		}
 
 	}
-
+	
 	/**
-	 * overriden method to allow comparison by triage status
+	 * method to sort queue by:
+	 * 1-have they been in queue before
+	 * 2-have they waited for more than 25 mins
+	 * 3-by triage status
 	 */
-	@Override
-	public int compareTo(Patient o) {
-		return 0;
+	public static void sortQueue(){
+		
+	    Collections.sort(queue, new PatientComparator(
+	            new PatientInQueueComparator(),
+	            new PatientWaitTimeComparator(),
+	            new PatientTriageComparator())
+	     );
+	
 	}
+
 
 }

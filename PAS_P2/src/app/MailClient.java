@@ -1,5 +1,10 @@
 package app;
 
+/**
+ * This class sends emails and text to on call team and hospital manager when implemented
+ * @author cgollogly
+ */
+
 import java.util.Properties;
 
 import javax.mail.Message;
