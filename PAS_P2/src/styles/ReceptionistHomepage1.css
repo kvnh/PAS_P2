@@ -118,13 +118,15 @@
     -fx-font-size: 14pt;
     -fx-font-family: "Segoe UI Light";
     -fx-text-fill: white;
-    -fx-alignment: center-left;
+    -fx-alignment: center-left; 
     -fx-opacity: 1;
 }
 
 .table-view:focused .table-row-cell:filled:focused:selected {
     -fx-background-color: #273D51;
 }
+
+
 
 .label-patientTitle{
     -fx-font-size: 30pt;

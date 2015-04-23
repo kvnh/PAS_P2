@@ -11,21 +11,26 @@
 
 <AnchorPane prefHeight="662.0" prefWidth="786.0" stylesheets="@../styles/ReceptionistHomepage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReceptionistSearchTabController">
 	<children>
-								<Pane prefHeight="731.0" prefWidth="1034.0" styleClass="background" AnchorPane.bottomAnchor="-69.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-248.0" AnchorPane.topAnchor="0.0">
+								<Pane prefHeight="616.0" prefWidth="1382.0" styleClass="background" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
 									<children>
-										<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="156.0" layoutX="-14.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-pane" width="1039.0" />
-										<Label layoutX="339.0" layoutY="52.0" styleClass="label-patientTitle" text="Patient Search">
-											<font>
-												<Font size="30.0" />
-											</font>
-										</Label>
-										<Button layoutX="853.0" layoutY="60.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
-										<Text fx:id="lblLoggedIn" layoutX="840.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="135.13671875">
+            <Pane prefHeight="90.0" prefWidth="1383.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="90.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane" width="1383.0" />
+               </children>
+            </Pane>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72b2ee" height="373.0" layoutX="56.0" layoutY="148.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane2" width="202.0" />
+      										<Button layoutX="1210.0" layoutY="22.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
+      										<Label layoutX="498.0" layoutY="14.0" styleClass="label-patientTitle" text="Patient Search">
+      											<font>
+      												<Font size="30.0" />
+      											</font>
+      										</Label>
+										<Text fx:id="lblLoggedIn" layoutX="1027.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="135.13671875">
 											<font>
 												<Font size="15.0" />
 											</font>
 										</Text>
-										<TableView fx:id="tableView" layoutX="74.0" layoutY="311.0" prefHeight="395.0" prefWidth="780.0">
+										<TableView fx:id="tableView" layoutX="303.0" layoutY="148.0" prefHeight="456.0" prefWidth="776.0">
 											<columns>
 												<TableColumn fx:id="firstNameColumn" prefWidth="133.0" text="First name" />
 												<TableColumn fx:id="lastNameColumn" prefWidth="139.0" text="Last name" />
@@ -34,22 +39,19 @@
 												<TableColumn fx:id="streetNameColumn" prefWidth="179.0" text="Street Name" />
 											</columns>
 										</TableView>
-										<HBox layoutX="75.0" layoutY="205.0" prefHeight="41.0" prefWidth="834.0" spacing="35.0">
-											<children>
-												<TextField fx:id="firstNameSearch" prefHeight="39.0" prefWidth="153.0" promptText="First Name" />
-												<TextField fx:id="lastNameSearch" prefHeight="39.0" prefWidth="164.0" promptText="Last Name" />
-												<TextField fx:id="postCodeSearch" onAction="#handlePostcodeSearch" prefHeight="39.0" prefWidth="165.0" promptText="Postcode" />
-												<Button fx:id="button" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="41.0" prefWidth="192.0" text="Search" />
-											</children>
-										</HBox>
-										<Button layoutX="877.0" layoutY="257.0" mnemonicParsing="false" onAction="#btnPatientInfo" text="Patient Info" />
-										<Button layoutX="857.0" layoutY="671.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="167.0" styleClass="button-emergency" text="EMERGENCY">
+										<Button layoutX="1110.0" layoutY="146.0" mnemonicParsing="false" onAction="#btnPatientInfo" prefHeight="39.0" prefWidth="145.0" text="Patient Info" />
+										<Button layoutX="1106.0" layoutY="561.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="153.0" styleClass="button-emergency" text="EMERGENCY">
 											<font>
 												<Font size="12.0" />
 											</font>
 										</Button>
-										<Button layoutX="663.0" layoutY="255.0" mnemonicParsing="false" onAction="#clearButtonAction" prefHeight="41.0" prefWidth="192.0" text="Clear" />
-									</children>
-								</Pane>
+										<Button layoutX="74.0" layoutY="459.0" mnemonicParsing="false" onAction="#clearButtonAction" prefHeight="41.0" prefWidth="164.0" text="Clear" />
+												<TextField fx:id="firstNameSearch" layoutX="74.0" layoutY="183.0" prefHeight="39.0" prefWidth="164.0" promptText="First Name" />
+												<TextField fx:id="lastNameSearch" layoutX="74.0" layoutY="248.0" prefHeight="39.0" prefWidth="164.0" promptText="Last Name" />
+												<TextField fx:id="postCodeSearch" layoutX="74.0" layoutY="311.0" onAction="#handlePostcodeSearch" prefHeight="39.0" prefWidth="164.0" promptText="Postcode" />
+												<Button fx:id="button" layoutX="74.0" layoutY="398.0" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="41.0" prefWidth="164.0" text="Search" />
+            <Label layoutX="74.0" layoutY="152.0" styleClass="label-subtitle" text="Search Patient" />
+			</children>
+		</Pane>
 	</children>
 </AnchorPane>
