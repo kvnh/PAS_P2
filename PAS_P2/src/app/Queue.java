@@ -46,6 +46,7 @@ public class Queue  {
 			System.out.println("Queue is full");
 			// alert on call team and hospital manager
 			MailClient.contactOnCall();
+			MailClient.contactHospitalManager();
 		}
 
 	}

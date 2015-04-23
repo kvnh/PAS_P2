@@ -97,5 +97,31 @@ public class MailClient {
 		}
 
 	}
+	
+	public static void contactHospitalManager() {
+		
+		try {
+
+			MailClient client = new MailClient();
+
+			String from = "ciaran.gollogly@gmail.com";
+
+			String to = "07900991768@mmail.co.uk";
+
+			String to1 = "c_gollogly@msn.com";
+
+			String subject = "Hospital Manager";
+
+			String message = "The Queue has now reached its upper limit";
+
+			client.sendMail(from, to, to1, subject, message);
+
+		} catch (Exception e) {
+
+			e.printStackTrace(System.out);
+
+		}
+
+	}
 
 }
