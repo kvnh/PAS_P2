@@ -10,11 +10,6 @@ import objects.Patient;
 public class TreatmentRoom {
 
 	/**
-	 * the treatment room number
-	 */
-	private int roomNum;
-
-	/**
 	 * boolean to state if the room is available or not
 	 */
 	private boolean isAvailable;
@@ -37,25 +32,10 @@ public class TreatmentRoom {
 	 * @param isAvailable
 	 * @param patient
 	 */
-	public TreatmentRoom(int roomNum, boolean isAvailable, Patient patient) {
+	public TreatmentRoom(boolean isAvailable, Patient patient) {
 		super();
-		this.roomNum = roomNum;
-		this.isAvailable = isAvailable;
+		this.setAvailable(isAvailable);
 		this.patient = patient;
-	}
-
-	/**
-	 * @return the roomNum
-	 */
-	public int getRoomNum() {
-		return roomNum;
-	}
-
-	/**
-	 * @param roomNum the roomNum to set
-	 */
-	public void setRoomNum(int roomNum) {
-		this.roomNum = roomNum;
 	}
 
 	/**
@@ -70,7 +50,7 @@ public class TreatmentRoom {
 	 * @param isAvailable the isAvailable to set
 	 */
 	public void setAvailable(boolean isAvailable) {
-		this.isAvailable = isAvailable;
+		this.isAvailable = true;
 	}
 
 	/**
