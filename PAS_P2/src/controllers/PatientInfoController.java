@@ -48,6 +48,10 @@ public class PatientInfoController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		assert personTable != null : "fx:id=\"tableView\" was not injected: check your FXML file 'PatientInfoPage.fxml'";
+		
+		
+		
+		
 	}
 
 	/**

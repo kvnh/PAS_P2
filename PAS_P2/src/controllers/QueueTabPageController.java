@@ -62,6 +62,13 @@ public class QueueTabPageController implements Initializable {
 		//Query database
 	}
 
+	/**
+	 * Andrew - 
+	 * Problem with this method is that this data structure 'LinkedList' is isolated from the main data
+	 * structure which has been used in the rest of the project. ObservableList<Patient>
+	 * This will need to be fixed - will do tomorrow 
+	 * @param queue
+	 */
 	public void displayQueue(LinkedList<Patient> queue) {
 		tableData = FXCollections.observableArrayList(queue);
 		tableView.setItems(tableData);
