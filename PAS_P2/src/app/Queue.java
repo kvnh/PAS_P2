@@ -40,6 +40,12 @@ public class Queue {
 	private static final int QUEUE_MAX = 10;
 
 	/**
+	 * int constant to represent max size of treatment room (as its an array, it
+	 * begins at 0 therefore 4 = 5 rooms)
+	 */
+	private static final int TREATMENT_MAX = 4;
+
+	/**
 	 * method to add a patient to the queue
 	 * 
 	 * @param patient
@@ -48,8 +54,12 @@ public class Queue {
 	/**
 	 * array to represent 5 treatment rooms
 	 */
-	private static TreatmentRoom[] treat = new TreatmentRoom[4];
+	private static final TreatmentRoom[] treat = new TreatmentRoom[TREATMENT_MAX];
 
+	/**
+	 * method to add patient object to queue
+	 * @param patient
+	 */
 	public static void addToQueue(Patient patient) {
 
 		// check to see if queue already contains this patient to prevent
