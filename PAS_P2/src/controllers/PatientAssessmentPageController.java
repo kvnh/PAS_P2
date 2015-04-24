@@ -12,6 +12,11 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author KHackett
+ * Controller class for patient assessment on the triage nurse page 
+ */
 public class PatientAssessmentPageController implements Initializable {
 
 	@FXML
@@ -22,6 +27,10 @@ public class PatientAssessmentPageController implements Initializable {
 	private Label firstNameLabel;
 	@FXML
 	private Label lastNameLabel;
+	@FXML
+	private Label bloodTypeLabel;
+	@FXML
+	private Label allergiesLabel;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -31,6 +40,11 @@ public class PatientAssessmentPageController implements Initializable {
 	private void btnConfirm(ActionEvent event) throws IOException {
 	}
 
+	/**
+	 * ActionEvent to cancel out of the current screen and return to the triage nurse main
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	private void btnCancel(ActionEvent event) throws IOException {
 		Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
@@ -49,6 +63,8 @@ public class PatientAssessmentPageController implements Initializable {
 		titleLabel.setText(patient.getTitle());
 		firstNameLabel.setText(patient.getFirstName());
 		lastNameLabel.setText(patient.getLastName());
+		bloodTypeLabel.setText(patient.getBloodType());
+		allergiesLabel.setText(patient.getAllergies());
 	}
 
 }

@@ -133,11 +133,8 @@ public class Queue {
 	 */
 	public static void sortQueue() {
 
-		Collections
-				.sort(queue, new PatientComparator(
-						new PatientInQueueComparator(),
-						new PatientWaitTimeComparator(),
-						new PatientTriageComparator()));
+		Collections.sort(queue, new PatientComparator(new PatientInQueueComparator(), new PatientWaitTimeComparator(),
+				new PatientTriageComparator()));
 
 	}
 
@@ -209,10 +206,8 @@ public class Queue {
 	public static void addEmergencyPatient() {
 
 		// sort patients in treatment room by triage status
-		Collections
-				.sort(inTreatment, new PatientComparator(
-						new PatientWaitTimeComparator(),
-						new PatientTriageComparator()));
+		Collections.sort(inTreatment, new PatientComparator(new PatientWaitTimeComparator(),
+				new PatientTriageComparator()));
 
 		// remove patient of lowest priority
 		inTreatment.remove(inTreatment.getLast());

@@ -52,6 +52,8 @@ public class PatientDA {
 					patient.setPostCode(rs.getString("postCode"));
 					patient.setStreetNumber(rs.getString("streetNumber"));
 					patient.setStreetName(rs.getString("streetName"));
+					patient.setAllergies(rs.getString("allergy"));
+					patient.setBloodType(rs.getString("bloodGroup"));
 				} else {
 					System.out.println("INVALID nhsNumber");
 				}
