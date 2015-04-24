@@ -17,6 +17,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
+/**
+ * Controller to manage the display of patient information
+ * on the PatientInfo page
+ * @author KHackett
+ *
+ */
 public class PatientInfoController implements Initializable {
 
 	@FXML
