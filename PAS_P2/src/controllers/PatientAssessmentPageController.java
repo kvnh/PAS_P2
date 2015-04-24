@@ -2,7 +2,6 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import app.Queue;
@@ -51,8 +50,6 @@ public class PatientAssessmentPageController implements Initializable {
 	// keep the 5 radio buttons grouped as one family of choices
 	ToggleGroup toggleGroup;
 
-	public static ArrayList<Patient> arrayQueue;
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// create a new toggleGroup object and assign each radio button to it
@@ -68,46 +65,57 @@ public class PatientAssessmentPageController implements Initializable {
 		notAssessedRButton.setSelected(true);
 	}
 
+	/**
+	 * btnConfirm to confirm the traige category selection
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	private void btnConfirm(ActionEvent event) throws IOException {
 		// create a stage object for the PatientAssessmentPage
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
+		// call the assignTriage method to assign triage category
+		assignTriage();
+
+		// close the PatientAssessmentPage
+		stage.close();
+	}
+
+	/**
+	 * method to assign a triage category to a patient
+	 */
+	public void assignTriage() {
+		// set nhsNumber equal to the nhsNumberLabel on the page
 		String nhsNumber = nhsNumberLabel.getText();
-
-		arrayQueue = new ArrayList<Patient>(Queue.queue);
-
 		System.out.println(nhsNumber);
-		
 
-		for (int i = 0; i < arrayQueue.size(); i++) {
+		// iterate through the queue to check for the patient
+		for (int i = 0; i < Queue.queue.size(); i++) {
 			// System.out.println(arrayQueue.get(i).getFirstName() +
 			// arrayQueue.get(i).getNhsNumber());
-			if (nhsNumber == (arrayQueue.get(i).getNhsNumber())) {
-				System.out.println("adding triage status for " + arrayQueue.get(i).getFirstName());
+			if (nhsNumber == (Queue.queue.get(i).getNhsNumber())) {
+				System.out.println("adding triage status for " + Queue.queue.get(i).getFirstName());
 				if (emergencyRButton.isSelected()) {
-					arrayQueue.get(i).setTriage(Status.EMERGENCY);
+					Queue.queue.get(i).setTriage(Status.EMERGENCY);
 					System.out.println("Emergency selected");
 				} else if (urgentRButton.isSelected()) {
-					arrayQueue.get(i).setTriage(Status.URGENT);
+					Queue.queue.get(i).setTriage(Status.URGENT);
 					System.out.println("Urgent selected");
 				} else if (semiUrgentRButton.isSelected()) {
-					arrayQueue.get(i).setTriage(Status.SEMI_URGENT);
+					Queue.queue.get(i).setTriage(Status.SEMI_URGENT);
 					System.out.println("Semi-urgent selected");
 				} else if (nonUrgentRButton.isSelected()) {
-					arrayQueue.get(i).setTriage(Status.NON_URGENT);
+					Queue.queue.get(i).setTriage(Status.NON_URGENT);
 					System.out.println("Non-urgent selected");
 				} else if (notAssessedRButton.isSelected()) {
-					arrayQueue.get(i).setTriage(Status.NOT_ASSESSED);
+					Queue.queue.get(i).setTriage(Status.NOT_ASSESSED);
 					System.out.println("Not assessed selected");
 				}
 			} else {
 				System.out.println("not the assessed patient");
 			}
 		}
-
-		// close the PatientAssessmentPage
-		stage.close();
 	}
 
 	/**

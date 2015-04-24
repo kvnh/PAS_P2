@@ -33,7 +33,7 @@ public class QueueTabPageController implements Initializable {
 
 	@FXML
 	private TableColumn<Patient, String> timeEnteredColumn;
-	
+
 	@FXML
 	private TableColumn<Patient, String> triageAssessmentColumn;
 
@@ -41,7 +41,7 @@ public class QueueTabPageController implements Initializable {
 	private QueueTabPageController queueTabPageController;
 
 	private ObservableList<Patient> tableData;
-	
+
 	// public static LinkedList<Patient> displayQueue;
 
 	@Override
@@ -54,18 +54,19 @@ public class QueueTabPageController implements Initializable {
 		timeEnteredColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("postCode"));
 		triageAssessmentColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("triage"));
 
+		// display the current queue to screen when opening page each time
+		displayQueue(Queue.queue);
+
 	}
-	
+
 	/**
 	 * Problem right here as it is not communicating with the database when it should be.
 	 * @param event
 	 * @throws IOException
 	 */
 	@FXML
-	private void btnRefreshQueueClick(ActionEvent event) throws IOException{
+	private void btnRefreshQueueClick(ActionEvent event) throws IOException {
 		displayQueue(Queue.queue);
-		
-		//Query database
 	}
 
 	/**

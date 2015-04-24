@@ -42,8 +42,6 @@ public class TriageNurseHomePageController implements Initializable {
 	private TableColumn<Patient, String> triageAssessmentColumn;
 	
 	private ObservableList<Patient> tableData;
-	// public static LinkedList<Patient> displayQueue;
-	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -54,6 +52,9 @@ public class TriageNurseHomePageController implements Initializable {
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
 		triageAssessmentColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("triage"));
 		// timeEnteredColumn.setCellValueFactory(new PropertyValueFactory<Patient, Date>("timeStamp"));
+		
+		// display the current queue to screen when opening page each time
+		displayQueue(Queue.queue);
 	}
 	
 	/**
@@ -86,11 +87,20 @@ public class TriageNurseHomePageController implements Initializable {
 		
 	}
 	
+	/**
+	 * refreshes the queue table on action
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	private void btnRefreshQueueClick(ActionEvent event) throws IOException{
 		displayQueue(Queue.queue);
 	}
 
+	/**
+	 * method to display the queue to screen
+	 * @param queue
+	 */
 	public void displayQueue(LinkedList<Patient> queue) {
 		tableData = FXCollections.observableArrayList(queue);
 		tableView.setItems(tableData);
