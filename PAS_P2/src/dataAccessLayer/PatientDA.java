@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.joda.time.DateTime;
+
+import app.Status;
 import objects.Patient;
 import models.DbUtil;
 
@@ -54,6 +57,8 @@ public class PatientDA {
 					patient.setStreetName(rs.getString("streetName"));
 					patient.setAllergies(rs.getString("allergy"));
 					patient.setBloodType(rs.getString("bloodGroup"));
+					patient.setTriage(Status.NOT_ASSESSED);
+					patient.setTime(DateTime.now());
 				} else {
 					System.out.println("INVALID nhsNumber");
 				}

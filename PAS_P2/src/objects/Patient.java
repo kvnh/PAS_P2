@@ -1,5 +1,7 @@
 package objects;
 
+import org.joda.time.DateTime;
+
 import app.Status;
 
 /**
@@ -34,6 +36,8 @@ public class Patient extends Person {
 	 * Enum to represent triage status
 	 */
 	private Status triage;
+
+	private DateTime time;
 
 	/**
 	 * default constructor
@@ -163,6 +167,20 @@ public class Patient extends Person {
 	 */
 	public String toString() {
 		return "Patient Name: " + this.getFirstName() + " " + this.getLastName() + "\nTriage status: " + this.triage;
+	}
+
+	/**
+	 * @return the time
+	 */
+	public DateTime getTime() {
+		return this.time;
+	}
+
+	/**
+	 * @param time the time to set
+	 */
+	public void setTime(DateTime time) {
+		this.time = time;
 	}
 
 }

@@ -51,7 +51,7 @@ public class QueueTabPageController implements Initializable {
 
 		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
-		timeEnteredColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("postCode"));
+		timeEnteredColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("time"));
 		triageAssessmentColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("triage"));
 
 		// display the current queue to screen when opening page each time
