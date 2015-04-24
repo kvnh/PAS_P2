@@ -5,7 +5,9 @@ import java.net.URL;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
+
 import org.joda.time.DateTime;
+
 import objects.Patient;
 import app.Queue;
 import javafx.collections.FXCollections;
@@ -31,6 +33,9 @@ public class QueueTabPageController implements Initializable {
 
 	@FXML
 	private TableColumn<Patient, String> timeEnteredColumn;
+	
+	@FXML
+	private TableColumn<Patient, String> triageAssessmentColumn;
 
 	@FXML
 	private QueueTabPageController queueTabPageController;
@@ -47,6 +52,7 @@ public class QueueTabPageController implements Initializable {
 		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
 		timeEnteredColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("postCode"));
+		triageAssessmentColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("triage"));
 
 	}
 	

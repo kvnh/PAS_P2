@@ -47,13 +47,10 @@ public class Patient extends Person {
 	 * @param firstName
 	 * @param lastName
 	 */
-	public Patient(String nhsNumber, String title, String firstName,
-			String lastName, String streetNumber, String streetName,
-			String city, String postCode, boolean previouslyInQueue,
-			boolean waitingTime, String bloodType, String allergies,
-			Status triage) {
-		super(nhsNumber, title, firstName, lastName, streetNumber, streetName,
-				city, postCode);
+	public Patient(String nhsNumber, String title, String firstName, String lastName, String streetNumber,
+			String streetName, String city, String postCode, boolean previouslyInQueue, boolean waitingTime,
+			String bloodType, String allergies, Status triage) {
+		super(nhsNumber, title, firstName, lastName, streetNumber, streetName, city, postCode);
 		this.previouslyInQueue = previouslyInQueue;
 		this.waitingTime = waitingTime;
 		this.bloodType = bloodType;
@@ -159,6 +156,13 @@ public class Patient extends Person {
 	 */
 	public void setAllergies(String allergies) {
 		this.allergies = allergies;
+	}
+
+	/**
+	 * toString method to output patient information to screen
+	 */
+	public String toString() {
+		return "Patient Name: " + this.getFirstName() + " " + this.getLastName() + "\nTriage status: " + this.triage;
 	}
 
 }

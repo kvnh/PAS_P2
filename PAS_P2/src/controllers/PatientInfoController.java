@@ -54,7 +54,6 @@ public class PatientInfoController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		assert personTable != null : "fx:id=\"tableView\" was not injected: check your FXML file 'PatientInfoPage.fxml'";
-
 	}
 
 	/**
@@ -103,7 +102,9 @@ public class PatientInfoController implements Initializable {
 	 */
 	@FXML
 	private void btnCancel(ActionEvent event) throws IOException {
+		// create a stage object for the PatientInfo page
 		Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+		// close the PatientInfo page
 		stage.close();
 	}
 
