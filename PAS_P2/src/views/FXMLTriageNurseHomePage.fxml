@@ -9,15 +9,15 @@
 
 <AnchorPane prefHeight="767.0" prefWidth="1000.0" stylesheets="@../styles/TriageNurseHomePage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TriageNurseHomePageController">
    <children>
-      <TabPane prefHeight="770.0" prefWidth="1039.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="665.0" prefWidth="1385.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Triage Assessment">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="514.0" prefWidth="581.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="665.0" prefWidth="1385.0">
                      <children>
-                        <Pane layoutX="6.0" prefHeight="776.0" prefWidth="973.0">
+                        <Pane layoutX="6.0" prefHeight="665.0" prefWidth="1385.0">
                            <children>
-                              <TableView fx:id="tableView" layoutX="64.0" layoutY="243.0" prefHeight="491.0" prefWidth="668.0">
+                              <TableView fx:id="tableView" layoutX="363.0" layoutY="117.0" prefHeight="491.0" prefWidth="659.0">
                                 <columns>
                                   <TableColumn fx:id="nhsNumberColumn" prefWidth="146.0" text="Patient number" />
                                   <TableColumn fx:id="firstNameColumn" prefWidth="117.0" text="First name" />
@@ -26,17 +26,14 @@
                                     <TableColumn fx:id="triageAssessmentColumn" prefWidth="170.0" text="Triage Assessment" />
                                 </columns>
                               </TableView>
-                              <Label layoutX="435.0" layoutY="51.0" text="Triage Assessment">
-                                 <font>
-                                    <Font size="35.0" />
-                                 </font>
-                              </Label>
-                              <Button fx:id="btnAssess" layoutX="638.0" layoutY="178.0" mnemonicParsing="false" onAction="#btnAssess" text="Assess" />
                               <Button layoutX="832.0" layoutY="44.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
-                              <Button fx:id="btnRefresh" layoutX="500.0" layoutY="178.0" mnemonicParsing="false" onAction="#btnRefreshQueueClick" text="Refresh" />
+                              <Button fx:id="btnRefresh" layoutX="227.0" layoutY="117.0" mnemonicParsing="false" onAction="#btnRefreshQueueClick" text="Refresh" />
+                              <Button fx:id="btnAssess" layoutX="230.0" layoutY="165.0" mnemonicParsing="false" onAction="#btnAssess" text="Assess" />
                            </children>
                         </Pane>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="156.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-pane" width="1039.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="90.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-pane" width="1385.0" />
+                        <Label layoutX="529.0" layoutY="16.0" styleClass="label-title" text="Triage Assessment" />
+                        <Button layoutX="1220.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
                      </children>
                   </AnchorPane>
             </content>
