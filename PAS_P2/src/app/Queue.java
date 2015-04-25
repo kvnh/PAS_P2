@@ -1,9 +1,11 @@
 package app;
 
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
+import businessLayer.QueueBAL;
 import dataAccessLayer.QueueDA;
 import objects.Patient;
 import sortQueue.PatientComparator;
@@ -44,6 +46,7 @@ public class Queue {
 	 * begins at 0 therefore 4 = 5 rooms)
 	 */
 	private static final int TREATMENT_MAX = 4;
+	
 
 	/**
 	 * method to add a patient to the queue
@@ -74,9 +77,17 @@ public class Queue {
 		else if (queue.size() < QUEUE_MAX) {
 			// add patient if there is room in queue
 			queue.add(patient);
-
+			
 			// add patient details to database
-			QueueDA.addToQueueTable(patient);
+			try {
+				QueueDA.addToQueueTable(patient);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			
 
 		} else {
 			// queue may be full
@@ -99,7 +110,12 @@ public class Queue {
 		queue.remove(p);
 
 		// remove details from database
-		QueueDA.removeFromQueueTable(p);
+		try {
+			QueueDA.removeFromQueueTable(p);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -119,7 +135,12 @@ public class Queue {
 			int count = 0;
 
 			// call method to display patient information in database
-			QueueDA.displayQueueData(queue.get(count));
+			try {
+				QueueDA.displayQueueData(queue.get(count));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			count++;
 

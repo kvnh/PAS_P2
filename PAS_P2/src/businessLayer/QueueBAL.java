@@ -1,5 +1,7 @@
 package businessLayer;
 
+import java.sql.SQLException;
+
 import dataAccessLayer.QueueDA;
 import objects.Patient;
 
@@ -10,16 +12,16 @@ import objects.Patient;
  */
 public class QueueBAL {
 
-	public void addToQueueTableBAL(Patient p){
+	public void addToQueueTableBAL(Patient p) throws SQLException{
 		QueueDA.addToQueueTable(p);
 	}
 	
-	public void removeFromQueueTableBAL(Patient p){
+	public void removeFromQueueTableBAL(Patient p) throws SQLException{
 	
 		QueueDA.removeFromQueueTable(p);
 	}
 
-	public void displayQueueDataBAL(Patient p){
+	public void displayQueueDataBAL(Patient p) throws SQLException{
 		QueueDA.displayQueueData(p);
 	}
 	

@@ -2,10 +2,13 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
+
 import org.joda.time.DateTime;
+
 import objects.Patient;
 import app.Queue;
 import javafx.collections.FXCollections;
@@ -54,6 +57,12 @@ public class QueueTabPageController implements Initializable {
 
 		// display the current queue to screen when opening page each time
 		displayQueue(Queue.queue);
+		
+//		try {
+//			tableView.setItems(bal.selectAllBAL());
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 
 	}
 

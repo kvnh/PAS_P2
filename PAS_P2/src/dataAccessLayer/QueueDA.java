@@ -6,6 +6,7 @@ package dataAccessLayer;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.joda.time.DateTime;
@@ -40,10 +41,9 @@ public class QueueDA {
 	 * method to add patient details to database queue table
 	 * 
 	 * @param p
+	 * @throws SQLException 
 	 */
-	public static void addToQueueTable(Patient p) {
-
-		try {
+	public static void addToQueueTable(Patient p) throws SQLException {
 
 			// open connection to database
 			conn = ConnectionFactory.getConnection();
@@ -59,26 +59,19 @@ public class QueueDA {
 
 			// execute update
 			stmt.executeUpdate(sql);
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			System.out.println("Error on Building Data");
-		} finally {
-			// close all open resources in the database
+			
 			DbUtil.close(stmt);
 			DbUtil.close(conn);
-		}
-
 	}
 
 	/**
 	 * method to remove patient details from database queue table
 	 * 
 	 * @param p
+	 * @throws SQLException 
 	 */
-	public static void removeFromQueueTable(Patient p) {
+	public static void removeFromQueueTable(Patient p) throws SQLException  {
 
-		try {
 
 			// open connection to database
 			conn = ConnectionFactory.getConnection();
@@ -93,14 +86,10 @@ public class QueueDA {
 			// execute update
 			stmt.executeUpdate(sql);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Error on Building Data");
-		} finally {
-			// close all open resources in the database
+	
 			DbUtil.close(stmt);
 			DbUtil.close(conn);
-		}
+	
 
 	}
 
@@ -108,10 +97,9 @@ public class QueueDA {
 	 * method to retrieve information from queue table in database
 	 * 
 	 * @param p
+	 * @throws SQLException 
 	 */
-	public static void displayQueueData(Patient p) {
-
-		try {
+	public static void displayQueueData(Patient p) throws SQLException {
 
 			// open connection to database
 			conn = ConnectionFactory.getConnection();
@@ -158,15 +146,10 @@ public class QueueDA {
 				System.out.println(wait);
 
 			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Error on Building Data");
-		} finally {
 			// close all open resources in the database
 			DbUtil.close(stmt);
 			DbUtil.close(conn);
-		}
+		
 
 	}
 
