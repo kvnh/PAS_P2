@@ -37,7 +37,10 @@ public class Patient extends Person {
 	 */
 	private Status triage;
 
-	private DateTime time;
+	/**
+	 * DateTime to represent time patient entered the queue
+	 */
+	private DateTime timeEntered;
 
 	/**
 	 * default constructor
@@ -170,17 +173,17 @@ public class Patient extends Person {
 	}
 
 	/**
-	 * @return the time
+	 * @return the timeEntered
 	 */
 	public DateTime getTime() {
-		return this.time;
+		return this.timeEntered;
 	}
 
 	/**
-	 * @param time the time to set
+	 * @param timeEntered the timeEntered to set
 	 */
-	public void setTime(DateTime time) {
-		this.time = time;
+	public void setTime(DateTime timeEntered) {
+		this.timeEntered = timeEntered;
 	}
 
 }

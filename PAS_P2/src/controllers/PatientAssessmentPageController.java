@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 import app.Queue;
@@ -76,7 +77,7 @@ public class PatientAssessmentPageController implements Initializable {
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
 		// call the assignTriage method to assign triage category
-		assignTriage();
+		assignTriage(Queue.queue);
 
 		// close the PatientAssessmentPage
 		stage.close();
@@ -85,31 +86,31 @@ public class PatientAssessmentPageController implements Initializable {
 	/**
 	 * method to assign a triage category to a patient
 	 */
-	public void assignTriage() {
+	public void assignTriage(LinkedList<Patient> queue) {
 		// set nhsNumber equal to the nhsNumberLabel on the page
 		String nhsNumber = nhsNumberLabel.getText();
 		System.out.println(nhsNumber);
 
 		// iterate through the queue to check for the patient
-		for (int i = 0; i < Queue.queue.size(); i++) {
+		for (int i = 0; i < queue.size(); i++) {
 			// System.out.println(arrayQueue.get(i).getFirstName() +
 			// arrayQueue.get(i).getNhsNumber());
-			if (nhsNumber == (Queue.queue.get(i).getNhsNumber())) {
-				System.out.println("adding triage status for " + Queue.queue.get(i).getFirstName());
+			if (nhsNumber == (queue.get(i).getNhsNumber())) {
+				System.out.println("adding triage status for " + queue.get(i).getFirstName());
 				if (emergencyRButton.isSelected()) {
-					Queue.queue.get(i).setTriage(Status.EMERGENCY);
+					queue.get(i).setTriage(Status.EMERGENCY);
 					System.out.println("Emergency selected");
 				} else if (urgentRButton.isSelected()) {
-					Queue.queue.get(i).setTriage(Status.URGENT);
+					queue.get(i).setTriage(Status.URGENT);
 					System.out.println("Urgent selected");
 				} else if (semiUrgentRButton.isSelected()) {
-					Queue.queue.get(i).setTriage(Status.SEMI_URGENT);
+					queue.get(i).setTriage(Status.SEMI_URGENT);
 					System.out.println("Semi-urgent selected");
 				} else if (nonUrgentRButton.isSelected()) {
-					Queue.queue.get(i).setTriage(Status.NON_URGENT);
+					queue.get(i).setTriage(Status.NON_URGENT);
 					System.out.println("Non-urgent selected");
 				} else if (notAssessedRButton.isSelected()) {
-					Queue.queue.get(i).setTriage(Status.NOT_ASSESSED);
+					queue.get(i).setTriage(Status.NOT_ASSESSED);
 					System.out.println("Not assessed selected");
 				}
 			} else {
