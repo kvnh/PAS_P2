@@ -104,6 +104,8 @@ public class TriageNurseHomePageController implements Initializable {
 	public void displayQueue(LinkedList<Patient> queue) {
 		tableData = FXCollections.observableArrayList(queue);
 		tableView.setItems(tableData);
+		tableView.getColumns().get(0).setVisible(false);
+		tableView.getColumns().get(0).setVisible(true);
 	}
 	
 	

@@ -70,18 +70,12 @@ public class PatientInfoController implements Initializable {
 		Patient p = ps.getPatientByNHSNumber(nhsNumberLabel.getText());
 
 		/*
-		 *  Details may need to be sent to a database. Actually that is needed
-		 *  From here send details to database and then Queue will call the table and
-		 *  add rows to linked list.
-		 *  
+		 * Details may need to be sent to a database. Actually that is needed From here send details
+		 * to database and then Queue will call the table and add rows to linked list.
 		 */
-		
-		
-		
+
 		// add this patient, p, to the queue
 		Queue.addToQueue(p);
-		
-		
 
 		// close the PatientInfo screen
 		appStage.hide();
