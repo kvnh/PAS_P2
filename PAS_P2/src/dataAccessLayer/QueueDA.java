@@ -51,6 +51,9 @@ public class QueueDA {
 			// create statement
 			stmt = conn.createStatement();
 
+			/*
+			 * Need to add more columns in this table. This needs to feed into the dynamic queue table
+			 */
 			String sql = "insert into queueTime values('" + p.getNhsNumber()
 					+ "', CURRENT_TIMESTAMP)";
 

@@ -20,7 +20,7 @@
           <TableColumn fx:id="firstNameColumn" prefWidth="122.0" text="First name" />
           <TableColumn fx:id="lastNameColumn" prefWidth="144.0" text="Last name" />
             <TableColumn fx:id="timeEnteredColumn" prefWidth="158.0" text="Time Entered" />
-            <TableColumn fx:id="triageAssessmentColumn" prefWidth="146.0" text="Triage Status" />
+            <TableColumn fx:id="triageAssessmentColumn" prefWidth="289.0" text="Triage Status" />
         </columns>
       </TableView>
       <Button fx:id="btnRefreshQueue" layoutX="242.0" layoutY="134.0" mnemonicParsing="false" onAction="#btnRefreshQueueClick" text="Refresh Queue" />
