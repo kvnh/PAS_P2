@@ -42,9 +42,6 @@ public class QueueTabPageController implements Initializable {
 
 	// public static LinkedList<Patient> displayQueue;
 
-	/**
-	 * Currently no database connections on this page.
-	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -55,8 +52,6 @@ public class QueueTabPageController implements Initializable {
 		timeEnteredColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("time"));
 		triageAssessmentColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("triage"));
 
-		
-		// The Queue needs to be constantly updating 
 		// display the current queue to screen when opening page each time
 		displayQueue(Queue.queue);
 
@@ -73,7 +68,11 @@ public class QueueTabPageController implements Initializable {
 	}
 
 	/**
-	 * displays the queue
+	 * Andrew - 
+	 * Problem with this method is that this data structure 'LinkedList' is isolated from the main data
+	 * structure which has been used in the rest of the project. ObservableList<Patient>
+	 * This will need to be fixed - will do tomorrow 
+	 * @param queue
 	 */
 	public void displayQueue(LinkedList<Patient> queue) {
 		tableData = FXCollections.observableArrayList(queue);

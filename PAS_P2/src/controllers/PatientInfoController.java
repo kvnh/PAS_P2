@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 
 import objects.Patient;
 import businessLayer.PatientServices;
-import businessLayer.QueueBAL;
 import app.Queue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,8 +47,6 @@ public class PatientInfoController implements Initializable {
 	private Label cityLabel;
 	@FXML
 	private Label postCodeLabel;
-	
-	private QueueBAL bal = new QueueBAL();
 
 	// create an instance of the PatientServices service layer
 	public PatientServices ps = new PatientServices();
@@ -82,7 +79,7 @@ public class PatientInfoController implements Initializable {
 		
 		
 		// add this patient, p, to the queue
-		bal.addToQueueTableBAL(p);
+		Queue.addToQueue(p);
 		
 		
 
