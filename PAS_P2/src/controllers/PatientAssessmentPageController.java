@@ -47,7 +47,7 @@ public class PatientAssessmentPageController implements Initializable {
 	private RadioButton nonUrgentRButton;
 	@FXML
 	private RadioButton notAssessedRButton;
-
+	
 	// keep the 5 radio buttons grouped as one family of choices
 	ToggleGroup toggleGroup;
 

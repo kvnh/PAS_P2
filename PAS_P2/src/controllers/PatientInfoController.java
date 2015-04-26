@@ -3,11 +3,13 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 import objects.Patient;
 import businessLayer.PatientServices;
 import app.Queue;
+import app.Status;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -69,17 +71,61 @@ public class PatientInfoController implements Initializable {
 		// to the getPatientByNHSNumber method in the service layer
 		Patient p = ps.getPatientByNHSNumber(nhsNumberLabel.getText());
 
-		/*
-		 * Details may need to be sent to a database. Actually that is needed From here send details
-		 * to database and then Queue will call the table and add rows to linked list.
-		 */
-
-		// add this patient, p, to the queue
-		Queue.addToQueue(p);
+		// check if patient exists in the array list already
+		// send the patient object to the checkIfInQueue() method
+		if (checkIfInQueue(p) == false) {
+			System.out.println(p.getFirstName() + " is not is the queue");
+			// add this patient, p, to the queue
+			Queue.addToQueue(p);
+		} else {
+			System.out.println("already in the queue");
+		}
 
 		// close the PatientInfo screen
 		appStage.hide();
 
+	}
+
+	/**
+	 * check if a patient already exists in the queue
+	 * 
+	 * @param p the patient to be checked
+	 * @return true if patient is in queue, false if not is queue
+	 */
+	public boolean checkIfInQueue(Patient p) {
+		// set nhsNumber equal to the nhsNumberLabel on the page
+		String nhsNumber = nhsNumberLabel.getText();
+		System.out.println("Checking if " + nhsNumber + " already in the queue");
+
+		// create boolean to state whether a person is in the queue or not
+		boolean isInQueue = false;
+
+		for (int i = 0; i < Queue.queue.size(); i++) {
+			String nhsnumber = Queue.queue.get(i).getNhsNumber();
+			if (nhsnumber.equalsIgnoreCase(p.getNhsNumber()) == true) {
+				System.out.println(p.getFirstName() + " is already in the queue (checkIfInQueue() method)");
+				isInQueue = true;
+				break;
+			} else {
+				System.out.println(p.getFirstName() + " is not is the queue (checkIfInQueue() method)");
+				isInQueue = false;
+			}
+		}
+
+		return isInQueue;
+	}
+
+	/**
+	 * Button to send user back to receptionist homepage
+	 * @param event
+	 * @throws IOException
+	 */
+	@FXML
+	private void btnCancel(ActionEvent event) throws IOException {
+		// create a stage object for the PatientInfo page
+		Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+		// close the PatientInfo page
+		stage.close();
 	}
 
 	/**
@@ -98,19 +144,6 @@ public class PatientInfoController implements Initializable {
 		streetNameLabel.setText(patient.getStreetName());
 		cityLabel.setText(patient.getCity());
 		postCodeLabel.setText(patient.getPostCode());
-	}
-
-	/**
-	 * Button to send user back to receptionist homepage
-	 * @param event
-	 * @throws IOException
-	 */
-	@FXML
-	private void btnCancel(ActionEvent event) throws IOException {
-		// create a stage object for the PatientInfo page
-		Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-		// close the PatientInfo page
-		stage.close();
 	}
 
 }
