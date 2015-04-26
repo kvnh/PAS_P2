@@ -1,4 +1,5 @@
 package objects;
+import java.util.Date;
 
 import org.joda.time.DateTime;
 
@@ -41,6 +42,12 @@ public class Patient extends Person {
 	 * DateTime to represent time patient entered the queue
 	 */
 	private DateTime timeEntered;
+	
+	private Date newTimeCurrent;
+	
+	private DateTime newTimeRecieved;
+	
+	
 
 	/**
 	 * default constructor
@@ -72,6 +79,7 @@ public class Patient extends Person {
 	public Status getTriage() {
 		return triage;
 	}
+	
 
 	/**
 	 * 
@@ -81,6 +89,13 @@ public class Patient extends Person {
 	public void setTriage(Status triage) {
 		this.triage = triage;
 	}
+	
+//	public void setTriage(String triage) {
+//		System.out.println("HIT");
+//		Status demoType = Status.valueOf(triage);
+//		
+//		this.triage = demoType;
+//	}
 
 	/**
 	 * method to allow comparison of patients by triage status
@@ -180,10 +195,29 @@ public class Patient extends Person {
 	}
 
 	/**
-	 * @param timeEntered the timeEntered to set
+	 * @param dateTime the timeEntered to set
 	 */
-	public void setTime(DateTime timeEntered) {
-		this.timeEntered = timeEntered;
+	public void setTime(DateTime dateTime) {
+		this.timeEntered = dateTime;
 	}
+
+	public Date getTimeRecieved() {
+		return newTimeCurrent;
+	}
+
+	public void setTimeRecieved(Date date) {
+		this.newTimeCurrent = date;
+	}
+
+	public DateTime getNewTimeRecieved() {
+		return newTimeRecieved;
+	}
+
+	public void setNewTimeRecieved(DateTime date) {
+		this.newTimeRecieved = date;
+	}
+	
+
+	
 
 }

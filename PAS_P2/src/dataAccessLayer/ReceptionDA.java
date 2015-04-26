@@ -22,7 +22,6 @@ public class ReceptionDA {
 	private static Connection conn;
 	private static Statement stat;
 	private static ObservableList<Patient> data;
-	private static ObservableList<Patient> startUpData;
 
 	/**
 	 * Retrieve data via the use of the search button

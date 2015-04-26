@@ -76,6 +76,8 @@ public class PatientInfoController implements Initializable {
 		if (checkIfInQueue(p) == false) {
 			System.out.println(p.getFirstName() + " is not is the queue");
 			// add this patient, p, to the queue
+			
+			
 			Queue.addToQueue(p);
 		} else {
 			System.out.println("already in the queue");

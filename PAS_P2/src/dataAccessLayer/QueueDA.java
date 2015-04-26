@@ -4,18 +4,22 @@
 package dataAccessLayer;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import models.ConnectionFactory;
+import models.DbUtil;
+import objects.Patient;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import models.ConnectionFactory;
-import models.DbUtil;
-import objects.Patient;
+import app.Status;
 
 /**
  * Data Access Layer to create a Patient object
@@ -36,7 +40,74 @@ public class QueueDA {
 	// create connection and statement objects
 	private static Connection conn = null;
 	private static Statement stmt = null;
+	private static ObservableList<Patient> data;
 
+	/**
+	 * Selects all patients who are already in the Queue
+	 * @return
+	 * @throws SQLException
+	 */
+	public static ObservableList<Patient> selectAllData() throws SQLException{
+		ResultSet rs = null;
+			
+			data = FXCollections.observableArrayList();
+
+			String query = "select nhsNumber, firstName, lastName, Timestamp from InQueue;";
+
+			conn = ConnectionFactory.getConnection();
+			stmt = conn.createStatement();
+
+			System.out.println("Inserting\n" + query);
+
+			rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+				Patient patient = new Patient();
+				patient.setNhsNumber(rs.getString("nhsNumber"));
+				patient.setFirstName(rs.getString("firstName"));
+				patient.setLastName(rs.getString("lastName"));
+				//problem here
+				
+				
+				//patient.setNewTimeRecieved(rs.getInt("Timestamp"));
+				data.add(patient);
+			}
+		return data;
+	}	
+	
+
+	/**
+	 * method to add patient details to database queue table
+	 * 
+	 * @param p
+	 * @throws SQLException 
+	 */
+	public static void addToInQueue(Patient p) throws SQLException {
+
+			// open connection to database
+			conn = ConnectionFactory.getConnection();
+
+			// create statement
+			stmt = conn.createStatement();
+			/*
+			 * Need to add more columns in this table. This needs to feed into the dynamic queue table
+			 */
+			String sql = "insert into InQueue values('" + p.getNhsNumber()+"' , '"+p.getFirstName()+"' , '"+p.getLastName()+"' , '"
+					+p.getTriage().toString()+"',CURRENT_TIMESTAMP )";
+
+			// execute update
+			stmt.executeUpdate(sql);
+			
+			closeConnections();
+	}
+
+
+	private static void closeConnections() {
+		DbUtil.close(stmt);
+		DbUtil.close(conn);
+	}
+	
+	
 	/**
 	 * method to add patient details to database queue table
 	 * 
@@ -60,8 +131,7 @@ public class QueueDA {
 			// execute update
 			stmt.executeUpdate(sql);
 			
-			DbUtil.close(stmt);
-			DbUtil.close(conn);
+			closeConnections();
 	}
 
 	/**
@@ -87,8 +157,7 @@ public class QueueDA {
 			stmt.executeUpdate(sql);
 
 	
-			DbUtil.close(stmt);
-			DbUtil.close(conn);
+			closeConnections();
 	
 
 	}
@@ -146,9 +215,7 @@ public class QueueDA {
 				System.out.println(wait);
 
 			}
-			// close all open resources in the database
-			DbUtil.close(stmt);
-			DbUtil.close(conn);
+			closeConnections();
 		
 
 	}

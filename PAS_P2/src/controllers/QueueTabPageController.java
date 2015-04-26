@@ -58,13 +58,11 @@ public class QueueTabPageController implements Initializable {
 		// display the current queue to screen when opening page each time
 		displayQueue(Queue.queue);
 		
-//		try {
-//			tableView.setItems(bal.selectAllBAL());
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
+	
+			
+		}
 
-	}
+	
 
 	/**
 	 * Problem right here as it is not communicating with the database when it should be.
