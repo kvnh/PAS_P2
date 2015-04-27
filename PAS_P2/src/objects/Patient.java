@@ -141,7 +141,7 @@ public class Patient extends Person {
 	public boolean getWaitingTime() {
 
 		DateTime current = DateTime.now();
-		DateTime d = this.getTime();
+		DateTime d = this.getTimeEntered();
 
 		if (current.isBefore(d.plusMinutes(2))) {
 			this.waitingTime = false;
@@ -200,15 +200,15 @@ public class Patient extends Person {
 	/**
 	 * @return the timeEntered
 	 */
-	public DateTime getTime() {
+	public DateTime getTimeEntered() {
 		return this.timeEntered;
 	}
 
 	/**
-	 * @param dateTime the timeEntered to set
+	 * @param timeEntered the timeEntered to set
 	 */
-	public void setTime(DateTime dateTime) {
-		this.timeEntered = dateTime;
+	public void setTimeEntered(DateTime timeEntered) {
+		this.timeEntered = timeEntered;
 	}
 
 	public Date getTimeRecieved() {
@@ -226,8 +226,5 @@ public class Patient extends Person {
 	public void setNewTimeRecieved(DateTime date) {
 		this.newTimeRecieved = date;
 	}
-	
-
-	
 
 }

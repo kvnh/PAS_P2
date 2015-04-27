@@ -58,7 +58,7 @@ public class PatientDA {
 					patient.setAllergies(rs.getString("allergy"));
 					patient.setBloodType(rs.getString("bloodGroup"));
 					patient.setTriage(Status.NOT_ASSESSED);
-					patient.setTime(DateTime.now());
+					patient.setTimeEntered(DateTime.now());
 				} else {
 					System.out.println("INVALID nhsNumber");
 				}
