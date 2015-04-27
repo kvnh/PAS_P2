@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000" stylesheets="@../styles/DoctorAssessmentPage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="1000" stylesheets="@../styles/DoctorAssessmentPage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DoctorAssessmentPageController">
    <children>
       <TabPane prefHeight="665.0" prefWidth="1385.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -40,7 +40,7 @@
                         <Button layoutX="1038.0" layoutY="124.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="161.0" text="Next Patient" />
                         <Label fx:id="timeSpentLabel" layoutX="438.0" layoutY="508.0" prefHeight="21.0" prefWidth="66.0" styleClass="label-info" text="Label" />
                         <Label layoutX="348.0" layoutY="508.0" prefHeight="25.0" prefWidth="89.0" styleClass="label-info" text="Time spent:" />
-                        <Button layoutX="1158.0" layoutY="26.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="113.0" text="Log out" />
+                        <Button layoutX="1158.0" layoutY="26.0" mnemonicParsing="false" onAction="#btnLogout" prefHeight="39.0" prefWidth="113.0" text="Log out" />
                         <Label fx:id="triageCategoryLabel" layoutX="57.0" layoutY="140.0" text="triageCategoryLabel" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
