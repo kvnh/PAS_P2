@@ -196,7 +196,7 @@ public class Patient extends Person {
 	public String toString() {
 		return "Patient Name: " + this.getFirstName() + " " + this.getLastName() + "\nTriage status: " + this.triage;
 	}
-
+	
 	/**
 	 * @return the timeEntered
 	 */
