@@ -20,10 +20,9 @@
                               <TableView fx:id="tableView" layoutX="363.0" layoutY="117.0" prefHeight="491.0" prefWidth="659.0">
                                 <columns>
                                   <TableColumn fx:id="nhsNumberColumn" prefWidth="146.0" text="Patient number" />
-                                  <TableColumn fx:id="firstNameColumn" prefWidth="117.0" text="First name" />
-                                    <TableColumn fx:id="lastNameColumn" prefWidth="116.0" text="Last name" />
-                                    <TableColumn fx:id="dobColumn" prefWidth="90.0" text="D.O.B" />
-                                    <TableColumn fx:id="triageAssessmentColumn" prefWidth="170.0" text="Triage Assessment" />
+                                  <TableColumn fx:id="firstNameColumn" prefWidth="130.0" text="First name" />
+                                    <TableColumn fx:id="lastNameColumn" prefWidth="136.0" text="Last name" />
+                                    <TableColumn fx:id="triageAssessmentColumn" prefWidth="227.0" text="Triage Assessment" />
                                 </columns>
                               </TableView>
                               <Button layoutX="832.0" layoutY="44.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
