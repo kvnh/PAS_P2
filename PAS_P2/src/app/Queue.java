@@ -1,12 +1,6 @@
 package app;
-
-import java.sql.SQLException;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.ListIterator;
-
-import businessLayer.QueueBAL;
-import dataAccessLayer.QueueDA;
 import objects.Patient;
 import sortQueue.PatientComparator;
 import sortQueue.PatientInQueueComparator;
@@ -78,17 +72,6 @@ public class Queue {
 			// add patient if there is room in queue
 			queue.add(patient);
 			
-			// add patient details to database
-			try {
-				QueueDA.addToQueueTable(patient);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-			
-
 		} else {
 			// queue may be full
 			System.out.println("Queue is full");
@@ -109,13 +92,6 @@ public class Queue {
 		// remove patient from queue
 		queue.remove(p);
 
-		// remove details from database
-		try {
-			QueueDA.removeFromQueueTable(p);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -127,24 +103,7 @@ public class Queue {
 
 		// sort queue by requirement criteria
 		sortQueue();
-		// create iterator for the queue
-		ListIterator<Patient> listIterator = queue.listIterator();
-		while (listIterator.hasNext()) {
-
-			// count to progress through queue linked list
-			int count = 0;
-
-			// call method to display patient information in database
-			try {
-				QueueDA.displayQueueData(queue.get(count));
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			count++;
-
-		}
+	
 
 	}
 

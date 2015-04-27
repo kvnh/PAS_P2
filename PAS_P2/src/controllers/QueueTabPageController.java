@@ -2,13 +2,8 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
-
-import org.joda.time.DateTime;
-
 import objects.Patient;
 import app.Queue;
 import javafx.collections.FXCollections;
@@ -19,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import dataAccessLayer.QueueDA;
 
 public class QueueTabPageController implements Initializable {
 
@@ -72,6 +66,7 @@ public class QueueTabPageController implements Initializable {
 	@FXML
 	private void btnRefreshQueueClick(ActionEvent event) throws IOException {
 		displayQueue(Queue.queue);
+		Queue.viewQueue(Queue.queue);
 	}
 
 	/**

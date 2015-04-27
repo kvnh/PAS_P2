@@ -138,8 +138,18 @@ public class Patient extends Person {
 	/**
 	 * @return the waitingTime
 	 */
-	public boolean isWaitingTime() {
-		return waitingTime;
+	public boolean getWaitingTime() {
+
+		DateTime current = DateTime.now();
+		DateTime d = this.getTime();
+
+		if (current.isBefore(d.plusMinutes(2))) {
+			this.waitingTime = false;
+		} else {
+			this.waitingTime = true;
+		}
+
+		return this.waitingTime;
 	}
 
 	/**

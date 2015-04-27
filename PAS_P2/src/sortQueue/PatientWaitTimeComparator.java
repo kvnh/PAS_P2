@@ -13,9 +13,9 @@ public class PatientWaitTimeComparator implements Comparator<Patient> {
 
 	@Override
 	public int compare(Patient p1, Patient p2) {
-		if (p1.isWaitingTime() && !p2.isWaitingTime()) {
+		if (p1.getWaitingTime() && !p2.getWaitingTime()) {
 			return -1;
-		} else if (!p1.isWaitingTime() && p2.isWaitingTime()) {
+		} else if (!p1.getWaitingTime() && p2.getWaitingTime()) {
 			return 1;
 		}
 		return 0;
