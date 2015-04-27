@@ -1,10 +1,7 @@
-/**
- * 
- */
 package objects;
 
 /**
- * @author My Acer
+ * @author LConnolly
  *
  */
 public class Receptionist extends Staff {
@@ -30,13 +27,12 @@ public class Receptionist extends Staff {
 	 * @param postCode
 	 * @param id
 	 * @param phone
-	 * @param atWork
 	 */
 	public Receptionist(String title, String nhsNumber, String firstName,
 			String lastName, String streetNumber, String streetName,
 			String city, String postCode, int id, int phone, boolean atWork) {
 		super(title, nhsNumber, firstName, lastName, streetNumber, streetName,
-				city, postCode, id, phone, atWork);
+				city, postCode, id, phone);
 	}
 
 }

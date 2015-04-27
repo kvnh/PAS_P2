@@ -1,9 +1,5 @@
 package app;
 
-/**
- * This class sends emails and text to on call team and hospital manager when implemented
- * @author cgollogly
- */
 
 import java.util.Properties;
 
@@ -15,8 +11,25 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+
+/**
+ *This class sends emails and text to on call team and hospital manager when implemented
+ * @author cgollogly
+ */
+
 public class MailClient {
 
+	
+	/**
+	 * method to send alerts to specified personnel
+	 * @param from
+	 * @param to
+	 * @param to1
+	 * @param subject
+	 * @param messageBody
+	 * @throws MessagingException
+	 * @throws AddressException
+	 */
 	public void sendMail(String from, String to, String to1,
 
 	String subject, String messageBody) throws MessagingException,
@@ -72,6 +85,10 @@ public class MailClient {
 
 	}
 
+	
+	/**
+	 * method to contact on call team
+	 */
 	public static void contactOnCall() {
 
 		try {
@@ -98,6 +115,9 @@ public class MailClient {
 
 	}
 	
+	/**
+	 * method to contact hospital manager
+	 */
 	public static void contactHospitalManager() {
 		
 		try {

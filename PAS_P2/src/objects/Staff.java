@@ -13,17 +13,17 @@ public class Staff extends Person {
 	 * int to represent staff id
 	 */
 	private int id;
-
+	
+	/**
+	 * int to represent staff phone number
+	 */
+	private int phone;
+	
+	
 	/**
 	 * int to represent staff contact number
 	 */
-	private int phone;
-
-	/**
-	 * boolean to determine whether or not staff are at work
-	 */
-	private boolean atWork;
-
+	
 	/**
 	 * default constructor
 	 */
@@ -42,15 +42,16 @@ public class Staff extends Person {
 	 * @param streetName
 	 * @param city
 	 * @param postCode
+	 * @param phone
 	 */
 	public Staff(String nhsNumber, String title, String firstName,
 			String lastName, String streetNumber, String streetName,
-			String city, String postCode, int id, int phone, boolean atWork) {
+			String city, String postCode, int id, int phone) {
 		super(nhsNumber, title, firstName, lastName, streetNumber, streetName,
 				city, postCode);
 		this.id = id;
 		this.phone = phone;
-		this.atWork = atWork;
+		
 	}
 
 	/**
@@ -76,26 +77,11 @@ public class Staff extends Person {
 	}
 
 	/**
-	 * @param phone
-	 *            the phone to set
+	 * @param phone the phone to set
 	 */
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
 
-	/**
-	 * @return the atWork
-	 */
-	public boolean isAtWork() {
-		return atWork;
-	}
-
-	/**
-	 * @param atWork
-	 *            the atWork to set
-	 */
-	public void setAtWork(boolean atWork) {
-		this.atWork = atWork;
-	}
-
+	
 }

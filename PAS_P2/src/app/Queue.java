@@ -41,13 +41,6 @@ public class Queue {
 	 */
 	private static final int TREATMENT_MAX = 4;
 	
-
-	/**
-	 * method to add a patient to the queue
-	 * 
-	 * @param patient
-	 */
-
 	/**
 	 * array to represent 5 treatment rooms
 	 */

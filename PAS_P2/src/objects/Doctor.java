@@ -1,14 +1,12 @@
-/**
- * 
- */
+
 package objects;
 
 import java.sql.Date;
 
 /**
- * Doctor class that extends Staff
+ * Class to represent Doctor that extends Staff
  * 
- * @author My Acer
+ * @author LConnolly
  *
  */
 public class Doctor extends Staff {
@@ -22,7 +20,6 @@ public class Doctor extends Staff {
 	 * default constructor
 	 */
 	public Doctor() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -39,14 +36,13 @@ public class Doctor extends Staff {
 	 * @param postCode
 	 * @param id
 	 * @param phone
-	 * @param atWork
 	 */
 	public Doctor(String nhsNumber, String title, String firstName,
 			String lastName, Date dob, String streetNumber, String streetName,
-			String city, String postCode, int id, int phone, boolean atWork,
+			String city, String postCode, int id, int phone,
 			String speciality) {
 		super(nhsNumber, title, firstName, lastName, streetNumber,
-				streetName, city, postCode, id, phone, atWork);
+				streetName, city, postCode, id, phone);
 		this.speciality = speciality;
 	}
 

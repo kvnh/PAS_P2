@@ -1,5 +1,10 @@
 package app;
 
+/**
+ * enum to represent possible values for triage status
+ * @author Fergus
+ *
+ */
 public enum Status {
 
 	EMERGENCY ("Emergency"), URGENT ("Urgent"), SEMI_URGENT("Semi-urgent"), NON_URGENT ("Non-urgent"), NOT_ASSESSED ("Not-assessed");
