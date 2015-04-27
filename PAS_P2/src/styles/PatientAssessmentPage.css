@@ -13,8 +13,17 @@
     -fx-font-family: "Helvetica bold";
     -fx-text-fill: #000000;
     }
-
-
+    
+.label-title{
+	-fx-font-size: 20pt;
+    -fx-font-family: "Segoe UI bold";
+    -fx-text-fill: white;
+}
+ .label-subTitle1{
+ 	-fx-font-size: 15pt;
+    -fx-font-family: "Segoe UI";
+    -fx-text-fill: white;	
+ }
 .rectangle-pane{
 	 -fx-border-color: #ffffff;
 }
@@ -47,8 +56,15 @@
     -fx-border-insets: 1 1 1 1, 0;
 }
 
-.button-extension{
-	-fx-padding: 5 22 5 22;   
+.label-subTitle {
+    -fx-font-size: 40pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #385774;
+    -fx-opacity: 0.6;
+    
+    }
+     .cancel-button{
+    -fx-padding: 5 22 5 22;   
     -fx-border-color: #F5CCCC;
     -fx-border-width: 2;
     -fx-background-radius: 0;
@@ -59,26 +75,50 @@
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
-.button-extension:hover {
+.cancel-button:hover {
     -fx-background-color: #EB9999;
 }
 
-.button-extension:pressed, .button:default:hover:pressed {
+.cancel-button:pressed, .button:default:hover:pressed {
   -fx-background-color: #CC0000;
   -fx-text-fill: #f4f4ff;
 }
 
-.button-extension:focused {
+.cancel-button:focused {
     -fx-border-color: white, white;
     -fx-border-width: 1, 1;
     -fx-border-style: solid, segments(1, 1);
     -fx-border-radius: 0, 0;
     -fx-border-insets: 1 1 1 1, 0;
 }
-.label-subTitle {
-    -fx-font-size: 40pt;
-    -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: #385774;
-    -fx-opacity: 0.6;
+    .confirm-button{
+    -fx-padding: 5 22 5 22;   
+    -fx-border-color: #85E085;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #33CC33;
+    -fx-font-family: Segoe UI, Helvetica, Arial, "sans-serif";
+    -fx-font-size: 14pt;
+    -fx-text-fill: #f4f4ff;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.confirm-button:hover {
+    -fx-background-color: #5CD65C;
+}
+
+.confirm-button:pressed, .button:default:hover:pressed {
+  -fx-background-color: #33CC33;
+  -fx-text-fill: #f4f4ff;
+}
+
+.confirm-button:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+
     
-    }

@@ -36,6 +36,7 @@
     -fx-font-family: "Segoe UI bold";
     -fx-text-fill: white;
 }
+
 .button {
     -fx-padding: 5 22 5 22;   
     -fx-border-color: #96CBFF;
