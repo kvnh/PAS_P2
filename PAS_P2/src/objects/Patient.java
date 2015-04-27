@@ -43,6 +43,11 @@ public class Patient extends Person {
 	 */
 	private DateTime timeEntered;
 	
+	/**
+	 * String to represent time entered
+	 */
+	private String timeEnteredString;
+	
 	private Date newTimeCurrent;
 	
 	private DateTime newTimeRecieved;
@@ -225,6 +230,20 @@ public class Patient extends Person {
 
 	public void setNewTimeRecieved(DateTime date) {
 		this.newTimeRecieved = date;
+	}
+
+	/**
+	 * @return the timeEnteredString
+	 */
+	public String getTimeEnteredString() {
+		return timeEnteredString;
+	}
+
+	/**
+	 * @param timeEnteredString the timeEnteredString to set
+	 */
+	public void setTimeEnteredString(String timeEnteredString) {
+		this.timeEnteredString = timeEnteredString;
 	}
 
 }

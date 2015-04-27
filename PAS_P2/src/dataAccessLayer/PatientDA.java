@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import app.Status;
 import objects.Patient;
@@ -59,6 +61,15 @@ public class PatientDA {
 					patient.setBloodType(rs.getString("bloodGroup"));
 					patient.setTriage(Status.NOT_ASSESSED);
 					patient.setTimeEntered(DateTime.now());
+					
+					
+					// format for date time as a String
+					DateTimeFormatter formatter = DateTimeFormat
+							.forPattern("yyyy-MM-dd HH:mm:ss");
+					
+					DateTime d = DateTime.now();
+					
+					patient.setTimeEnteredString(formatter.print(d));
 				} else {
 					System.out.println("INVALID nhsNumber");
 				}
