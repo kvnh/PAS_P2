@@ -42,6 +42,11 @@
                   <fx:include source="FXMLQueueTabPage.fxml" />
                </content>
           </Tab>
+            <Tab closable="false" text="Treatment Rooms">
+               <content>
+                  <fx:include source="FXMLTreatmentRoomPage.fxml" />
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>
