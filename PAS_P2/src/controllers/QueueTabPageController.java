@@ -51,29 +51,22 @@ public class QueueTabPageController implements Initializable {
 
 		// display the current queue to screen when opening page each time
 		displayQueue(Queue.queue);
-		
-	
-			
-		}
 
-	
+	}
 
 	/**
-	 * Problem right here as it is not communicating with the database when it should be.
+	 * Refresh button will update to screen the latest patient queue
 	 * @param event
 	 * @throws IOException
 	 */
 	@FXML
 	private void btnRefreshQueueClick(ActionEvent event) throws IOException {
 		displayQueue(Queue.queue);
-		Queue.viewQueue(Queue.queue);
+		Queue.sortQueue(Queue.queue);
 	}
 
 	/**
-	 * Andrew - 
-	 * Problem with this method is that this data structure 'LinkedList' is isolated from the main data
-	 * structure which has been used in the rest of the project. ObservableList<Patient>
-	 * This will need to be fixed - will do tomorrow 
+	 * method to populate the latest queue information in a table view for display
 	 * @param queue
 	 */
 	public void displayQueue(LinkedList<Patient> queue) {

@@ -14,7 +14,7 @@ public class ControlQueue implements Runnable {
 		while (it.hasNext()) {
 			
 			// sort queue
-			Queue.sortQueue();
+			Queue.sortQueue(Queue.queue);
 			
 			// refresh button method should be added here
 			

@@ -1,4 +1,5 @@
 package app;
+
 import java.util.Collections;
 import java.util.LinkedList;
 import objects.Patient;
@@ -40,7 +41,7 @@ public class Queue {
 	 * begins at 0 therefore 4 = 5 rooms)
 	 */
 	private static final int TREATMENT_MAX = 4;
-	
+
 	/**
 	 * array to represent 5 treatment rooms
 	 */
@@ -64,7 +65,7 @@ public class Queue {
 		else if (queue.size() < QUEUE_MAX) {
 			// add patient if there is room in queue
 			queue.add(patient);
-			
+
 		} else {
 			// queue may be full
 			System.out.println("Queue is full");
@@ -88,23 +89,10 @@ public class Queue {
 	}
 
 	/**
-	 * method to display the queue
-	 * 
-	 * @param queue
-	 */
-	public static void viewQueue(LinkedList<Patient> queue) {
-
-		// sort queue by requirement criteria
-		sortQueue();
-	
-
-	}
-
-	/**
 	 * method to sort queue by: 1-have they been in queue before 2-have they
 	 * waited for more than 25 mins 3-by triage status
 	 */
-	public static void sortQueue() {
+	public static void sortQueue(LinkedList<Patient> queue) {
 
 		Collections.sort(queue, new PatientComparator(new PatientInQueueComparator(), new PatientWaitTimeComparator(),
 				new PatientTriageComparator()));
