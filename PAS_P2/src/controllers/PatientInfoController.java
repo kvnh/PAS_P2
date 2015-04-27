@@ -97,7 +97,7 @@ public class PatientInfoController implements Initializable {
 	public boolean checkIfInQueue(Patient p) {
 		// set nhsNumber equal to the nhsNumberLabel on the page
 		String nhsNumber = nhsNumberLabel.getText();
-		System.out.println("Checking if " + nhsNumber + " already in the queue");
+		System.out.println("Checking if " + nhsNumber + " is already in the queue");
 
 		// create boolean to state whether a person is in the queue or not
 		boolean isInQueue = false;
@@ -109,7 +109,7 @@ public class PatientInfoController implements Initializable {
 				isInQueue = true;
 				break;
 			} else {
-				System.out.println(p.getFirstName() + " is not is the queue (checkIfInQueue() method)");
+				System.out.println(p.getFirstName() + " is not in the queue (checkIfInQueue() method)");
 				isInQueue = false;
 			}
 		}
