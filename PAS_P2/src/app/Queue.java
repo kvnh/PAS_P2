@@ -2,6 +2,7 @@ package app;
 
 import java.util.Collections;
 import java.util.LinkedList;
+
 import objects.Patient;
 import sortQueue.PatientComparator;
 import sortQueue.PatientInQueueComparator;
@@ -43,36 +44,48 @@ public class Queue {
 	private static final int TREATMENT_MAX = 4;
 
 	/**
-	 * array to represent 5 treatment rooms
+	 * method to add a patient to the queue
+	 * 
+	 * @param patient
 	 */
-	private static final TreatmentRoom[] treat = new TreatmentRoom[TREATMENT_MAX];
 
 	/**
 	 * method to add patient object to queue
+	 * 
 	 * @param patient
 	 */
 	public static void addToQueue(Patient patient) {
 
 		// check to see if queue already contains this patient to prevent
 		// duplicate addition
-		if (queue.contains(patient)) {
+		// if (queue.contains(patient)) {
 
-			System.out.println("Patient is already in the Queue");
+		// System.out.println("Patient is already in the Queue");
 
-		}
+		// }
 
 		// check to see if queue is full
-		else if (queue.size() < QUEUE_MAX) {
+		if (queue.size() < QUEUE_MAX) {
 			// add patient if there is room in queue
 			queue.add(patient);
-
+			System.out.println("Patient added to queue");
 		} else {
+			// add patient from holding area to queue
+
+			// queue.addLast(holdingArea.getFirst());
+			// clear holding area
+			// holdingArea.removeFirst();
+
 			// queue may be full
 			System.out.println("Queue is full");
 			// alert on call team and hospital manager
 			MailClient.contactOnCall();
 			MailClient.contactHospitalManager();
 		}
+
+		ControlQueue cq = new ControlQueue();
+		Thread thread = new Thread(cq);
+		thread.start();
 
 	}
 
@@ -89,13 +102,28 @@ public class Queue {
 	}
 
 	/**
+	 * method to display the queue
+	 * 
+	 * @param queue
+	 */
+	public static void viewQueue(LinkedList<Patient> queue) {
+
+		// sort queue by requirement criteria
+		sortQueue();
+
+	}
+
+	/**
 	 * method to sort queue by: 1-have they been in queue before 2-have they
 	 * waited for more than 25 mins 3-by triage status
 	 */
-	public static void sortQueue(LinkedList<Patient> queue) {
+	public static void sortQueue() {
 
-		Collections.sort(queue, new PatientComparator(new PatientInQueueComparator(), new PatientWaitTimeComparator(),
-				new PatientTriageComparator()));
+		Collections
+				.sort(queue, new PatientComparator(
+						new PatientInQueueComparator(),
+						new PatientWaitTimeComparator(),
+						new PatientTriageComparator()));
 
 	}
 
@@ -103,21 +131,37 @@ public class Queue {
 	 * method to check if treatment is free and remove from queue
 	 */
 	public static void addToTreatmentRoon() {
-
 		// find if a treatment room is free
-		for (int i = 0; i < treat.length; i++) {
-			treat[i] = new TreatmentRoom();
-			if (treat[i].isAvailable()) {
 
-				// if free, add patient to treatment room
-				treat[i].setPatient(queue.getFirst());
+		for (int i = 0; i < TreatmentRoom.treat.length; i++) {
+
+			if (TreatmentRoom.treat[i].isAvailable() && Queue.queue.size() != 0) {
+
 				// add patient to inTreatment list for future sorting...
 				inTreatment.add(queue.getFirst());
+				System.out.println("taken to treatment queue");
 				// remove patient from front of queue
-				queue.removeFirst();
+				for (Patient p : queue){
+					System.out.println(p.getFirstName());
+				}
+				queue.remove(i);
+				System.out.println("second queue");
+				for (Patient p : queue){
+					System.out.println(p.getFirstName());
+				}
+				System.out.println("removed from queue");
+
+				// if free, add patient to treatment room
+				TreatmentRoom.treat[i].setPatient(inTreatment.getFirst());
+				System.out.println("sent to treatment room"
+						+ TreatmentRoom.treat[i]);
+
+				//System.out.println("patient added" + queue.get(i).getFirstName());
 
 				// set treatment room to unavailable
-				treat[i].setAvailable(false);
+				TreatmentRoom.treat[i].setAvailable(false);
+				System.out.println("treatment room busy");
+				
 
 			} else {
 				System.out.println("Treatment room is not available");
@@ -125,14 +169,7 @@ public class Queue {
 			}
 
 		}
-
-		// add patient from holding area to queue
-		if (queue.size() != QUEUE_MAX) {
-
-			queue.addLast(holdingArea.getFirst());
-			// clear holding area
-			holdingArea.removeFirst();
-		}
+		System.out.println("end of for");
 	}
 
 	/**
@@ -142,20 +179,18 @@ public class Queue {
 	 */
 	public static void checkoutPatient(Patient p) {
 
-		inTreatment.remove(p);
-
-		// cycle through treatment rooms
-		for (int i = 0; i < treat.length; i++) {
-
-			// find treatment room that patient is in...
-			if (treat[i].getPatient() == p) {
-
-				treat[i].setPatient(null);
-				treat[i].setAvailable(true);
-
-			}
-
-		}
+		// inTreatment.remove(p);
+		//
+		// // cycle through treatment rooms
+		// for (int i = 0; i < treat.length; i++) {
+		//
+		// // find treatment room that patient is in...
+		// if (treat[i].getPatient() == p) {
+		//
+		// treat[i].setPatient(null);
+		// treat[i].setAvailable(true);
+		//
+		// }
 
 	}
 
@@ -167,8 +202,10 @@ public class Queue {
 	public static void addEmergencyPatient() {
 
 		// sort patients in treatment room by triage status
-		Collections.sort(inTreatment, new PatientComparator(new PatientWaitTimeComparator(),
-				new PatientTriageComparator()));
+		Collections
+				.sort(inTreatment, new PatientComparator(
+						new PatientWaitTimeComparator(),
+						new PatientTriageComparator()));
 
 		// remove patient of lowest priority
 		inTreatment.remove(inTreatment.getLast());

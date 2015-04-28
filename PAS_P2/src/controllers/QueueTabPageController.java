@@ -62,7 +62,7 @@ public class QueueTabPageController implements Initializable {
 	@FXML
 	private void btnRefreshQueueClick(ActionEvent event) throws IOException {
 		displayQueue(Queue.queue);
-		Queue.sortQueue(Queue.queue);
+		Queue.viewQueue(Queue.queue);
 	}
 
 	/**
