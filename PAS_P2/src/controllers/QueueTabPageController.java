@@ -4,10 +4,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
+
 import objects.Patient;
 import app.Queue;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -62,7 +65,7 @@ public class QueueTabPageController implements Initializable {
 	@FXML
 	private void btnRefreshQueueClick(ActionEvent event) throws IOException {
 		displayQueue(Queue.queue);
-		Queue.viewQueue(Queue.queue);
+		Queue.sortQueue(Queue.queue);
 	}
 
 	/**
@@ -70,10 +73,31 @@ public class QueueTabPageController implements Initializable {
 	 * @param queue
 	 */
 	public void displayQueue(LinkedList<Patient> queue) {
-		tableData = FXCollections.observableArrayList(queue);
-		tableView.setItems(tableData);
-		tableView.getColumns().get(0).setVisible(false);
-		tableView.getColumns().get(0).setVisible(true);
+		
+		Task updateTable = new Task() {
+			@Override
+			protected Object call() throws Exception { 
+			while(!isCancelled()){
+				//update your ObservableList
+				tableData = FXCollections.observableArrayList(queue);
+				tableView.setItems(tableData);
+				
+				//hide the columns that are not updating
+				//reshow the columns
+				Runnable r = ()->{tableView.getColumns().get(0).setVisible(false);
+				tableView.getColumns().get(0).setVisible(true);}; 
+				
+				// wrap update tableView
+				Platform.runLater(r);
+			
+			Thread.sleep(5000);
+			}
+			return null;
+			}
+			};
+			Thread t = new Thread(updateTable);
+			t.setDaemon(true);
+			t.start();
 	}
 
 }

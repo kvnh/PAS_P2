@@ -14,7 +14,7 @@ public class ControlQueue implements Runnable {
 		while (it.hasNext()) {
 			System.out.println("in while");
 			// sort queue
-			Queue.sortQueue();
+			Queue.sortQueue(Queue.queue);
 			
 			// refresh button method should be added here
 			//QueueTabPageController qt = new QueueTabPageController();
@@ -25,7 +25,7 @@ public class ControlQueue implements Runnable {
 				System.out.println("List Empty");
 			} else {
 				System.out.println("Add to treatment room");
-				Queue.addToTreatmentRoon();
+				//Queue.addToTreatmentRoon();
 				System.out.println("tracer");
 
 			}

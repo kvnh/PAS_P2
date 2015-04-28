@@ -101,23 +101,12 @@ public class Queue {
 
 	}
 
-	/**
-	 * method to display the queue
-	 * 
-	 * @param queue
-	 */
-	public static void viewQueue(LinkedList<Patient> queue) {
-
-		// sort queue by requirement criteria
-		sortQueue();
-
-	}
 
 	/**
 	 * method to sort queue by: 1-have they been in queue before 2-have they
 	 * waited for more than 25 mins 3-by triage status
 	 */
-	public static void sortQueue() {
+	public static void sortQueue(LinkedList<Patient> queue) {
 
 		Collections
 				.sort(queue, new PatientComparator(
