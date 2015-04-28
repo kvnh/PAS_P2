@@ -25,7 +25,7 @@ public class Queue {
 	/**
 	 * linked list to represent treatment rooms
 	 */
-	public static LinkedList<Patient> inTreatment = new LinkedList<Patient>();
+	public static final LinkedList<Patient> inTreatment = new LinkedList<Patient>();
 
 	/**
 	 * linkedList to represent holding area
@@ -36,18 +36,6 @@ public class Queue {
 	 * int constant to represent maximum size of queue
 	 */
 	private static final int QUEUE_MAX = 10;
-
-	/**
-	 * int constant to represent max size of treatment room (as its an array, it
-	 * begins at 0 therefore 4 = 5 rooms)
-	 */
-	private static final int TREATMENT_MAX = 4;
-
-	/**
-	 * method to add a patient to the queue
-	 * 
-	 * @param patient
-	 */
 
 	/**
 	 * method to add patient object to queue
@@ -83,9 +71,6 @@ public class Queue {
 			MailClient.contactHospitalManager();
 		}
 
-		ControlQueue cq = new ControlQueue();
-		Thread thread = new Thread(cq);
-		thread.start();
 
 	}
 
@@ -100,7 +85,6 @@ public class Queue {
 		queue.remove(p);
 
 	}
-
 
 	/**
 	 * method to sort queue by: 1-have they been in queue before 2-have they
@@ -124,18 +108,20 @@ public class Queue {
 
 		for (int i = 0; i < TreatmentRoom.treat.length; i++) {
 
-			if (TreatmentRoom.treat[i].isAvailable() && Queue.queue.size() != 0) {
+			if ((TreatmentRoom.treat[i].isAvailable())
+					&& (Queue.queue.size() != 0)
+					&& (Queue.queue.getFirst().getTriage() != Status.NOT_ASSESSED)) {
 
 				// add patient to inTreatment list for future sorting...
 				inTreatment.add(queue.getFirst());
 				System.out.println("taken to treatment queue");
 				// remove patient from front of queue
-				for (Patient p : queue){
+				for (Patient p : queue) {
 					System.out.println(p.getFirstName());
 				}
 				queue.remove(i);
 				System.out.println("second queue");
-				for (Patient p : queue){
+				for (Patient p : queue) {
 					System.out.println(p.getFirstName());
 				}
 				System.out.println("removed from queue");
@@ -145,12 +131,12 @@ public class Queue {
 				System.out.println("sent to treatment room"
 						+ TreatmentRoom.treat[i]);
 
-				//System.out.println("patient added" + queue.get(i).getFirstName());
+				// System.out.println("patient added" +
+				// queue.get(i).getFirstName());
 
 				// set treatment room to unavailable
 				TreatmentRoom.treat[i].setAvailable(false);
 				System.out.println("treatment room busy");
-				
 
 			} else {
 				System.out.println("Treatment room is not available");

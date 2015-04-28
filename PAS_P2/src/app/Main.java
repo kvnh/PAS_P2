@@ -27,6 +27,11 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		TreatmentRoom.createTreatmentRooms();
+		
+		ControlQueue cq = new ControlQueue();
+		Thread thread = new Thread(cq);
+		thread.start();
+
 		launch(args);
 	}
 

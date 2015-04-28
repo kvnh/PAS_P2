@@ -11,7 +11,7 @@ public class ControlQueue implements Runnable {
 	public void run() {
 		Iterator<Patient> it = Queue.queue.iterator();
 		System.out.println("thread running");
-		while (it.hasNext()) {
+		while ((it.hasNext()) || (Queue.queue.size() == 0)) {
 			System.out.println("in while");
 			// sort queue
 			Queue.sortQueue(Queue.queue);
@@ -25,16 +25,17 @@ public class ControlQueue implements Runnable {
 				System.out.println("List Empty");
 			} else {
 				System.out.println("Add to treatment room");
-				//Queue.addToTreatmentRoon();
+				Queue.addToTreatmentRoon();
 				System.out.println("tracer");
 
 			}
 			try {
-				Thread.sleep(20000);
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				System.out.println("Problems");
 			}
 		}
+		System.out.println("exiting while loop");
 	}
 
 }
