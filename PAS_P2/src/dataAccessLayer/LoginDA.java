@@ -20,6 +20,8 @@ public class LoginDA {
 	private static Connection conn = null;
 	private static Statement stmt = null;
 
+	
+	
 	/**
 	 * Queries are made here and ALL exceptions are thrown up the tiers/layers/levels...
 	 * @param usernameBox
@@ -116,3 +118,4 @@ public class LoginDA {
 	
 
 }
+

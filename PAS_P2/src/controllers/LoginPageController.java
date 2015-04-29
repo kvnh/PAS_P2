@@ -77,6 +77,7 @@ public class LoginPageController implements Initializable {
 				 * Switch statement so that: user cat 1 -> Reception screen;
 				 * user cat 2 'Nurses' -> triage screen ; & user cat 3 'Doctors -> treatment room 
 				 */
+			
 				switch(bal.staffAccess(usernameBox, passwordBox)){
 				case 1:
 					System.out.println("Staff Category ONE");
