@@ -108,18 +108,19 @@ public class Queue {
 
 		for (int i = 0; i < TreatmentRoom.treat.length; i++) {
 
-			if ((TreatmentRoom.treat[i].isAvailable())
+			if ((TreatmentRoom.treat[i].isAvailable()) && (inTreatment.size() <= 4)
 					&& (Queue.queue.size() != 0)
 					&& (Queue.queue.getFirst().getTriage() != Status.NOT_ASSESSED)) {
 
 				// add patient to inTreatment list for future sorting...
 				inTreatment.add(queue.getFirst());
 				System.out.println("taken to treatment queue");
-				// remove patient from front of queue
+				
 				for (Patient p : queue) {
 					System.out.println(p.getFirstName());
 				}
-				queue.remove(i);
+				// remove patient from front of queue
+				queue.poll();
 				System.out.println("second queue");
 				for (Patient p : queue) {
 					System.out.println(p.getFirstName());
@@ -145,6 +146,9 @@ public class Queue {
 
 		}
 		System.out.println("end of for");
+		for(Patient p1 : inTreatment){
+			System.out.println(p1.getFirstName() + " " + p1.getLastName());
+		}
 	}
 
 	/**

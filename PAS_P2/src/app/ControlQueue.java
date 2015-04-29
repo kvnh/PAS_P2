@@ -15,10 +15,6 @@ public class ControlQueue implements Runnable {
 			System.out.println("in while");
 			// sort queue
 			Queue.sortQueue(Queue.queue);
-			
-			// refresh button method should be added here
-			//QueueTabPageController qt = new QueueTabPageController();
-			//qt.displayQueue(Queue.queue);
 
 			// about to take off element
 			if (Queue.queue.isEmpty()) {

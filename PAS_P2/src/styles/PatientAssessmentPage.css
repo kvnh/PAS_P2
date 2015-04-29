@@ -1,11 +1,11 @@
 .root{
-	-fx-spacing: 30;
-	-fx-background-color: #B9CBDB;
-	-fx-font-size: 12pt;
+    -fx-spacing: 30;
+    -fx-background-color: #B9CBDB;
+    -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
 }
 .background{
-	-fx-background-color: #B9CBDB;
+    -fx-background-color: #B9CBDB;
 }
 
 .label {
@@ -15,17 +15,17 @@
     }
     
 .label-title{
-	-fx-font-size: 20pt;
+    -fx-font-size: 20pt;
     -fx-font-family: "Segoe UI bold";
     -fx-text-fill: white;
 }
  .label-subTitle1{
- 	-fx-font-size: 15pt;
+    -fx-font-size: 15pt;
     -fx-font-family: "Segoe UI";
-    -fx-text-fill: white;	
+    -fx-text-fill: white;   
  }
 .rectangle-pane{
-	 -fx-border-color: #ffffff;
+     -fx-border-color: #ffffff;
 }
 .button {
     -fx-padding: 5 22 5 22;   
@@ -93,7 +93,7 @@
 }
     .confirm-button{
     -fx-padding: 5 22 5 22;   
-    -fx-border-color: #85E085;
+    -fx-border-color: #99E699;
     -fx-border-width: 2;
     -fx-background-radius: 0;
     -fx-background-color: #33CC33;
@@ -104,7 +104,7 @@
 }
 
 .confirm-button:hover {
-    -fx-background-color: #5CD65C;
+    -fx-background-color: #C2F0C2;
 }
 
 .confirm-button:pressed, .button:default:hover:pressed {
@@ -119,6 +119,3 @@
     -fx-border-radius: 0, 0;
     -fx-border-insets: 1 1 1 1, 0;
 }
-
-
-    

@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../styles/PatientAssessmentPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PatientAssessmentPageController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72b2ee" height="296.0" layoutX="503.0" layoutY="64.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane2" width="179.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="57.0" layoutY="-2.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane2" width="700.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="49.0" layoutX="20.0" layoutY="7.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane2" width="660.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72b2ee" height="409.0" layoutX="20.0" layoutY="63.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane2" width="190.0" />
       <Label fx:id="nhsNumberLabel" layoutX="32.0" layoutY="139.0" text="Label" />
       <Label fx:id="titleLabel" layoutX="34.0" layoutY="203.0" text="Label" />
@@ -24,7 +24,7 @@
       <Label fx:id="firstNameLabel" layoutX="87.0" layoutY="203.0" text="Label" />
       <Button layoutX="437.0" layoutY="425.0" mnemonicParsing="false" onAction="#btnConfirm" styleClass="confirm-button" text="Confirm" />
       <Button layoutX="579.0" layoutY="425.0" mnemonicParsing="false" onAction="#btnCancel" styleClass="cancel-button" text="Cancel" />
-      <Label layoutX="247.0" layoutY="7.0" styleClass="label-title" text="Patient Assessment" />
+      <Label layoutX="237.0" layoutY="12.0" styleClass="label-title" text="Patient Assessment" />
       <TextArea layoutX="231.0" layoutY="104.0" prefHeight="296.0" prefWidth="248.0" promptText="Patient symptoms">
          <font>
             <Font size="14.0" />
