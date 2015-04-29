@@ -134,3 +134,9 @@
     -fx-font-family: "Segoe UI bold";
     -fx-text-fill: white;
 }
+
+.table-row-cell:filled:selected,
+.table-row-cell:filled > .table-cell:selected {
+    -fx-background: #273D51;
+    -fx-border-color: #B4D9FD;
+}

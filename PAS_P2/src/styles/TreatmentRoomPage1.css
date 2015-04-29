@@ -78,3 +78,9 @@
 .table-view:focused .table-row-cell:filled:focused:selected {
     -fx-background-color: #273D51;
 }
+
+.table-row-cell:filled:selected,
+.table-row-cell:filled > .table-cell:selected {
+    -fx-background: #273D51;
+    -fx-border-color: #B4D9FD;
+}
