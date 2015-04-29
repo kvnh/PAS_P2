@@ -1,5 +1,7 @@
 package app;
 
+import controllers.DoctorAssessmentPageController;
+
 public class Timer implements Runnable {
 	
 	@Override
@@ -7,7 +9,11 @@ public class Timer implements Runnable {
 
 		boolean go = true;
 		
-		for (int loop = 60000; loop > 1; loop--){
+		for (int loop = 600000; loop > 1; loop--){
+			
+			//check if patient has left treatment room
+			
+			if ()
 			
 			try {
 				Thread.sleep(1000);
