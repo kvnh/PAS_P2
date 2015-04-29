@@ -18,7 +18,7 @@
       <TableView fx:id="treatmentRoomTableView" layoutX="250.0" layoutY="197.0" prefHeight="345.0" prefWidth="886.0">
          <columns>
             <TableColumn fx:id="treatmentRoomColumn" prefWidth="153.0" text="Treatment Room" />
-            <TableColumn fx:id="StatusColumn" prefWidth="107.0" text="Status" />
+            <TableColumn fx:id="triageAssessmentColumn" prefWidth="107.0" text="Status" />
             <TableColumn fx:id="doctorColumn" prefWidth="118.0" text="Doctor" />
             <TableColumn fx:id="firstNameColumn" prefWidth="139.0" text="First name" />
             <TableColumn fx:id="lastNameColumn" prefWidth="144.0" text="Last name" />

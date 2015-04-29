@@ -52,6 +52,8 @@ public class Patient extends Person {
 	
 	private DateTime newTimeRecieved;
 	
+	private int treatRoomNum;
+	
 	
 
 	/**
@@ -244,6 +246,20 @@ public class Patient extends Person {
 	 */
 	public void setTimeEnteredString(String timeEnteredString) {
 		this.timeEnteredString = timeEnteredString;
+	}
+
+	/**
+	 * @return the treatRoomNum
+	 */
+	public int getTreatRoomNum() {
+		return treatRoomNum;
+	}
+
+	/**
+	 * @param treatRoomNum the treatRoomNum to set
+	 */
+	public void setTreatRoomNum(int treatRoomNum) {
+		this.treatRoomNum = treatRoomNum;
 	}
 
 }

@@ -26,6 +26,11 @@ public class TreatmentRoom {
 	 * patient that will occupy the treatment room
 	 */
 	private Patient patient;
+	
+	/**
+	 * Treatment room number
+	 */
+	private int roomNum;
 
 	/**
 	 * default constructor
@@ -84,6 +89,20 @@ public class TreatmentRoom {
 	 */
 	public void setPatient(Patient patient) {
 		this.patient = patient;
+	}
+
+	/**
+	 * @return the roomNum
+	 */
+	public int getRoomNum() {
+		return roomNum;
+	}
+
+	/**
+	 * @param roomNum the roomNum to set
+	 */
+	public void setRoomNum(int roomNum) {
+		this.roomNum = roomNum;
 	}
 
 }

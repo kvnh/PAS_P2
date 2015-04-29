@@ -133,8 +133,9 @@ public class Queue {
 						+ TreatmentRoom.treat[i]);
 
 				// System.out.println("patient added" +
-				// queue.get(i).getFirstName());
-
+				// queue.get(i).getFirstName())
+				inTreatment.getFirst().setTreatRoomNum(i);
+				TreatmentRoom.treat[i].setRoomNum(i);
 				// set treatment room to unavailable
 				TreatmentRoom.treat[i].setAvailable(false);
 				System.out.println("treatment room busy");
