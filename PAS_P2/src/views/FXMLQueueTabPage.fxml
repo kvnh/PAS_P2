@@ -24,5 +24,6 @@
         </columns>
       </TableView>
       <Button fx:id="btnRefreshQueue" layoutX="334.0" layoutY="133.0" mnemonicParsing="false" onAction="#btnRefreshQueueClick" text="Refresh Queue" />
+      <Button layoutX="1200.0" layoutY="25.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
    </children>
 </AnchorPane>

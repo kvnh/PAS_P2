@@ -30,9 +30,9 @@
                               <Button fx:id="btnAssess" layoutX="230.0" layoutY="165.0" mnemonicParsing="false" onAction="#btnAssess" text="Assess" />
                            </children>
                         </Pane>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="90.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-pane" width="1385.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="90.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane" width="1385.0" />
                         <Label layoutX="529.0" layoutY="16.0" styleClass="label-title" text="Triage Assessment" />
-                        <Button layoutX="1220.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
+                        <Button layoutX="1200.0" layoutY="25.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
                      </children>
                   </AnchorPane>
             </content>

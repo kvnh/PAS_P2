@@ -1,40 +1,38 @@
 .root{
     
-    -fx-spacing: 30;
+    -fx-spacing: 30.0;
     -fx-background-color: #B9CBDB;
-    -fx-padding: 20;
+    -fx-padding: 20.0;
 }
-
-.label-PInfo {
-    -fx-font-size: 24pt;
-    -fx-font-family: "Helvetica bold";
-    -fx-text-fill: #385774;
-    
-    }
     
  .label {
-    -fx-font-size: 12pt;
+    -fx-font-size: 12.0pt;
     -fx-font-family: "Helvetica bold";
     -fx-text-fill: #16232E;
     
     }
 .label-subTitle {
-    -fx-font-size: 12pt;
+    -fx-font-size: 12.0pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: #385774;
-    -fx-opacity: 0.6;
-    
+    -fx-text-fill: #ffffff;
+  
     }
+.label-Stitle {
+ 	-fx-font-size: 16pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #ffffff;
+    }
+ 
 .button {
-    -fx-padding: 5 22 5 22;   
+    -fx-padding: 5.0 22.0 5.0 22.0;   
     -fx-border-color: #96CBFF;
-    -fx-border-width: 2;
-    -fx-background-radius: 0;
+    -fx-border-width: 2.0;
+    -fx-background-radius: 0.0;
     -fx-background-color: #385774;
     -fx-font-family: Segoe UI, Helvetica, Arial, "sans-serif";
-    -fx-font-size: 12pt;
+    -fx-font-size: 12.0pt;
     -fx-text-fill: #f4f4ff;
-    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-background-insets: 0.0 0.0 0.0 0.0, 0.0, 1.0, 2.0;
 }
 
 .button:hover {
@@ -48,8 +46,63 @@
 
 .button:focused {
     -fx-border-color: white, white;
+    -fx-border-width: 1.0, 1.0;
+    -fx-border-style: solid, segments(1.0, 1.0);
+    -fx-border-radius: 0.0, 0.0;
+    -fx-border-insets: 1.0 1.0 1.0 1.0, 0.0;
+    }
+        .cancel-button{
+    -fx-padding: 5 22 5 22;   
+    -fx-border-color: #F5CCCC;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #CC0000;
+    -fx-font-family: Segoe UI, Helvetica, Arial, "sans-serif";
+    -fx-font-size: 14pt;
+    -fx-text-fill: #f4f4ff;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+.cancel-button:hover {
+  -fx-background-color: #EB9999;
+}
+
+.cancel-button:pressed, .button:default:hover:pressed {
+  -fx-background-color: #CC0000;
+  -fx-text-fill: #f4f4ff;
+}
+
+.cancel-button:focused {
+    -fx-border-color: white, white;
     -fx-border-width: 1, 1;
     -fx-border-style: solid, segments(1, 1);
     -fx-border-radius: 0, 0;
     -fx-border-insets: 1 1 1 1, 0;
-    }
+}
+    .confirm-button{
+    -fx-padding: 5 22 5 22;   
+    -fx-border-color: #99E699;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #33CC33;
+    -fx-font-family: Segoe UI, Helvetica, Arial, "sans-serif";
+    -fx-font-size: 14pt;
+    -fx-text-fill: #f4f4ff;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.confirm-button:hover {
+    -fx-background-color: #C2F0C2;
+}
+
+.confirm-button:pressed, .button:default:hover:pressed {
+  -fx-background-color: #33CC33;
+  -fx-text-fill: #f4f4ff;
+}
+
+.confirm-button:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}

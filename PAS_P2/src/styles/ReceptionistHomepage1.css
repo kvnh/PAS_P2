@@ -1,5 +1,3 @@
-
-
 .root{
     
     -fx-spacing: 30;
@@ -47,7 +45,7 @@
     -fx-font-family: "Segoe UI Semibold";
 }
 .button {
-    -fx-padding: 5 22 5 22;   
+      -fx-padding: 5 22 5 22; 
     -fx-border-color: #96CBFF;
     -fx-border-width: 2;
     -fx-background-radius: 0;
@@ -134,8 +132,6 @@
 .table-view:focused .table-row-cell:filled:focused:selected {
     -fx-background-color: #273D51;
 }
-
-
 
 .label-patientTitle{
     -fx-font-size: 30pt;
