@@ -1,6 +1,5 @@
 package app;
 
-import sun.font.CreatedFontTracker;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;

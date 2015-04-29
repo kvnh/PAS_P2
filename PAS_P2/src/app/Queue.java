@@ -21,6 +21,8 @@ public class Queue {
 	 * linked list of patient objects to represent queue
 	 */
 	public static LinkedList<Patient> queue = new LinkedList<Patient>();
+	
+	public static LinkedList<Patient> tempQueue = new LinkedList<Patient>();
 
 	/**
 	 * linked list to represent treatment rooms
@@ -30,7 +32,7 @@ public class Queue {
 	/**
 	 * linked list to represent treatment rooms
 	 */
-	public static LinkedList<Patient> sortTreatment = new LinkedList<Patient>();
+	public static LinkedList<Patient> sortTreatment;
 
 	/**
 	 * linkedList to represent holding area
@@ -96,11 +98,8 @@ public class Queue {
 	 */
 	public static void sortQueue() {
 
-		Collections
-				.sort(queue, new PatientComparator(
-						new PatientInQueueComparator(),
-						new PatientWaitTimeComparator(),
-						new PatientTriageComparator()));
+		Collections.sort(queue, new PatientComparator(new PatientInQueueComparator(), new PatientWaitTimeComparator(),
+				new PatientTriageComparator()));
 
 	}
 
@@ -112,9 +111,7 @@ public class Queue {
 
 		for (int i = 0; i < TreatmentRoom.treat.length; i++) {
 
-			if ((TreatmentRoom.treat[i].isAvailable())
-					&& (inTreatment.size() <= 4)
-					&& (Queue.queue.size() != 0)
+			if ((TreatmentRoom.treat[i].isAvailable()) && (inTreatment.size() <= 4) && (Queue.queue.size() != 0)
 					&& (Queue.queue.getFirst().getTriage() != Status.NOT_ASSESSED)) {
 
 				// add patient to inTreatment list for future sorting...
@@ -134,8 +131,7 @@ public class Queue {
 
 				// if free, add patient to treatment room
 				TreatmentRoom.treat[i].setPatient(inTreatment.getFirst());
-				System.out.println("sent to treatment room"
-						+ TreatmentRoom.treat[i]);
+				System.out.println("sent to treatment room" + TreatmentRoom.treat[i]);
 
 				Timer timer = new Timer();
 				Thread t = new Thread(timer);
@@ -190,38 +186,20 @@ public class Queue {
 	 */
 	public static void addEmergencyPatient() {
 
-		for (Patient p : queue) {
+		sortTreatment = new LinkedList<Patient>(inTreatment);
+		
+		tempQueue = new LinkedList<Patient>(queue);
+
+		for (Patient p : tempQueue) {
 
 			// check for emergency patients
 			if (p.getTriage().equals(Status.EMERGENCY)) {
 				System.out.println("emergency found " + p.getFirstName());
-				sortTreatment = new LinkedList<Patient>(inTreatment);
-				// check to see if there are any patients currently in treatment
-				// if (inTreatment.isEmpty()) {
-				//
-				// System.out.println("Treatment rooms are all empty");
-				//
-				// // add patient to treatment queue
-				// inTreatment.add(p);
-				//
-				// // add patient to first available treatment room
-				//
-				// for (int i = 0; i < TreatmentRoom.treat.length; i++) {
-				//
-				// if (TreatmentRoom.treat[i].isAvailable()) {
-				//
-				// TreatmentRoom.treat[i].setPatient(p);
-				// TreatmentRoom.treat[i].setAvailable(false);
-				// }
-				// }
-				//
-				// } else {
+				// sortTreatment = new LinkedList<Patient>(inTreatment);
 
 				// sort patients in treatment room by triage status
-				Collections.sort(sortTreatment, new PatientComparator(
-						new PatientTriageComparator(),
-						new PatientWaitTimeComparator(),
-						new PatientInQueueComparator()));
+				Collections.sort(sortTreatment, new PatientComparator(new PatientTriageComparator(),
+						new PatientWaitTimeComparator(), new PatientInQueueComparator()));
 
 				// if queue is at limit, remove last patient in queue to
 				// holding
@@ -240,7 +218,7 @@ public class Queue {
 						}
 
 						holdingArea.add(queue.getLast());
-						//queue.remove(queue.getLast());
+						queue.remove(queue.getLast());
 
 						// remove patient of lowest priority
 						inTreatment.remove(sortTreatment.getLast());
@@ -251,19 +229,18 @@ public class Queue {
 
 						// add patient to treatment queue
 						inTreatment.add(p);
-						
+
 						sortTreatment.remove(p);
 						queue.remove(p);
 
 					}
 				} else {
-					
+
 					// add patient to treatment room
 					// find available treatment room
 					for (int i = 0; i < TreatmentRoom.treat.length; i++) {
 
 						if (TreatmentRoom.treat[i].isAvailable()) {
-
 							TreatmentRoom.treat[i].setPatient(p);
 							TreatmentRoom.treat[i].setAvailable(false);
 
@@ -278,12 +255,15 @@ public class Queue {
 					sortTreatment.remove(p);
 					queue.remove(p);
 
-				
-
 				}
-			}else{
+			} else {
 				System.out.println("no emergency patients");
 			}
 		}
+
+//		ListIterator<Patient> it = queue.listIterator();
+//		if (it.hasNext()) {
+//			Patient item = it.next();
+//		}
 	}
 }

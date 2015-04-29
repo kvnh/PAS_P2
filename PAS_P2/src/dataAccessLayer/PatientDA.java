@@ -61,7 +61,7 @@ public class PatientDA {
 					patient.setBloodType(rs.getString("bloodGroup"));
 					patient.setTriage(Status.NOT_ASSESSED);
 					patient.setTimeEntered(DateTime.now());
-					
+					patient.setPreviouslyInQueue(false);
 					
 					// format for date time as a String
 					DateTimeFormatter formatter = DateTimeFormat

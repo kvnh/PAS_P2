@@ -41,33 +41,33 @@ public class TreatmentRoomPageController implements Initializable {
 	private TableColumn<Patient, String> firstNameColumn;
 
 	@FXML
-	private TableColumn<Patient, String>lastNameColumn;
-	
+	private TableColumn<Patient, String> lastNameColumn;
+
 	@FXML
-	private TableColumn<Patient, String>timeEnteredColumn;
-	
+	private TableColumn<Patient, String> timeEnteredColumn;
+
 	@FXML
 	private TreatmentRoomPageController treatmentRoomPageController;
 
 	private ObservableList<Patient> tableData;
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
 		assert treatmentRoomTableView != null : "fx:id=\"treatmentRoomTableView\" was not injected: check your FXML file 'FXMLTreatmentRoomPage.fxml'";
 
 		treatmentRoomColumn.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("treatRoomNum"));
-//		StatusColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("triage"));
+		// StatusColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("triage"));
 		triageAssessmentColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("triage"));
 		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
 		timeEnteredColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("timeEnteredString"));
-		
+
 		// display the current queue to screen when opening page each time
 		displayTreatmentQueue(Queue.inTreatment);
-		
-		
+
 	}
+
 	/**
 	 * button to send user back to login screen
 	 * @param event
@@ -86,39 +86,39 @@ public class TreatmentRoomPageController implements Initializable {
 		// hides current page
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
-	
+
 	/**
 	 * method to populate the latest queue information in a table view for display
 	 * @param queue
 	 */
 	public void displayTreatmentQueue(LinkedList<Patient> treatQueue) {
-		
+
 		Task updateTable = new Task() {
 			@Override
-			protected Object call() throws Exception { 
-			while(!isCancelled()){
-				//update your ObservableList
-				tableData = FXCollections.observableArrayList(treatQueue);
-				treatmentRoomTableView.setItems(tableData);
-				
-				//hide the columns that are not updating
-				//reshow the columns
-				Runnable r = ()->{treatmentRoomTableView.getColumns().get(0).setVisible(false);
-				treatmentRoomTableView.getColumns().get(0).setVisible(true);}; 
-				
-				// wrap update tableView
-				Platform.runLater(r);
-			
-			Thread.sleep(5000);
+			protected Object call() throws Exception {
+				while (!isCancelled()) {
+					// update your ObservableList
+					tableData = FXCollections.observableArrayList(treatQueue);
+					treatmentRoomTableView.setItems(tableData);
+
+					// hide the columns that are not updating
+					// reshow the columns
+					Runnable r = () -> {
+						treatmentRoomTableView.getColumns().get(0).setVisible(false);
+						treatmentRoomTableView.getColumns().get(0).setVisible(true);
+					};
+
+					// wrap update tableView
+					Platform.runLater(r);
+
+					Thread.sleep(5000);
+				}
+				return null;
 			}
-			return null;
-			}
-			};
-			Thread t = new Thread(updateTable);
-			t.setDaemon(true);
-			t.start();
+		};
+		Thread t = new Thread(updateTable);
+		t.setDaemon(true);
+		t.start();
 	}
-	
-	
 
 }

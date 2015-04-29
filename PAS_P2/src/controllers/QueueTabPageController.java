@@ -61,7 +61,7 @@ public class QueueTabPageController implements Initializable {
 		displayQueue(Queue.queue);
 
 	}
-	
+
 	/**
 	 * button to send user back to login screen
 	 * @param event
@@ -97,33 +97,33 @@ public class QueueTabPageController implements Initializable {
 	 * @param queue
 	 */
 	public void displayQueue(LinkedList<Patient> queue) {
-		
+
 		Task updateTable = new Task() {
 			@Override
-			protected Object call() throws Exception { 
-			while(!isCancelled()){
-				//update your ObservableList
-				tableData = FXCollections.observableArrayList(queue);
-				tableView.setItems(tableData);
-				
-				//hide the columns that are not updating
-				//reshow the columns
-				Runnable r = ()->{tableView.getColumns().get(0).setVisible(false);
-				tableView.getColumns().get(0).setVisible(true);}; 
-				
-				// wrap update tableView
-				Platform.runLater(r);
-			
-			Thread.sleep(5000);
+			protected Object call() throws Exception {
+				while (!isCancelled()) {
+					// update your ObservableList
+					tableData = FXCollections.observableArrayList(queue);
+					tableView.setItems(tableData);
+
+					// hide the columns that are not updating
+					// reshow the columns
+					Runnable r = () -> {
+						tableView.getColumns().get(0).setVisible(false);
+						tableView.getColumns().get(0).setVisible(true);
+					};
+
+					// wrap update tableView
+					Platform.runLater(r);
+
+					Thread.sleep(5000);
+				}
+				return null;
 			}
-			return null;
-			}
-			};
-			Thread t = new Thread(updateTable);
-			t.setDaemon(true);
-			t.start();
+		};
+		Thread t = new Thread(updateTable);
+		t.setDaemon(true);
+		t.start();
 	}
-	
-	
 
 }

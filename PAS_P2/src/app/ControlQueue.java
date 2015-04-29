@@ -1,8 +1,6 @@
 package app;
 
 import java.util.Iterator;
-
-import controllers.QueueTabPageController;
 import objects.Patient;
 
 public class ControlQueue implements Runnable {
