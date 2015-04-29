@@ -26,12 +26,6 @@
     -fx-font-weight: bold;  
 } 
 
-.label {
-    -fx-font-size: 12pt;
-    -fx-font-family: "Helvetica bold";
-    -fx-text-fill: #ffffff;
-    }
-
 
 .rectangle-pane{
      -fx-border-color: #507CA6;
@@ -44,8 +38,16 @@
     -fx-border-color: #004E8A;
     -fx-font-family: "Segoe UI Semibold";
 }
+
+.choice-box{
+	-fx-border-color: #96CBFF;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #72b2ee;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
 .button {
-      -fx-padding: 5 22 5 22; 
+    -fx-padding: 5 22 5 22;   
     -fx-border-color: #96CBFF;
     -fx-border-width: 2;
     -fx-background-radius: 0;
@@ -73,7 +75,7 @@
     -fx-border-insets: 1 1 1 1, 0;
 }
 
-.button-emergency{
+.remove-button{
     -fx-padding: 5 22 5 22;   
     -fx-border-color: #F5CCCC;
     -fx-border-width: 2;
@@ -84,17 +86,45 @@
     -fx-text-fill: #f4f4ff;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
-
-.button-emergency:hover {
-    -fx-background-color: #EB9999;
+.remove-button:hover {
+  -fx-background-color: #EB9999;
 }
 
-.button-emergency:pressed, .button:default:hover:pressed {
+.remove-button:pressed, .button:default:hover:pressed {
   -fx-background-color: #CC0000;
   -fx-text-fill: #f4f4ff;
 }
 
-.button-emergency:focused {
+.remove-button:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.add-button{
+    -fx-padding: 5 22 5 22;   
+    -fx-border-color: #99E699;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #33CC33;
+    -fx-font-family: Segoe UI, Helvetica, Arial, "sans-serif";
+    -fx-font-size: 14pt;
+    -fx-text-fill: #f4f4ff;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.add-button:hover {
+    -fx-background-color: #C2F0C2;
+}
+
+.add-button:pressed, .button:default:hover:pressed {
+  -fx-background-color: #33CC33;
+  -fx-text-fill: #f4f4ff;
+}
+
+.add-button:focused {
     -fx-border-color: white, white;
     -fx-border-width: 1, 1;
     -fx-border-style: solid, segments(1, 1);
@@ -125,7 +155,7 @@
     -fx-font-size: 14pt;
     -fx-font-family: "Segoe UI Light";
     -fx-text-fill: white;
-    -fx-alignment: center-left; 
+    -fx-alignment: center-left;
     -fx-opacity: 1;
 }
 
@@ -133,14 +163,8 @@
     -fx-background-color: #273D51;
 }
 
-.table-row-cell:filled:selected,
-.table-row-cell:filled > .table-cell:selected {
-    -fx-background: #273D51;
-    -fx-border-color: #B4D9FD;
-}
-
-.label-patientTitle{
-    -fx-font-size: 30pt;
+.label-title{
+	-fx-font-size: 30pt;
     -fx-font-family: "Segoe UI bold";
     -fx-text-fill: white;
 }

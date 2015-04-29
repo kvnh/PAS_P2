@@ -7,86 +7,52 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000"
-	stylesheets="@../styles/DoctorAssessmentPage1.css" xmlns="http://javafx.com/javafx/8"
-	xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DoctorAssessmentPageController">
+<AnchorPane prefHeight="600.0" prefWidth="1000" stylesheets="@../styles/DoctorAssessmentPage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DoctorAssessmentPageController">
 	<children>
-		<TabPane prefHeight="665.0" prefWidth="1385.0"
-			tabClosingPolicy="UNAVAILABLE">
+		<TabPane prefHeight="665.0" prefWidth="1385.0" tabClosingPolicy="UNAVAILABLE">
 			<tabs>
 				<Tab text="Doctor Assessment">
 					<content>
-						<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="665.0"
-							prefWidth="1385.0">
+						<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="665.0" prefWidth="1385.0">
 							<children>
-								<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6"
-									height="90.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane"
-									width="1385.0" />
-								<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72b2ee"
-									height="53.0" layoutX="341.0" layoutY="494.0" stroke="WHITE"
-									strokeType="INSIDE" styleClass="rectangle-pane2" width="193.0" />
-								<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72b2ee"
-									height="426.0" layoutX="43.0" layoutY="121.0" stroke="WHITE"
-									strokeType="INSIDE" styleClass="rectangle-pane2" width="237.0" />
-								<Label fx:id="nhsNumberLabel" layoutX="59.0" layoutY="226.0"
-									prefHeight="17.0" prefWidth="61.0" styleClass="label-subTitle"
-									text="Label" />
-								<Label fx:id="titleLabel" layoutX="57.0" layoutY="282.0"
-									styleClass="label-subTitle" text="Label" />
-								<Label fx:id="allergiesLabel" layoutX="56.0" layoutY="442.0"
-									styleClass="label-subTitle" text="allergiesLabel" />
-								<Label layoutX="58.0" layoutY="403.0" styleClass="label-info"
-									text="Allergies:" />
-								<Label fx:id="bloodTypeLabel" layoutX="57.0" layoutY="365.0"
-									styleClass="label-subTitle" text="bloodTypeLabel" />
-								<Label layoutX="57.0" layoutY="329.0" styleClass="label-info"
-									text="Blood type:" />
-								<Label layoutX="58.0" layoutY="251.0" prefHeight="25.0"
-									prefWidth="66.0" styleClass="label-info" text="Name:" />
-								<Label layoutX="58.0" layoutY="201.0" styleClass="label-info"
-									text="NHS Number:" />
-								<Label fx:id="lastNameLabel" layoutX="181.0" layoutY="282.0"
-									styleClass="label-subTitle" text="Label" />
-								<Label fx:id="firstNameLabel" layoutX="119.0" layoutY="282.0"
-									styleClass="label-subTitle" text="Label" />
-								<Button layoutX="1044.0" layoutY="508.0" mnemonicParsing="false"
-									prefHeight="53.0" prefWidth="161.0" styleClass="button-extension"
-									text="5+ minutes" />
-								<Button layoutX="1038.0" layoutY="124.0" mnemonicParsing="false"
-									prefHeight="53.0" prefWidth="161.0" text="Finalise Patient" />
-								<TextArea layoutX="327.0" layoutY="121.0" prefHeight="321.0"
-									prefWidth="270.0" promptText="Triage assessment" />
-								<Label id="label-subTitle1" layoutX="57.0" layoutY="167.0"
-									text="Patient" textFill="WHITE">
+								<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="90.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane" width="1385.0" />
+								<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72b2ee" height="53.0" layoutX="341.0" layoutY="494.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane2" width="193.0" />
+								<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72b2ee" height="426.0" layoutX="43.0" layoutY="121.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane2" width="237.0" />
+								<Label fx:id="nhsNumberLabel" layoutX="59.0" layoutY="226.0" prefHeight="17.0" prefWidth="61.0" styleClass="label-subTitle" text="Label" />
+								<Label fx:id="titleLabel" layoutX="57.0" layoutY="282.0" styleClass="label-subTitle" text="Label" />
+								<Label fx:id="allergiesLabel" layoutX="56.0" layoutY="442.0" styleClass="label-subTitle" text="allergiesLabel" />
+								<Label layoutX="58.0" layoutY="403.0" styleClass="label-info" text="Allergies:" />
+								<Label fx:id="bloodTypeLabel" layoutX="57.0" layoutY="365.0" styleClass="label-subTitle" text="bloodTypeLabel" />
+								<Label layoutX="57.0" layoutY="329.0" styleClass="label-info" text="Blood type:" />
+								<Label layoutX="58.0" layoutY="251.0" prefHeight="25.0" prefWidth="66.0" styleClass="label-info" text="Name:" />
+								<Label layoutX="58.0" layoutY="201.0" styleClass="label-info" text="NHS Number:" />
+								<Label fx:id="lastNameLabel" layoutX="181.0" layoutY="282.0" styleClass="label-subTitle" text="Label" />
+								<Label fx:id="firstNameLabel" layoutX="119.0" layoutY="282.0" styleClass="label-subTitle" text="Label" />
+								<Button layoutX="1038.0" layoutY="389.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="161.0" styleClass="button-extension" text="5+ minutes" />
+								<Button layoutX="1038.0" layoutY="124.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="161.0" text="Finalise Patient" />
+								<TextArea layoutX="327.0" layoutY="121.0" prefHeight="321.0" prefWidth="270.0" promptText="Triage assessment" />
+								<Label id="label-subTitle1" layoutX="57.0" layoutY="167.0" text="Patient" textFill="WHITE">
 									<font>
 										<Font name="System Bold" size="15.0" />
 									</font>
 								</Label>
-								<TextArea layoutX="621.0" layoutY="121.0" prefHeight="441.0"
-									prefWidth="394.0" promptText="Doctor assessment" />
-								<Label fx:id="timeSpentLabel" layoutX="438.0" layoutY="508.0"
-									prefHeight="21.0" prefWidth="66.0" styleClass="label-subTitle"
-									text="Label" />
-								<Label layoutX="348.0" layoutY="508.0" prefHeight="25.0"
-									prefWidth="89.0" styleClass="label-info" text="Time spent:" />
-								<Button layoutX="1200.0" layoutY="25.0" mnemonicParsing="false"
-									onAction="#btnLogout" text="Logout" />
-								<Label fx:id="triageCategoryLabel" layoutX="57.0" layoutY="140.0"
-									text="triageCategoryLabel" textFill="WHITE">
+								<TextArea layoutX="621.0" layoutY="121.0" prefHeight="321.0" prefWidth="394.0" promptText="Doctor assessment" />
+								<Label fx:id="timeSpentLabel" layoutX="438.0" layoutY="508.0" prefHeight="21.0" prefWidth="66.0" styleClass="label-subTitle" text="Label" />
+								<Label layoutX="348.0" layoutY="508.0" prefHeight="25.0" prefWidth="89.0" styleClass="label-info" text="Time spent:" />
+								<Button layoutX="1200.0" layoutY="25.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
+								<Label fx:id="triageCategoryLabel" layoutX="57.0" layoutY="140.0" text="triageCategoryLabel" textFill="WHITE">
 									<font>
 										<Font name="System Bold" size="15.0" />
 									</font>
 								</Label>
-								<Label layoutX="348.0" layoutY="16.0" styleClass="label-title"
-									text="Doctor Assessment &amp; Treatment Room" />
+								<Label layoutX="348.0" layoutY="16.0" styleClass="label-title" text="Doctor Assessment &amp; Treatment Room" />
 							</children>
 						</AnchorPane>
 					</content>
 				</Tab>
 				<Tab text="Queue">
 					<content>
-						<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
-							prefWidth="200.0">
+						<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
 							<children>
 								<fx:include source="FXMLQueueTabPage.fxml" />
 							</children>
