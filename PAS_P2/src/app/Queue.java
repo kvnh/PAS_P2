@@ -30,7 +30,7 @@ public class Queue {
 	/**
 	 * linked list to represent treatment rooms
 	 */
-	public static LinkedList<Patient> sortTreatment;
+	public static LinkedList<Patient> sortTreatment = new LinkedList<Patient>();
 
 	/**
 	 * linkedList to represent holding area
@@ -94,7 +94,7 @@ public class Queue {
 	 * method to sort queue by: 1-have they been in queue before 2-have they
 	 * waited for more than 25 mins 3-by triage status
 	 */
-	public static void sortQueue(LinkedList<Patient> queue) {
+	public static void sortQueue() {
 
 		Collections
 				.sort(queue, new PatientComparator(
@@ -240,17 +240,20 @@ public class Queue {
 						}
 
 						holdingArea.add(queue.getLast());
-						queue.remove(queue.getLast());
+						//queue.remove(queue.getLast());
 
 						// remove patient of lowest priority
 						inTreatment.remove(sortTreatment.getLast());
 						p.setPreviouslyInQueue(true);
 
 						// add patient back into queue
-						queue.addFirst(sortTreatment.getLast());
+						queue.add(sortTreatment.getLast());
 
 						// add patient to treatment queue
 						inTreatment.add(p);
+						
+						sortTreatment.remove(p);
+						queue.remove(p);
 
 					}
 				} else {
@@ -267,16 +270,19 @@ public class Queue {
 						}
 
 					}
-					queue.addFirst(sortTreatment.getLast());
+					queue.add(sortTreatment.getLast());
 					inTreatment.remove(sortTreatment.getLast());
 					p.setPreviouslyInQueue(true);
 					p.setTreatRoomNum(sortTreatment.getLast().getTreatRoomNum());
 					inTreatment.add(p);
+					sortTreatment.remove(p);
 					queue.remove(p);
 
 				
 
 				}
+			}else{
+				System.out.println("no emergency patients");
 			}
 		}
 	}

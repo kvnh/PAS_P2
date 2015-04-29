@@ -14,7 +14,7 @@ public class ControlQueue implements Runnable {
 		while ((it.hasNext()) || (Queue.queue.size() == 0)) {
 			System.out.println("in while");
 			// sort queue
-			Queue.sortQueue(Queue.queue);
+			Queue.sortQueue();
 
 			// about to take off element
 			if (Queue.queue.isEmpty()) {
