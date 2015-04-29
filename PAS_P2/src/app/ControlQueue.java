@@ -21,7 +21,8 @@ public class ControlQueue implements Runnable {
 				System.out.println("List Empty");
 			} else {
 				System.out.println("Add to treatment room");
-				Queue.addToTreatmentRoon();
+				Queue.addEmergencyPatient();
+				Queue.addToTreatmentRoom();
 				System.out.println("tracer");
 
 			}

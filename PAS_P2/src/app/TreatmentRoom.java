@@ -48,7 +48,7 @@ public class TreatmentRoom {
 	 */
 	public TreatmentRoom(boolean isAvailable, Patient patient) {
 		super();
-		this.setAvailable(isAvailable);
+		this.isAvailable = isAvailable;
 		this.patient = patient;
 	}
 
@@ -73,7 +73,7 @@ public class TreatmentRoom {
 	 *            the isAvailable to set
 	 */
 	public void setAvailable(boolean isAvailable) {
-		this.isAvailable = true;
+		this.isAvailable = isAvailable;
 	}
 
 	/**

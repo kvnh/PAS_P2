@@ -13,7 +13,7 @@ public class Timer implements Runnable {
 			
 			//check if patient has left treatment room
 			
-			if ()
+//			if ()
 			
 			try {
 				Thread.sleep(1000);

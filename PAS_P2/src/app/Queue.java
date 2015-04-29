@@ -28,6 +28,11 @@ public class Queue {
 	public static final LinkedList<Patient> inTreatment = new LinkedList<Patient>();
 
 	/**
+	 * linked list to represent treatment rooms
+	 */
+	public static LinkedList<Patient> sortTreatment;
+
+	/**
 	 * linkedList to represent holding area
 	 */
 	public static LinkedList<Patient> holdingArea = new LinkedList<Patient>();
@@ -102,7 +107,7 @@ public class Queue {
 	/**
 	 * method to check if treatment is free and remove from queue
 	 */
-	public static void addToTreatmentRoon() {
+	public static void addToTreatmentRoom() {
 		// find if a treatment room is free
 
 		for (int i = 0; i < TreatmentRoom.treat.length; i++) {
@@ -138,8 +143,8 @@ public class Queue {
 
 				// System.out.println("patient added" +
 				// queue.get(i).getFirstName())
-				inTreatment.getFirst().setTreatRoomNum(i);
-				TreatmentRoom.treat[i].setRoomNum(i);
+				inTreatment.getLast().setTreatRoomNum(i + 1);
+				// TreatmentRoom.treat[i].setRoomNum(i);
 				// set treatment room to unavailable
 				TreatmentRoom.treat[i].setAvailable(false);
 				System.out.println("treatment room busy");
@@ -185,26 +190,94 @@ public class Queue {
 	 */
 	public static void addEmergencyPatient() {
 
-		// sort patients in treatment room by triage status
-		Collections
-				.sort(inTreatment, new PatientComparator(
+		for (Patient p : queue) {
+
+			// check for emergency patients
+			if (p.getTriage().equals(Status.EMERGENCY)) {
+				System.out.println("emergency found " + p.getFirstName());
+				sortTreatment = new LinkedList<Patient>(inTreatment);
+				// check to see if there are any patients currently in treatment
+				// if (inTreatment.isEmpty()) {
+				//
+				// System.out.println("Treatment rooms are all empty");
+				//
+				// // add patient to treatment queue
+				// inTreatment.add(p);
+				//
+				// // add patient to first available treatment room
+				//
+				// for (int i = 0; i < TreatmentRoom.treat.length; i++) {
+				//
+				// if (TreatmentRoom.treat[i].isAvailable()) {
+				//
+				// TreatmentRoom.treat[i].setPatient(p);
+				// TreatmentRoom.treat[i].setAvailable(false);
+				// }
+				// }
+				//
+				// } else {
+
+				// sort patients in treatment room by triage status
+				Collections.sort(sortTreatment, new PatientComparator(
+						new PatientTriageComparator(),
 						new PatientWaitTimeComparator(),
-						new PatientTriageComparator()));
+						new PatientInQueueComparator()));
 
-		// remove patient of lowest priority
-		inTreatment.remove(inTreatment.getLast());
+				// if queue is at limit, remove last patient in queue to
+				// holding
+				// area
+				if (queue.size() == QUEUE_MAX) {
 
-		// add patient back into queue
-		queue.addFirst(inTreatment.getLast());
+					// add patient to treatment room
+					// find available treatment room
+					for (int i = 0; i < TreatmentRoom.treat.length; i++) {
 
-		// if queue is at limit, remove last patient in queue to holding area
-		if (queue.size() == QUEUE_MAX) {
+						if (TreatmentRoom.treat[i].isAvailable()) {
 
-			holdingArea.add(queue.getLast());
-			queue.remove(queue.getLast());
+							TreatmentRoom.treat[i].setPatient(p);
+							TreatmentRoom.treat[i].setAvailable(false);
 
+						}
+
+						holdingArea.add(queue.getLast());
+						queue.remove(queue.getLast());
+
+						// remove patient of lowest priority
+						inTreatment.remove(sortTreatment.getLast());
+						p.setPreviouslyInQueue(true);
+
+						// add patient back into queue
+						queue.addFirst(sortTreatment.getLast());
+
+						// add patient to treatment queue
+						inTreatment.add(p);
+
+					}
+				} else {
+					
+					// add patient to treatment room
+					// find available treatment room
+					for (int i = 0; i < TreatmentRoom.treat.length; i++) {
+
+						if (TreatmentRoom.treat[i].isAvailable()) {
+
+							TreatmentRoom.treat[i].setPatient(p);
+							TreatmentRoom.treat[i].setAvailable(false);
+
+						}
+
+					}
+					queue.addFirst(sortTreatment.getLast());
+					inTreatment.remove(sortTreatment.getLast());
+					p.setPreviouslyInQueue(true);
+					p.setTreatRoomNum(sortTreatment.getLast().getTreatRoomNum());
+					inTreatment.add(p);
+					queue.remove(p);
+
+				
+
+				}
+			}
 		}
-
 	}
-
 }
