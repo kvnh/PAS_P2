@@ -22,6 +22,8 @@ public class ControlQueue implements Runnable {
 				Queue.addEmergencyPatient();
 				Queue.addToTreatmentRoom();
 				System.out.println("tracer");
+				
+				TreatmentTimer.treatmentRoomTimer();
 
 			}
 			try {

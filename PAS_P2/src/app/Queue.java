@@ -3,6 +3,8 @@ package app;
 import java.util.Collections;
 import java.util.LinkedList;
 
+import org.joda.time.DateTime;
+
 import objects.Patient;
 import sortQueue.PatientComparator;
 import sortQueue.PatientInQueueComparator;
@@ -21,7 +23,7 @@ public class Queue {
 	 * linked list of patient objects to represent queue
 	 */
 	public static LinkedList<Patient> queue = new LinkedList<Patient>();
-	
+
 	public static LinkedList<Patient> tempQueue = new LinkedList<Patient>();
 
 	/**
@@ -98,8 +100,11 @@ public class Queue {
 	 */
 	public static void sortQueue() {
 
-		Collections.sort(queue, new PatientComparator(new PatientInQueueComparator(), new PatientWaitTimeComparator(),
-				new PatientTriageComparator()));
+		Collections
+				.sort(queue, new PatientComparator(
+						new PatientInQueueComparator(),
+						new PatientWaitTimeComparator(),
+						new PatientTriageComparator()));
 
 	}
 
@@ -111,31 +116,28 @@ public class Queue {
 
 		for (int i = 0; i < TreatmentRoom.treat.length; i++) {
 
-			if ((TreatmentRoom.treat[i].isAvailable()) && (inTreatment.size() <= 4) && (Queue.queue.size() != 0)
+			if ((TreatmentRoom.treat[i].isAvailable())
+					&& (inTreatment.size() <= 4)
+					&& (Queue.queue.size() != 0)
 					&& (Queue.queue.getFirst().getTriage() != Status.NOT_ASSESSED)) {
 
 				// add patient to inTreatment list for future sorting...
 				inTreatment.add(queue.getFirst());
 				System.out.println("taken to treatment queue");
 
-				for (Patient p : queue) {
-					System.out.println(p.getFirstName());
-				}
 				// remove patient from front of queue
 				queue.poll();
-				System.out.println("second queue");
-				for (Patient p : queue) {
-					System.out.println(p.getFirstName());
-				}
+				
 				System.out.println("removed from queue");
 
 				// if free, add patient to treatment room
 				TreatmentRoom.treat[i].setPatient(inTreatment.getFirst());
-				System.out.println("sent to treatment room" + TreatmentRoom.treat[i]);
+				System.out.println("sent to treatment room"
+						+ TreatmentRoom.treat[i]);
+				
+				//set time entered to current time
+				TreatmentRoom.treat[i].setTimeEntered(DateTime.now());
 
-				Timer timer = new Timer();
-				Thread t = new Thread(timer);
-				t.start();
 
 				// System.out.println("patient added" +
 				// queue.get(i).getFirstName())
@@ -162,21 +164,24 @@ public class Queue {
 	 * 
 	 * @param p
 	 */
-	public static void checkoutPatient(Patient p) {
+	public static void checkoutPatient() {
 
-		// inTreatment.remove(p);
-		//
-		// // cycle through treatment rooms
-		// for (int i = 0; i < treat.length; i++) {
-		//
-		// // find treatment room that patient is in...
-		// if (treat[i].getPatient() == p) {
-		//
-		// treat[i].setPatient(null);
-		// treat[i].setAvailable(true);
-		//
-		// }
+		for (Patient p : inTreatment) {
+			inTreatment.remove(p);
+			
 
+			// cycle through treatment rooms
+			for (int i = 0; i < TreatmentRoom.treat.length; i++) {
+
+				// find treatment room that patient is in...
+				if (TreatmentRoom.treat[i].getPatient() == p) {
+
+					TreatmentRoom.treat[i].setPatient(null);
+					TreatmentRoom.treat[i].setAvailable(true);
+
+				}
+			}
+		}
 	}
 
 	/**
@@ -187,7 +192,7 @@ public class Queue {
 	public static void addEmergencyPatient() {
 
 		sortTreatment = new LinkedList<Patient>(inTreatment);
-		
+
 		tempQueue = new LinkedList<Patient>(queue);
 
 		for (Patient p : tempQueue) {
@@ -198,8 +203,10 @@ public class Queue {
 				// sortTreatment = new LinkedList<Patient>(inTreatment);
 
 				// sort patients in treatment room by triage status
-				Collections.sort(sortTreatment, new PatientComparator(new PatientTriageComparator(),
-						new PatientWaitTimeComparator(), new PatientInQueueComparator()));
+				Collections.sort(sortTreatment, new PatientComparator(
+						new PatientTriageComparator(),
+						new PatientWaitTimeComparator(),
+						new PatientInQueueComparator()));
 
 				// if queue is at limit, remove last patient in queue to
 				// holding
@@ -261,9 +268,9 @@ public class Queue {
 			}
 		}
 
-//		ListIterator<Patient> it = queue.listIterator();
-//		if (it.hasNext()) {
-//			Patient item = it.next();
-//		}
+		// ListIterator<Patient> it = queue.listIterator();
+		// if (it.hasNext()) {
+		// Patient item = it.next();
+		// }
 	}
 }

@@ -1,5 +1,7 @@
 package app;
 
+import org.joda.time.DateTime;
+
 import objects.Patient;
 
 /**
@@ -26,11 +28,16 @@ public class TreatmentRoom {
 	 * patient that will occupy the treatment room
 	 */
 	private Patient patient;
-	
+
 	/**
 	 * Treatment room number
 	 */
 	private int roomNum;
+
+	/**
+	 * Date time to represent time patient enters teatment room
+	 */
+	private DateTime timeEntered;
 
 	/**
 	 * default constructor
@@ -99,10 +106,28 @@ public class TreatmentRoom {
 	}
 
 	/**
-	 * @param roomNum the roomNum to set
+	 * @param roomNum
+	 *            the roomNum to set
 	 */
 	public void setRoomNum(int roomNum) {
 		this.roomNum = roomNum;
+	}
+
+	/**
+	 * @return the timeEntered
+	 */
+	public DateTime getTimeEntered() {
+		return this.timeEntered;
+	}
+
+	/**
+	 * @param timeEntered
+	 *            the timeEntered to set
+	 */
+	public void setTimeEntered(DateTime timeEntered) {
+		
+		this.timeEntered = timeEntered;
+
 	}
 
 }
