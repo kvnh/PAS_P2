@@ -12,7 +12,7 @@ public class TreatmentTimer {
 
 				System.out.println(tr.getTimeEntered());
 
-				if ((tr.getTimeEntered().plusMinutes(1)).isBeforeNow()) {
+				if ((tr.getTimeEntered().plusMinutes(3)).isBeforeNow()) {
 
 					System.out.println("in if...");
 

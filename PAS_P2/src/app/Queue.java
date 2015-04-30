@@ -1,11 +1,8 @@
 package app;
 
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.LinkedList;
-
 import org.joda.time.DateTime;
-
 import objects.Patient;
 import sortQueue.PatientComparator;
 import sortQueue.PatientInQueueComparator;
@@ -56,31 +53,18 @@ public class Queue {
 	 */
 	public static void addToQueue(Patient patient) {
 
-		// check to see if queue already contains this patient to prevent
-		// duplicate addition
-		// if (queue.contains(patient)) {
-
-		// System.out.println("Patient is already in the Queue");
-
-		// }
-
 		// check to see if queue is full
 		if (queue.size() < QUEUE_MAX) {
 			// add patient if there is room in queue
 			queue.add(patient);
 			System.out.println("Patient added to queue");
 		} else {
-			// add patient from holding area to queue
-
-			// queue.addLast(holdingArea.getFirst());
-			// clear holding area
-			// holdingArea.removeFirst();
-
-			// queue may be full
-			System.out.println("Queue is full");
+			
 			// alert on call team and hospital manager
 			MailClient.contactOnCall();
 			MailClient.contactHospitalManager();
+			
+			onCallMax();
 		}
 
 	}
@@ -336,5 +320,56 @@ public class Queue {
 
 			}
 		}
+	}
+	
+	/**
+	 * method to handle on call team when queue is at limit
+	 */
+	public static void onCallMax(){
+		
+		
+		//get first patient in queue and add to holding area
+		holdingArea.add(queue.getFirst());
+		
+		
+		System.out.println("\t\t\t added to holding....");
+
+		
+		//remove first patient from queue
+		queue.poll();
+		
+		//create time entered holding area
+		DateTime enter = new DateTime();
+		enter = DateTime.now();
+		
+		if(enter.plusMinutes(1).isBeforeNow()){
+			
+			holdingArea.poll();
+			
+			System.out.println("\t\t\t\ton call removed....");
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 }
