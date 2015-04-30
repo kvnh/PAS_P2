@@ -168,12 +168,17 @@ public class Queue {
 	 */
 	public static void checkoutPatient(TreatmentRoom tr) {
 
-				inTreatment.remove();
-				tr.setPatient(null);
-				tr.setAvailable(true);
-				tr.setTimeEntered(DateTime.now().plusDays(30));
+		inTreatment.remove();
+		tr.setPatient(null);
+		tr.setAvailable(true);
+		tr.setTimeEntered(DateTime.now().plusDays(30));
 
-			}
+	}
+
+	public static void extend5mins(TreatmentRoom tr) {
+
+		tr.setTimeEntered(tr.getTimeEntered().minusMinutes(5));
+	}
 
 	/**
 	 * method to add emergency patient to treatment room and remove patient from
@@ -231,7 +236,7 @@ public class Queue {
 						sortTreatment.remove(p);
 						queue.remove(p);
 					}
-				}  else if (inTreatment.size() == 5) {
+				} else if (inTreatment.size() == 5) {
 					// add patient to treatment room
 					// find available treatment room
 					for (int i = 0; i < TreatmentRoom.treat.length; i++) {
@@ -250,7 +255,7 @@ public class Queue {
 					inTreatment.add(p);
 					sortTreatment.remove(p);
 					queue.remove(p);
-					
+
 				} else {
 
 					// add patient to treatment room
@@ -262,7 +267,7 @@ public class Queue {
 							TreatmentRoom.treat[i].setAvailable(false);
 						}
 					}
-					p.setTreatRoomNum(inTreatment.getLast().getTreatRoomNum()+1);
+					p.setTreatRoomNum(inTreatment.getLast().getTreatRoomNum() + 1);
 					inTreatment.add(p);
 					sortTreatment.remove(p);
 					queue.remove(p);

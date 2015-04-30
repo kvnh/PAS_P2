@@ -3,6 +3,9 @@ package controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import objects.Patient;
+import app.Queue;
+import app.TreatmentRoom;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,5 +36,12 @@ public class DoctorAssessmentPageController implements Initializable {
 		// hides current page
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
-
+	
+	@FXML
+	private void btnExtend5minsClick(ActionEvent event) throws Exception {
+		
+//		Patient p = 
+//		Queue.extend5mins();
+	}
+	
 }
