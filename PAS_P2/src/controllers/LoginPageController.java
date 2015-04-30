@@ -15,6 +15,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import businessLayer.LoginBAL;
@@ -140,10 +142,11 @@ public class LoginPageController implements Initializable {
 	 * @param event
 	 * @throws IOException
 	 */
-	@FXML
-	private void handlePasswordBox(ActionEvent event) throws IOException {
-
-	}
+	 @FXML
+	 void passwordBox_onKeyReleased(KeyEvent event) {
+	        if (event.getCode() == KeyCode.ENTER)
+	        	button.fireEvent(new ActionEvent());
+	    }
 
 	/**
 	 * Enter key event for username text field

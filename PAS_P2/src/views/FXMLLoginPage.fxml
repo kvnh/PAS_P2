@@ -15,7 +15,7 @@
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b9cbdb" height="353.0" layoutX="78.0" layoutY="110.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane" width="346.0" />
             <TextField fx:id="usernameBox" layoutX="151.0" layoutY="173.0" onAction="#handleUsernameBox" prefHeight="40.0" prefWidth="200.0" promptText="EmployeeID" />
-            <PasswordField fx:id="passwordBox" layoutX="151.0" layoutY="277.0" onAction="#handlePasswordBox" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
+            <PasswordField fx:id="passwordBox" layoutX="151.0" layoutY="277.0" onKeyReleased="#passwordBox_onKeyReleased" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
             <Button fx:id="button" layoutX="151.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="37.0" prefWidth="200.0" text="Login">
                <font>
                   <Font size="14.0" />
