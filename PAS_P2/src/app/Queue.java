@@ -26,6 +26,8 @@ public class Queue {
 
 	public static LinkedList<Patient> tempQueue = new LinkedList<Patient>();
 
+	public static LinkedList<Patient> checkOutQueue = new LinkedList<Patient>();
+
 	/**
 	 * linked list to represent treatment rooms
 	 */
@@ -100,11 +102,8 @@ public class Queue {
 	 */
 	public static void sortQueue() {
 
-		Collections
-				.sort(queue, new PatientComparator(
-						new PatientInQueueComparator(),
-						new PatientWaitTimeComparator(),
-						new PatientTriageComparator()));
+		Collections.sort(queue, new PatientComparator(new PatientInQueueComparator(), new PatientWaitTimeComparator(),
+				new PatientTriageComparator()));
 
 	}
 
@@ -116,9 +115,7 @@ public class Queue {
 
 		for (int i = 0; i < TreatmentRoom.treat.length; i++) {
 
-			if ((TreatmentRoom.treat[i].isAvailable())
-					&& (inTreatment.size() <= 4)
-					&& (Queue.queue.size() != 0)
+			if ((TreatmentRoom.treat[i].isAvailable()) && (inTreatment.size() <= 4) && (Queue.queue.size() != 0)
 					&& (Queue.queue.getFirst().getTriage() != Status.NOT_ASSESSED)) {
 
 				// add patient to inTreatment list for future sorting...
@@ -127,17 +124,15 @@ public class Queue {
 
 				// remove patient from front of queue
 				queue.poll();
-				
+
 				System.out.println("removed from queue");
 
 				// if free, add patient to treatment room
 				TreatmentRoom.treat[i].setPatient(inTreatment.getFirst());
-				System.out.println("sent to treatment room"
-						+ TreatmentRoom.treat[i]);
-				
-				//set time entered to current time
-				TreatmentRoom.treat[i].setTimeEntered(DateTime.now());
+				System.out.println("sent to treatment room" + TreatmentRoom.treat[i]);
 
+				// set time entered to current time
+				TreatmentRoom.treat[i].setTimeEntered(DateTime.now());
 
 				// System.out.println("patient added" +
 				// queue.get(i).getFirstName())
@@ -164,24 +159,27 @@ public class Queue {
 	 * 
 	 * @param p
 	 */
-	public static void checkoutPatient() {
+	public static void checkoutPatient(TreatmentRoom tr) {
 
-		for (Patient p : inTreatment) {
-			inTreatment.remove(p);
-			
+		checkOutQueue = new LinkedList<Patient>(inTreatment);
 
-			// cycle through treatment rooms
-			for (int i = 0; i < TreatmentRoom.treat.length; i++) {
+		for (Patient p : checkOutQueue) {
+			if (tr.getPatient() == p) {
 
-				// find treatment room that patient is in...
-				if (TreatmentRoom.treat[i].getPatient() == p) {
+				// cycle through treatment rooms
+				for (int i = 0; i < TreatmentRoom.treat.length; i++) {
 
-					TreatmentRoom.treat[i].setPatient(null);
-					TreatmentRoom.treat[i].setAvailable(true);
-
+					// find treatment room that patient is in...
+					if (TreatmentRoom.treat[i].getPatient() == p) {
+						// TreatmentRoom.treat[i].setPatient(null);
+						inTreatment.remove(p);
+						TreatmentRoom.treat[i].setAvailable(true);
+						TreatmentRoom.treat[i].setTimeEntered(DateTime.now().plusDays(30));
+					}
 				}
 			}
 		}
+
 	}
 
 	/**
@@ -203,10 +201,8 @@ public class Queue {
 				// sortTreatment = new LinkedList<Patient>(inTreatment);
 
 				// sort patients in treatment room by triage status
-				Collections.sort(sortTreatment, new PatientComparator(
-						new PatientTriageComparator(),
-						new PatientWaitTimeComparator(),
-						new PatientInQueueComparator()));
+				Collections.sort(sortTreatment, new PatientComparator(new PatientTriageComparator(),
+						new PatientWaitTimeComparator(), new PatientInQueueComparator()));
 
 				// if queue is at limit, remove last patient in queue to
 				// holding

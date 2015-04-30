@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 import app.Queue;
-import app.TreatmentRoom;
 import objects.Patient;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;

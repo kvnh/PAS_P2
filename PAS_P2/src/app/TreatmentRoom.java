@@ -63,6 +63,7 @@ public class TreatmentRoom {
 		for (int i = 0; i < treat.length; i++) {
 			treat[i] = new TreatmentRoom();
 			treat[i].setAvailable(true);
+			treat[i].setTimeEntered(DateTime.now().plusDays(30));
 		}
 	}
 
@@ -125,7 +126,7 @@ public class TreatmentRoom {
 	 *            the timeEntered to set
 	 */
 	public void setTimeEntered(DateTime timeEntered) {
-		
+
 		this.timeEntered = timeEntered;
 
 	}

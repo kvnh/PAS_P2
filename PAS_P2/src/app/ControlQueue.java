@@ -15,16 +15,15 @@ public class ControlQueue implements Runnable {
 			Queue.sortQueue();
 
 			// about to take off element
-			if (Queue.queue.isEmpty()) {
-				System.out.println("List Empty");
+			if (Queue.queue.isEmpty() && TreatmentRoom.treat.length == 0) {
+				System.out.println("Queue empty and treatmentRoom empty");
 			} else {
-				System.out.println("Add to treatment room");
+				System.out.println("Add emergency patient");
 				Queue.addEmergencyPatient();
+				System.out.println("Add to treatment room");
 				Queue.addToTreatmentRoom();
-				System.out.println("tracer");
-				
+				System.out.println("Begin treatment room timer");
 				TreatmentTimer.treatmentRoomTimer();
-
 			}
 			try {
 				Thread.sleep(2000);
