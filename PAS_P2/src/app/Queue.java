@@ -1,6 +1,7 @@
 package app;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.joda.time.DateTime;
@@ -167,21 +168,12 @@ public class Queue {
 	 */
 	public static void checkoutPatient(TreatmentRoom tr) {
 
-		checkOutQueue = new LinkedList<Patient>(inTreatment);
-
-		System.out.println("before checkout for...");
-		for (Patient p : checkOutQueue) {
-			System.out.println("entered checkout for...");
-			if (tr.getPatient() == p) {
-				System.out.println("detected patient to checkout");
-				inTreatment.remove(p);
+				inTreatment.removeFirst();
+				tr.setPatient(null);
 				tr.setAvailable(true);
 				tr.setTimeEntered(DateTime.now().plusDays(30));
 
 			}
-		}
-
-	}
 
 	/**
 	 * method to add emergency patient to treatment room and remove patient from

@@ -22,7 +22,7 @@ public class ControlQueue implements Runnable {
 				Queue.addToTreatmentRoom();
 				System.out.println("Add emergency patient");
 				Queue.addEmergencyPatient();
-				//TreatmentTimer.treatmentRoomTimer();
+				TreatmentTimer.treatmentRoomTimer();
 			}
 			try {
 				Thread.sleep(2000);
