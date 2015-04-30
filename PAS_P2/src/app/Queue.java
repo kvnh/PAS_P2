@@ -27,7 +27,7 @@ public class Queue {
 
 	public static LinkedList<Patient> tempQueue = new LinkedList<Patient>();
 
-	public static LinkedList<Patient> checkOutQueue = new LinkedList<Patient>();
+	public static LinkedList<Patient> onCall = new LinkedList<Patient>();
 
 	/**
 	 * linked list to represent treatment rooms
@@ -279,9 +279,62 @@ public class Queue {
 			}
 		}
 
-		// ListIterator<Patient> it = queue.listIterator();
-		// if (it.hasNext()) {
-		// Patient item = it.next();
-		// }
+	}
+
+	/**
+	 * method to move emergency patient from queue to on call area
+	 */
+
+	public static void onCallArea() {
+		
+		LinkedList<Patient> tempQ = new LinkedList<Patient>(queue);
+
+		int count = 0;
+
+		// search through patients in treatment
+		for (Patient p : inTreatment) {
+
+			if (p.getTriage().equals(Status.EMERGENCY)) {
+
+				count++;
+				
+
+				// all treatment rooms have emergency
+				if (count == 5) {
+
+					for (Patient p2 : tempQ) {
+
+						if (p2.getTriage().equals(Status.EMERGENCY) && (onCall.isEmpty())) {
+
+							// add patient to on call area
+							onCall.add(p2);
+							
+							System.out.println("\t\t\tTreated by on call.....");
+							// remove patient from queue
+							queue.remove(p2);
+
+						} else if ((!onCall.isEmpty()) && (p2.getTriage().equals(Status.EMERGENCY))) {
+							
+							System.out.println("\t\t\tDivert to another hospital...");
+							queue.remove(p2);
+							
+							//alert hospital manager
+							MailClient.contactHospitalManager();
+							System.out.println("\t\t\t BOOM!");
+							
+						}
+
+						else {
+							System.out.println("\t\t\thello....");
+						}
+
+					}
+
+				}else{
+					System.out.println("\t\t\tstraight through....");
+				}
+
+			}
+		}
 	}
 }

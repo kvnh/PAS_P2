@@ -18,6 +18,7 @@ public class ControlQueue implements Runnable {
 			if (Queue.queue.isEmpty() && TreatmentRoom.treat.length == 0) {
 				System.out.println("Queue empty and treatmentRoom empty");
 			} else {
+				Queue.onCallArea();
 				System.out.println("Add to treatment room");
 				Queue.addToTreatmentRoom();
 				System.out.println("Add emergency patient");
