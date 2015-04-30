@@ -148,17 +148,6 @@ public class LoginPageController implements Initializable {
 	        	button.fireEvent(new ActionEvent());
 	    }
 
-	/**
-	 * Enter key event for username text field
-	 * 
-	 * @param event
-	 * @throws IOException
-	 */
-	@FXML
-	private void handleUsernameBox(ActionEvent event) throws IOException {
-
-	}
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
