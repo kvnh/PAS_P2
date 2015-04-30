@@ -18,12 +18,11 @@ public class ControlQueue implements Runnable {
 			if (Queue.queue.isEmpty() && TreatmentRoom.treat.length == 0) {
 				System.out.println("Queue empty and treatmentRoom empty");
 			} else {
-				System.out.println("Add emergency patient");
-				Queue.addEmergencyPatient();
 				System.out.println("Add to treatment room");
 				Queue.addToTreatmentRoom();
-				System.out.println("Begin treatment room timer");
-				TreatmentTimer.treatmentRoomTimer();
+				System.out.println("Add emergency patient");
+				Queue.addEmergencyPatient();
+				//TreatmentTimer.treatmentRoomTimer();
 			}
 			try {
 				Thread.sleep(2000);

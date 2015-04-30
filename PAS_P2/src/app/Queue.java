@@ -102,8 +102,11 @@ public class Queue {
 	 */
 	public static void sortQueue() {
 
-		Collections.sort(queue, new PatientComparator(new PatientInQueueComparator(), new PatientWaitTimeComparator(),
-				new PatientTriageComparator()));
+		Collections
+				.sort(queue, new PatientComparator(
+						new PatientInQueueComparator(),
+						new PatientWaitTimeComparator(),
+						new PatientTriageComparator()));
 
 	}
 
@@ -115,7 +118,9 @@ public class Queue {
 
 		for (int i = 0; i < TreatmentRoom.treat.length; i++) {
 
-			if ((TreatmentRoom.treat[i].isAvailable()) && (inTreatment.size() <= 4) && (Queue.queue.size() != 0)
+			if ((TreatmentRoom.treat[i].isAvailable())
+					&& (inTreatment.size() <= 4)
+					&& (Queue.queue.size() != 0)
 					&& (Queue.queue.getFirst().getTriage() != Status.NOT_ASSESSED)) {
 
 				// add patient to inTreatment list for future sorting...
@@ -129,7 +134,8 @@ public class Queue {
 
 				// if free, add patient to treatment room
 				TreatmentRoom.treat[i].setPatient(inTreatment.getFirst());
-				System.out.println("sent to treatment room" + TreatmentRoom.treat[i]);
+				System.out.println("sent to treatment room"
+						+ TreatmentRoom.treat[i]);
 
 				// set time entered to current time
 				TreatmentRoom.treat[i].setTimeEntered(DateTime.now());
@@ -163,20 +169,15 @@ public class Queue {
 
 		checkOutQueue = new LinkedList<Patient>(inTreatment);
 
+		System.out.println("before checkout for...");
 		for (Patient p : checkOutQueue) {
+			System.out.println("entered checkout for...");
 			if (tr.getPatient() == p) {
+				System.out.println("detected patient to checkout");
+				inTreatment.remove(p);
+				tr.setAvailable(true);
+				tr.setTimeEntered(DateTime.now().plusDays(30));
 
-				// cycle through treatment rooms
-				for (int i = 0; i < TreatmentRoom.treat.length; i++) {
-
-					// find treatment room that patient is in...
-					if (TreatmentRoom.treat[i].getPatient() == p) {
-						// TreatmentRoom.treat[i].setPatient(null);
-						inTreatment.remove(p);
-						TreatmentRoom.treat[i].setAvailable(true);
-						TreatmentRoom.treat[i].setTimeEntered(DateTime.now().plusDays(30));
-					}
-				}
 			}
 		}
 
@@ -201,8 +202,10 @@ public class Queue {
 				// sortTreatment = new LinkedList<Patient>(inTreatment);
 
 				// sort patients in treatment room by triage status
-				Collections.sort(sortTreatment, new PatientComparator(new PatientTriageComparator(),
-						new PatientWaitTimeComparator(), new PatientInQueueComparator()));
+				Collections.sort(sortTreatment, new PatientComparator(
+						new PatientTriageComparator(),
+						new PatientWaitTimeComparator(),
+						new PatientInQueueComparator()));
 
 				// if queue is at limit, remove last patient in queue to
 				// holding
@@ -235,10 +238,8 @@ public class Queue {
 
 						sortTreatment.remove(p);
 						queue.remove(p);
-
 					}
-				} else {
-
+				}  else if (inTreatment.size() == 5) {
 					// add patient to treatment room
 					// find available treatment room
 					for (int i = 0; i < TreatmentRoom.treat.length; i++) {
@@ -257,8 +258,25 @@ public class Queue {
 					inTreatment.add(p);
 					sortTreatment.remove(p);
 					queue.remove(p);
+					
+				} else {
+
+					// add patient to treatment room
+					// find available treatment room
+					for (int i = 0; i < TreatmentRoom.treat.length; i++) {
+
+						if (TreatmentRoom.treat[i].isAvailable()) {
+							TreatmentRoom.treat[i].setPatient(p);
+							TreatmentRoom.treat[i].setAvailable(false);
+						}
+					}
+					p.setTreatRoomNum(inTreatment.getLast().getTreatRoomNum()+1);
+					inTreatment.add(p);
+					sortTreatment.remove(p);
+					queue.remove(p);
 
 				}
+
 			} else {
 				System.out.println("no emergency patients");
 			}
