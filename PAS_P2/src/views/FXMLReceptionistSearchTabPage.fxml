@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="665.0" prefWidth="1385.0" stylesheets="@../styles/ReceptionistHomepage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReceptionistSearchTabController">
+<AnchorPane prefHeight="665.0" prefWidth="1385.0" stylesheets="@../styles/ReceptionistHomepage1.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReceptionistSearchTabController">
 	<children>
 								<Pane prefHeight="615.0" prefWidth="1385.0" styleClass="background" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
 									<children>
@@ -51,6 +51,7 @@
 												<TextField fx:id="postCodeSearch" layoutX="74.0" layoutY="311.0" onKeyReleased="#Postcode_onKeyReleased" prefHeight="39.0" prefWidth="164.0" promptText="Postcode" />
 												<Button fx:id="searchButton" layoutX="74.0" layoutY="398.0" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="41.0" prefWidth="164.0" text="Search" />
             <Label layoutX="74.0" layoutY="152.0" styleClass="label-subtitle" text="Search Patient" />
+            <Label fx:id="lblStatusCode" layoutX="1110.0" layoutY="222.0" text="Label" />
 			</children>
 		</Pane>
 	</children>

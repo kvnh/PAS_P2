@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -21,6 +22,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import objects.Patient;
+import app.Queue;
 import businessLayer.ReceptionistBAL;
 
 public class ReceptionistSearchTabController implements Initializable {
@@ -52,12 +54,17 @@ public class ReceptionistSearchTabController implements Initializable {
 	@FXML
 	private Button searchButton;
 
+	@FXML
+	private Label lblStatusCode;
+
 	ReceptionistBAL bal = new ReceptionistBAL();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'FXMLReceptionistSearchTabPage.fxml'";
+
+		lblStatusCode.setText(Queue.checkStatusCode());
 
 		System.out
 				.println("initialising all columns in the receptionist's table view");
@@ -223,6 +230,12 @@ public class ReceptionistSearchTabController implements Initializable {
 		System.out.println("Operation done successfully");
 
 		stage.show();
+	}
+
+	public void updateStatusCode() {
+
+		lblStatusCode.setText(Queue.checkStatusCode());
+
 	}
 
 }

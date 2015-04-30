@@ -2,9 +2,12 @@ package app;
 
 import java.util.Collections;
 import java.util.LinkedList;
+
 import org.joda.time.DateTime;
+
 import objects.Patient;
 import sortQueue.PatientComparator;
+import sortQueue.PatientEntryComparator;
 import sortQueue.PatientInQueueComparator;
 import sortQueue.PatientTriageComparator;
 import sortQueue.PatientWaitTimeComparator;
@@ -57,6 +60,7 @@ public class Queue {
 		if (queue.size() < QUEUE_MAX) {
 			// add patient if there is room in queue
 			queue.add(patient);
+			Queue.checkStatusCode();
 			System.out.println("Patient added to queue");
 		} else if ((queue.getFirst().getTriage() != Status.NOT_ASSESSED)
 				&& (inTreatment.size() == 5)) {
@@ -66,7 +70,7 @@ public class Queue {
 
 			onCallMax();
 		} else {
-			
+
 		}
 
 	}
@@ -89,12 +93,31 @@ public class Queue {
 	 */
 	public static void sortQueue() {
 
-		Collections
-				.sort(queue, new PatientComparator(
-						new PatientInQueueComparator(),
-						new PatientWaitTimeComparator(),
-						new PatientTriageComparator()));
+		Collections.sort(queue, new PatientComparator(
+				new PatientInQueueComparator(),
+				new PatientWaitTimeComparator(), new PatientTriageComparator(),
+				new PatientEntryComparator()));
 
+		// initialise counter
+		int count = 0;
+
+		// go through queue
+		for (Patient p : queue) {
+
+			// if 2 patients have been waiting more than 30 mins, alert hospital
+			// manager
+			if (p.getTimeEntered().plusMinutes(30).isBeforeNow()) {
+
+				count++;
+
+				if (count == 2) {
+
+					// alert hospital manager
+					MailClient.contactHospitalManager();
+
+				}
+			}
+		}
 	}
 
 	/**
@@ -127,10 +150,8 @@ public class Queue {
 				// set time entered to current time
 				TreatmentRoom.treat[i].setTimeEntered(DateTime.now());
 
-				// System.out.println("patient added" +
-				// queue.get(i).getFirstName())
 				inTreatment.getLast().setTreatRoomNum(i + 1);
-				// TreatmentRoom.treat[i].setRoomNum(i);
+
 				// set treatment room to unavailable
 				TreatmentRoom.treat[i].setAvailable(false);
 				System.out.println("treatment room busy");
@@ -352,4 +373,31 @@ public class Queue {
 		}
 
 	}
+
+	public static String checkStatusCode() {
+
+		String statusCode = "1";
+
+		if (queue.size() > 0) {
+
+			Collections.sort(queue, new PatientComparator(
+					new PatientEntryComparator()));
+
+			DateTime d = queue.getFirst().getTimeEntered();
+
+			if (d.plusMinutes(1).isBeforeNow()) {
+				statusCode = "2";
+
+			} else if (d.plusMinutes(2).isBeforeNow()) {
+				statusCode = "3";
+
+			} else if (queue.size() == QUEUE_MAX) {
+				statusCode = "4";
+
+			}
+		}
+		return statusCode;
+
+	}
+
 }
