@@ -58,13 +58,15 @@ public class Queue {
 			// add patient if there is room in queue
 			queue.add(patient);
 			System.out.println("Patient added to queue");
-		} else {
-			
+		} else if ((queue.getFirst().getTriage() != Status.NOT_ASSESSED)
+				&& (inTreatment.size() == 5)) {
 			// alert on call team and hospital manager
 			MailClient.contactOnCall();
 			MailClient.contactHospitalManager();
-			
+
 			onCallMax();
+		} else {
+			
 		}
 
 	}
@@ -270,7 +272,7 @@ public class Queue {
 	 */
 
 	public static void onCallArea() {
-		
+
 		LinkedList<Patient> tempQ = new LinkedList<Patient>(queue);
 
 		int count = 0;
@@ -281,31 +283,33 @@ public class Queue {
 			if (p.getTriage().equals(Status.EMERGENCY)) {
 
 				count++;
-				
 
 				// all treatment rooms have emergency
 				if (count == 5) {
 
 					for (Patient p2 : tempQ) {
 
-						if (p2.getTriage().equals(Status.EMERGENCY) && (onCall.isEmpty())) {
+						if (p2.getTriage().equals(Status.EMERGENCY)
+								&& (onCall.isEmpty())) {
 
 							// add patient to on call area
 							onCall.add(p2);
-							
+
 							System.out.println("\t\t\tTreated by on call.....");
 							// remove patient from queue
 							queue.remove(p2);
 
-						} else if ((!onCall.isEmpty()) && (p2.getTriage().equals(Status.EMERGENCY))) {
-							
-							System.out.println("\t\t\tDivert to another hospital...");
+						} else if ((!onCall.isEmpty())
+								&& (p2.getTriage().equals(Status.EMERGENCY))) {
+
+							System.out
+									.println("\t\t\tDivert to another hospital...");
 							queue.remove(p2);
-							
-							//alert hospital manager
+
+							// alert hospital manager
 							MailClient.contactHospitalManager();
 							System.out.println("\t\t\t BOOM!");
-							
+
 						}
 
 						else {
@@ -314,62 +318,38 @@ public class Queue {
 
 					}
 
-				}else{
+				} else {
 					System.out.println("\t\t\tstraight through....");
 				}
 
 			}
 		}
 	}
-	
+
 	/**
 	 * method to handle on call team when queue is at limit
 	 */
-	public static void onCallMax(){
-		
-		
-		//get first patient in queue and add to holding area
+	public static void onCallMax() {
+
+		// get first patient in queue and add to holding area
 		holdingArea.add(queue.getFirst());
-		
-		
+
 		System.out.println("\t\t\t added to holding....");
 
-		
-		//remove first patient from queue
+		// remove first patient from queue
 		queue.poll();
-		
-		//create time entered holding area
+
+		// create time entered holding area
 		DateTime enter = new DateTime();
 		enter = DateTime.now();
-		
-		if(enter.plusMinutes(1).isBeforeNow()){
-			
+
+		if (enter.plusMinutes(1).isBeforeNow()) {
+
 			holdingArea.poll();
-			
+
 			System.out.println("\t\t\t\ton call removed....");
-			
+
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 	}
 }
