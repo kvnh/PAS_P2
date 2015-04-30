@@ -168,7 +168,7 @@ public class Queue {
 	 */
 	public static void checkoutPatient(TreatmentRoom tr) {
 
-				inTreatment.removeFirst();
+				inTreatment.remove();
 				tr.setPatient(null);
 				tr.setAvailable(true);
 				tr.setTimeEntered(DateTime.now().plusDays(30));
