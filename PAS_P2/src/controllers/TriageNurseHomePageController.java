@@ -49,18 +49,10 @@ public class TriageNurseHomePageController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'FXMLTriageNurseHomePage.fxml'";
 
-		nhsNumberColumn
-				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
-						"nhsNumber"));
-		firstNameColumn
-				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
-						"firstName"));
-		lastNameColumn
-				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
-						"lastName"));
-		triageAssessmentColumn
-				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
-						"triage"));
+		nhsNumberColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("nhsNumber"));
+		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
+		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
+		triageAssessmentColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("triage"));
 		// timeEnteredColumn.setCellValueFactory(new
 		// PropertyValueFactory<Patient, Date>("timeStamp"));
 
@@ -83,10 +75,8 @@ public class TriageNurseHomePageController implements Initializable {
 		Patient patient = tableView.getSelectionModel().getSelectedItem();
 
 		System.out.println("Changing to patient assessment screen");
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(
-				"/views/FXMLPatientAssessmentPage.fxml"));
-		loader.setLocation(getClass().getResource(
-				"/views/FXMLPatientAssessmentPage.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FXMLPatientAssessmentPage.fxml"));
+		loader.setLocation(getClass().getResource("/views/FXMLPatientAssessmentPage.fxml"));
 		loader.load();
 		Parent p = loader.getRoot();
 		Stage stage = new Stage();
