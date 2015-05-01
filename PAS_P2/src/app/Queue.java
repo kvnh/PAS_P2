@@ -268,10 +268,37 @@ public class Queue {
 						new PatientWaitTimeComparator(),
 						new PatientInQueueComparator()));
 
-				if (inTreatment.size() == MAX_TREATMENT_SIZE) {
+				// if queue is at limit, remove last patient in queue to
+				// holding area
+				if (queue.size() == QUEUE_MAX) {
 
-					// else if treatment is full, remove lowest triage patient
-					// and add emergency patient
+					// add patient to treatment room
+					// find available treatment room
+					for (int i = 0; i < TreatmentRoom.treat.length; i++) {
+
+						if (TreatmentRoom.treat[i].isAvailable()) {
+							TreatmentRoom.treat[i].setPatient(p);
+							TreatmentRoom.treat[i].setAvailable(false);
+						}
+
+						holdingArea.add(queue.getLast());
+						queue.remove(queue.getLast());
+
+						// remove patient of lowest priority
+						inTreatment.remove(sortTreatment.getLast());
+						p.setPreviouslyInQueue(true);
+
+						// add patient back into queue
+						queue.add(sortTreatment.getLast());
+
+						// add patient to treatment queue
+						inTreatment.add(p);
+
+						sortTreatment.remove(p);
+						queue.remove(p);
+					}
+				} else if (inTreatment.size() == MAX_TREATMENT_SIZE) {
+					// add patient to treatment room
 					// find available treatment room
 					for (int i = 0; i < TreatmentRoom.treat.length; i++) {
 
@@ -280,7 +307,6 @@ public class Queue {
 							TreatmentRoom.treat[i].setAvailable(false);
 						}
 					}
-					// add patient to queue
 					queue.add(sortTreatment.getLast());
 					inTreatment.remove(sortTreatment.getLast());
 					p.setPreviouslyInQueue(true);
@@ -290,8 +316,7 @@ public class Queue {
 					queue.remove(p);
 
 				} else {
-					// else if treatment room is free - emergency patient can go
-					// straight in
+
 					// add patient to treatment room
 					// find available treatment room
 					for (int i = 0; i < TreatmentRoom.treat.length; i++) {
@@ -331,19 +356,25 @@ public class Queue {
 				// check if all treatment rooms have EMERGENCY patients
 				if (count == MAX_TREATMENT_SIZE) {
 					for (Patient p2 : tempQ) {
-						if ((onCall.isEmpty())) {
+						if ((onCall.isEmpty())
+								&& (p2.getTriage().equals(Status.EMERGENCY))) {
 							// add patient to on call area
 							onCall.add(p2);
 							System.out.println("\t\t\tTreated by on call.....");
 							// remove patient from queue
 							queue.remove(p2);
-						} else {
+						} else if ((!onCall.isEmpty())
+								&& (p2.getTriage().equals(Status.EMERGENCY))) {
 							System.out
-									.println("\t\t\tDivert to another hospital...");
+									.println("\t\t\tdivert to another hospital");
 							queue.remove(p2);
 							// alert hospital manager
 							MailClient.contactHospitalManager();
+
+						} else {
+
 						}
+
 					}
 
 				} else {
