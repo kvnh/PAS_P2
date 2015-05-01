@@ -235,6 +235,9 @@ public class ReceptionistSearchTabController implements Initializable {
 		stage.show();
 	}
 
+	/**
+	 * Method to update Status Code on receptionist page
+	 */
 	public void updateStatusCode() {
 
 		lblStatusCode.setText(Queue.checkStatusCode());
