@@ -8,53 +8,65 @@ import javafx.scene.control.TableView;
 import objects.Patient;
 
 /**
- * 
- * @author Andrew Walmsley
- * Class handels the interactions between the ReceptionistSearchTabController and the ReceptionDA
+ * @author Andrew Walmsley Class handles the interactions between the
+ *         ReceptionistSearchTabController and the ReceptionDA
  */
 public class ReceptionistBAL {
-	
+
 	/**
-	 * Retrieves data from the back end when the search button is selected
+	 * Returns data from the back end when the search button is selected
+	 * 
 	 * @param firstNameValue
 	 * @param lastNameValue
 	 * @param postCodeValue
 	 * @return
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
-	public ObservableList<Patient> searchButtonBAL(String firstNameValue, String lastNameValue, String postCodeValue) throws SQLException{
-		return ReceptionDA.searchButton(firstNameValue, lastNameValue, postCodeValue);
+	public ObservableList<Patient> searchButtonBAL(String firstNameValue,
+			String lastNameValue, String postCodeValue) throws SQLException {
+		return ReceptionDA.searchButton(firstNameValue, lastNameValue,
+				postCodeValue);
 	}
-	
-	public ObservableList<Patient> selectAllBAL() throws SQLException{
+
+	/**
+	 * Method to pass patient details from Business Access Layer to Receptionist
+	 * Data Access Layer
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
+	public ObservableList<Patient> selectAllBAL() throws SQLException {
 		return ReceptionDA.selectAllData();
 	}
-	
-	
+
 	/**
 	 * Retrieves patient data that matches with the entered postcode.
+	 * 
 	 * @param firstNameValue
 	 * @param lastNameValue
 	 * @param postCodeValue
 	 * @return
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
-	public ObservableList<Patient>  postCodeSearchBAL(String firstNameValue, String lastNameValue, String postCodeValue) throws SQLException{
-		return ReceptionDA.postCodeSearch(firstNameValue, lastNameValue, postCodeValue);	
+	public ObservableList<Patient> postCodeSearchBAL(String firstNameValue,
+			String lastNameValue, String postCodeValue) throws SQLException {
+		return ReceptionDA.postCodeSearch(firstNameValue, lastNameValue,
+				postCodeValue);
 	}
-	
+
 	/**
-	 * Clear all data from the visible table
+	 * Clear all data from the table
 	 */
-	public boolean clearTableBAL(){
+	public boolean clearTableBAL() {
 		return ReceptionDA.clearTable();
 	}
-	
+
 	/**
 	 * Retrieve the patient info when the search starts
-	 * @throws SQLException 
+	 * 
+	 * @throws SQLException
 	 */
-	public Patient patientInfoBAL(TableView<?> tableView) throws SQLException{
+	public Patient patientInfoBAL(TableView<?> tableView) throws SQLException {
 		return ReceptionDA.retrievePatientInfo(tableView);
 	}
 }
