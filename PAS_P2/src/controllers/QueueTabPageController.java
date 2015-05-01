@@ -27,6 +27,9 @@ public class QueueTabPageController implements Initializable {
 
 	@FXML
 	private TableView<Patient> tableView;
+	
+	@FXML
+	private TableColumn<Patient, String> NHSNumberColumn;
 
 	@FXML
 	private TableColumn<Patient, String> firstNameColumn;
@@ -52,10 +55,20 @@ public class QueueTabPageController implements Initializable {
 
 		assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'FXMLQueueTabPage.fxml'";
 
-		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
-		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
-		timeEnteredColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("timeEnteredString"));
-		triageAssessmentColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("triage"));
+		NHSNumberColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>(
+				"nhsNumber"));
+		firstNameColumn
+				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
+						"firstName"));
+		lastNameColumn
+				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
+						"lastName"));
+		timeEnteredColumn
+				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
+						"timeEnteredString"));
+		triageAssessmentColumn
+				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
+						"triage"));
 
 		// display the current queue to screen when opening page each time
 		displayQueue(Queue.queue);
@@ -64,6 +77,7 @@ public class QueueTabPageController implements Initializable {
 
 	/**
 	 * button to send user back to login screen
+	 * 
 	 * @param event
 	 * @throws Exception
 	 */
@@ -83,6 +97,7 @@ public class QueueTabPageController implements Initializable {
 
 	/**
 	 * Refresh button will update to screen the latest patient queue
+	 * 
 	 * @param event
 	 * @throws IOException
 	 */
@@ -93,7 +108,9 @@ public class QueueTabPageController implements Initializable {
 	}
 
 	/**
-	 * method to populate the latest queue information in a table view for display
+	 * method to populate the latest queue information in a table view for
+	 * display
+	 * 
 	 * @param queue
 	 */
 	public void displayQueue(LinkedList<Patient> queue) {
@@ -105,6 +122,7 @@ public class QueueTabPageController implements Initializable {
 					// update your ObservableList
 					tableData = FXCollections.observableArrayList(queue);
 					tableView.setItems(tableData);
+					Queue.checkStatusCode();
 
 					// hide the columns that are not updating
 					// reshow the columns

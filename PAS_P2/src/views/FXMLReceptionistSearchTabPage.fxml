@@ -40,17 +40,15 @@
 											</columns>
 										</TableView>
 										<Button layoutX="1110.0" layoutY="146.0" mnemonicParsing="false" onAction="#btnPatientInfo" prefHeight="39.0" prefWidth="145.0" text="Patient Info" />
-										<Button layoutX="1106.0" layoutY="561.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="153.0" styleClass="button-emergency" text="EMERGENCY">
-											<font>
-												<Font size="12.0" />
-											</font>
-										</Button>
 										<Button layoutX="74.0" layoutY="459.0" mnemonicParsing="false" onAction="#clearButtonAction" prefHeight="41.0" prefWidth="164.0" text="Clear" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72b2ee" height="58.0" layoutX="1111.0" layoutY="206.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane2" width="153.0" />
 												<TextField fx:id="firstNameSearch" layoutX="74.0" layoutY="183.0" onKeyReleased="#firstName_onKeyReleased" prefHeight="39.0" prefWidth="164.0" promptText="First Name" />
 												<TextField fx:id="lastNameSearch" layoutX="74.0" layoutY="248.0" onKeyReleased="#lastName_onKeyReleased" prefHeight="39.0" prefWidth="164.0" promptText="Last Name" />
 												<TextField fx:id="postCodeSearch" layoutX="74.0" layoutY="311.0" onKeyReleased="#Postcode_onKeyReleased" prefHeight="39.0" prefWidth="164.0" promptText="Postcode" />
 												<Button fx:id="searchButton" layoutX="74.0" layoutY="398.0" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="41.0" prefWidth="164.0" text="Search" />
             <Label layoutX="74.0" layoutY="152.0" styleClass="label-subtitle" text="Search Patient" />
+            <Label fx:id="lblStatusCode" layoutX="1217.0" layoutY="223.0" text="Label" />
+            <Label layoutX="1118.0" layoutY="223.0" text="Status Code:" />
 			</children>
 		</Pane>
 	</children>

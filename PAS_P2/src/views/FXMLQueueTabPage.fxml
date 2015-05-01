@@ -15,12 +15,13 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <TableView fx:id="tableView" layoutX="334.0" layoutY="198.0" prefHeight="384.0" prefWidth="718.0">
+      <TableView fx:id="tableView" layoutX="281.0" layoutY="201.0" prefHeight="384.0" prefWidth="825.0">
         <columns>
-          <TableColumn fx:id="firstNameColumn" prefWidth="122.0" text="First name" />
-          <TableColumn fx:id="lastNameColumn" prefWidth="144.0" text="Last name" />
-            <TableColumn fx:id="timeEnteredColumn" prefWidth="243.0" text="Time Entered" />
-            <TableColumn fx:id="triageAssessmentColumn" prefWidth="204.0" text="Triage Status" />
+            <TableColumn fx:id="NHSNumberColumn" prefWidth="129.0" text="NHS Number" />
+          <TableColumn fx:id="firstNameColumn" prefWidth="135.0" text="First name" />
+          <TableColumn fx:id="lastNameColumn" prefWidth="153.0" text="Last name" />
+            <TableColumn fx:id="timeEnteredColumn" prefWidth="188.0" text="Time Entered" />
+            <TableColumn fx:id="triageAssessmentColumn" prefWidth="223.0" text="Triage Status" />
         </columns>
       </TableView>
       <Button fx:id="btnRefreshQueue" layoutX="334.0" layoutY="133.0" mnemonicParsing="false" onAction="#btnRefreshQueueClick" text="Refresh Queue" />
