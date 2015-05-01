@@ -40,10 +40,10 @@ public class TreatmentTimer {
 	 * 
 	 * @param t
 	 */
-//	public static void extendTreatment(TreatmentRoom t) {
-//
-//		// increase kick out time by 5 minutes
-//		t.setKickout(t.getKickout().minusMinutes(2));
-//
-//	}
+	public static void extendTreatment(TreatmentRoom t) {
+
+		// increase kick out time by 5 minutes
+		t.setKickout(t.getKickout().minusMinutes(2));
+
+	}
 }
