@@ -2,8 +2,12 @@ package app;
 
 public class TreatmentTimer {
 
+	/**
+	 * method to remove patient from treatment room after a certain time period
+	 */
 	public static void treatmentRoomTimer() {
 
+		// check that there are patient(s) in treatment
 		if (Queue.inTreatment.size() != 0) {
 
 			for (TreatmentRoom tr : TreatmentRoom.treat) {
@@ -12,10 +16,12 @@ public class TreatmentTimer {
 
 				System.out.println(tr.getTimeEntered());
 
-				if ((tr.getTimeEntered().plusMinutes(3)).isBeforeNow()) {
+				// check times....
+				if ((tr.getKickout().isBeforeNow())) {
 
 					System.out.println("in if...");
 
+					// remove patient
 					Queue.checkoutPatient(tr);
 
 				} else {
@@ -28,4 +34,16 @@ public class TreatmentTimer {
 		}
 		System.out.println("leaving treatment timer...");
 	}
+
+	/**
+	 * method to extend treatment time by 5 minutes
+	 * 
+	 * @param t
+	 */
+//	public static void extendTreatment(TreatmentRoom t) {
+//
+//		// increase kick out time by 5 minutes
+//		t.setKickout(t.getKickout().minusMinutes(2));
+//
+//	}
 }

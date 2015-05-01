@@ -35,9 +35,14 @@ public class TreatmentRoom {
 	private int roomNum;
 
 	/**
-	 * Date time to represent time patient enters teatment room
+	 * Date time to represent time patient enters treatment room
 	 */
 	private DateTime timeEntered;
+
+	/**
+	 * Date time to represent kickout time
+	 */
+	private DateTime kickout;
 
 	/**
 	 * default constructor
@@ -129,6 +134,25 @@ public class TreatmentRoom {
 
 		this.timeEntered = timeEntered;
 
+	}
+
+	/**
+	 * @return the extension
+	 */
+	public DateTime getKickout() {
+		
+		
+		return this.getTimeEntered().plusMinutes(1);
+	}
+
+	/**
+	 * @param extension
+	 *            the extension to set
+	 */
+	public void setKickout(DateTime kickout) {
+	
+		
+		this.kickout = kickout;
 	}
 
 }
