@@ -9,34 +9,116 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="534.0" prefWidth="521.0" stylesheets="@../styles/LoginPage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginPageController">
-   <children>
-      <Pane layoutX="14.0" prefHeight="535.0" prefWidth="521.0" AnchorPane.bottomAnchor="-34.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b9cbdb" height="353.0" layoutX="78.0" layoutY="110.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane" width="346.0" />
-            <TextField fx:id="usernameBox" layoutX="151.0" layoutY="173.0" prefHeight="40.0" prefWidth="200.0" promptText="EmployeeID" />
-            <PasswordField fx:id="passwordBox" layoutX="151.0" layoutY="277.0" onKeyReleased="#passwordBox_onKeyReleased" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
-            <Button fx:id="button" layoutX="151.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="37.0" prefWidth="200.0" text="Login">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Label layoutX="99.0" layoutY="110.0" prefHeight="63.0" prefWidth="162.0" styleClass="label-title" text="Login" textFill="#2d0bee">
-               <font>
-                  <Font size="39.0" />
-               </font>
-            </Label>
-            <Label fx:id="invalidLabel" layoutX="152.0" layoutY="323.0" prefHeight="81.0" prefWidth="261.0" styleClass="label-message" />
-            <Pane prefHeight="81.0" prefWidth="200.0" />
-            <ImageView id="NHS_logo" fitHeight="80.0" fitWidth="200.0" layoutX="147.0" layoutY="14.0">
-               <image>
-                  <Image url="@../image/NHS-RGB.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="370.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="370.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="attemptLabel" layoutX="272.0" layoutY="126.0" prefHeight="31.0" prefWidth="138.0" styleClass="label-message" />
-         </children>
-      </Pane>
-   </children>
+<AnchorPane
+	prefHeight="534.0"
+	prefWidth="521.0"
+	stylesheets="@../styles/LoginPage1.css"
+	xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controllers.LoginPageController">
+	<children>
+		<Pane
+			layoutX="14.0"
+			prefHeight="535.0"
+			prefWidth="521.0"
+			AnchorPane.bottomAnchor="-34.0"
+			AnchorPane.leftAnchor="0.0"
+			AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0">
+			<children>
+				<Rectangle
+					arcHeight="5.0"
+					arcWidth="5.0"
+					fill="#b9cbdb"
+					height="353.0"
+					layoutX="78.0"
+					layoutY="110.0"
+					stroke="WHITE"
+					strokeType="INSIDE"
+					styleClass="rectangle-pane"
+					width="346.0" />
+				<TextField
+					fx:id="usernameBox"
+					layoutX="151.0"
+					layoutY="173.0"
+					prefHeight="40.0"
+					prefWidth="200.0"
+					promptText="EmployeeID" />
+				<PasswordField
+					fx:id="passwordBox"
+					layoutX="151.0"
+					layoutY="277.0"
+					onKeyReleased="#passwordBox_onKeyReleased"
+					prefHeight="40.0"
+					prefWidth="200.0"
+					promptText="Password" />
+				<Button
+					fx:id="button"
+					layoutX="151.0"
+					layoutY="404.0"
+					mnemonicParsing="false"
+					onAction="#handleButtonAction"
+					prefHeight="37.0"
+					prefWidth="200.0"
+					text="Login">
+					<font>
+						<Font size="14.0" />
+					</font>
+				</Button>
+				<Label
+					layoutX="99.0"
+					layoutY="110.0"
+					prefHeight="63.0"
+					prefWidth="162.0"
+					styleClass="label-title"
+					text="Login"
+					textFill="#2d0bee">
+					<font>
+						<Font size="39.0" />
+					</font>
+				</Label>
+				<Label
+					fx:id="invalidLabel"
+					layoutX="152.0"
+					layoutY="323.0"
+					prefHeight="81.0"
+					prefWidth="261.0"
+					styleClass="label-message" />
+				<Pane
+					prefHeight="81.0"
+					prefWidth="200.0" />
+				<ImageView
+					id="NHS_logo"
+					fitHeight="80.0"
+					fitWidth="200.0"
+					layoutX="147.0"
+					layoutY="14.0">
+					<image>
+						<Image url="@../image/NHS-RGB.jpg" />
+					</image>
+				</ImageView>
+				<ImageView
+					fitHeight="40.0"
+					fitWidth="40.0"
+					layoutX="370.0"
+					layoutY="173.0"
+					pickOnBounds="true"
+					preserveRatio="true" />
+				<ImageView
+					fitHeight="40.0"
+					fitWidth="40.0"
+					layoutX="370.0"
+					layoutY="277.0"
+					pickOnBounds="true"
+					preserveRatio="true" />
+				<Label
+					fx:id="attemptLabel"
+					layoutX="272.0"
+					layoutY="126.0"
+					prefHeight="31.0"
+					prefWidth="138.0"
+					styleClass="label-message" />
+			</children>
+		</Pane>
+	</children>
 </AnchorPane>

@@ -7,47 +7,178 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../styles/PatientAssessmentPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PatientAssessmentPageController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72b2ee" height="296.0" layoutX="503.0" layoutY="64.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane2" width="179.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="49.0" layoutX="20.0" layoutY="7.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane2" width="660.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72b2ee" height="409.0" layoutX="20.0" layoutY="63.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane2" width="190.0" />
-      <Label fx:id="nhsNumberLabel" layoutX="32.0" layoutY="139.0" text="Label" />
-      <Label fx:id="titleLabel" layoutX="34.0" layoutY="203.0" text="Label" />
-      <Label fx:id="allergiesLabel" layoutX="34.0" layoutY="340.0" text="allergiesLabel" />
-      <Label layoutX="34.0" layoutY="315.0" text="Allergies:" />
-      <Label fx:id="bloodTypeLabel" layoutX="34.0" layoutY="263.0" text="bloodTypeLabel" />
-      <Label layoutX="34.0" layoutY="239.0" text="Blood type:" />
-      <Label layoutX="34.0" layoutY="181.0" text="Name:" />
-      <Label layoutX="33.0" layoutY="114.0" text="NHS Number:" />
-      <Label fx:id="lastNameLabel" layoutX="134.0" layoutY="203.0" text="Label" />
-      <Label fx:id="firstNameLabel" layoutX="87.0" layoutY="203.0" text="Label" />
-      <Button layoutX="437.0" layoutY="425.0" mnemonicParsing="false" onAction="#btnConfirm" styleClass="confirm-button" text="Confirm" />
-      <Button layoutX="579.0" layoutY="425.0" mnemonicParsing="false" onAction="#btnCancel" styleClass="cancel-button" text="Cancel" />
-      <Label layoutX="237.0" layoutY="12.0" styleClass="label-title" text="Patient Assessment" />
-      <TextArea layoutX="231.0" layoutY="104.0" prefHeight="296.0" prefWidth="248.0" promptText="Patient symptoms">
-         <font>
-            <Font size="14.0" />
-         </font></TextArea>
-      <VBox layoutX="517.0" layoutY="106.0" prefHeight="224.0" prefWidth="150.0" spacing="30.0">
-         <children>
-            <RadioButton fx:id="emergencyRButton" mnemonicParsing="false" text="EMERGENCY" />
-            <RadioButton fx:id="urgentRButton" mnemonicParsing="false" text="URGENT" />
-            <RadioButton fx:id="semiUrgentRButton" mnemonicParsing="false" text="SEMI-URGENT" />
-            <RadioButton fx:id="nonUrgentRButton" mnemonicParsing="false" text="NON-URGENT" />
-            <RadioButton fx:id="notAssessedRButton" mnemonicParsing="false" text="NOT-ASSESSED" />
-         </children>
-      </VBox>
-      <Label layoutX="509.0" layoutY="70.0" styleClass="label-subTitle1" text="Triage Category">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="35.0" layoutY="76.0" styleClass="label-subTitle1" text="Patient">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="231.0" layoutY="70.0" text="Patient Symptoms" />
-   </children>
+<AnchorPane
+	prefHeight="500.0"
+	prefWidth="700.0"
+	stylesheets="@../styles/PatientAssessmentPage.css"
+	xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controllers.PatientAssessmentPageController">
+	<children>
+		<Rectangle
+			arcHeight="5.0"
+			arcWidth="5.0"
+			fill="#72b2ee"
+			height="296.0"
+			layoutX="503.0"
+			layoutY="64.0"
+			stroke="WHITE"
+			strokeType="INSIDE"
+			styleClass="rectangle-pane2"
+			width="179.0" />
+		<Rectangle
+			arcHeight="5.0"
+			arcWidth="5.0"
+			fill="#517da6"
+			height="49.0"
+			layoutX="20.0"
+			layoutY="7.0"
+			stroke="WHITE"
+			strokeType="INSIDE"
+			styleClass="rectangle-pane2"
+			width="660.0"
+			AnchorPane.leftAnchor="20.0"
+			AnchorPane.rightAnchor="20.0" />
+		<Rectangle
+			arcHeight="5.0"
+			arcWidth="5.0"
+			fill="#72b2ee"
+			height="409.0"
+			layoutX="20.0"
+			layoutY="63.0"
+			stroke="WHITE"
+			strokeType="INSIDE"
+			styleClass="rectangle-pane2"
+			width="190.0" />
+		<Label
+			fx:id="nhsNumberLabel"
+			layoutX="32.0"
+			layoutY="139.0"
+			text="Label" />
+		<Label
+			fx:id="titleLabel"
+			layoutX="34.0"
+			layoutY="203.0"
+			text="Label" />
+		<Label
+			fx:id="allergiesLabel"
+			layoutX="34.0"
+			layoutY="340.0"
+			text="allergiesLabel" />
+		<Label
+			layoutX="34.0"
+			layoutY="315.0"
+			text="Allergies:" />
+		<Label
+			fx:id="bloodTypeLabel"
+			layoutX="34.0"
+			layoutY="263.0"
+			text="bloodTypeLabel" />
+		<Label
+			layoutX="34.0"
+			layoutY="239.0"
+			text="Blood type:" />
+		<Label
+			layoutX="34.0"
+			layoutY="181.0"
+			text="Name:" />
+		<Label
+			layoutX="33.0"
+			layoutY="114.0"
+			text="NHS Number:" />
+		<Label
+			fx:id="lastNameLabel"
+			layoutX="134.0"
+			layoutY="203.0"
+			text="Label" />
+		<Label
+			fx:id="firstNameLabel"
+			layoutX="87.0"
+			layoutY="203.0"
+			text="Label" />
+		<Button
+			layoutX="437.0"
+			layoutY="425.0"
+			mnemonicParsing="false"
+			onAction="#btnConfirm"
+			styleClass="confirm-button"
+			text="Confirm" />
+		<Button
+			layoutX="579.0"
+			layoutY="425.0"
+			mnemonicParsing="false"
+			onAction="#btnCancel"
+			styleClass="cancel-button"
+			text="Cancel" />
+		<Label
+			layoutX="237.0"
+			layoutY="12.0"
+			styleClass="label-title"
+			text="Patient Assessment" />
+		<TextArea
+			layoutX="231.0"
+			layoutY="104.0"
+			prefHeight="296.0"
+			prefWidth="248.0"
+			promptText="Patient symptoms">
+			<font>
+				<Font size="14.0" />
+			</font>
+		</TextArea>
+		<VBox
+			layoutX="517.0"
+			layoutY="106.0"
+			prefHeight="224.0"
+			prefWidth="150.0"
+			spacing="30.0">
+			<children>
+				<RadioButton
+					fx:id="emergencyRButton"
+					mnemonicParsing="false"
+					text="EMERGENCY" />
+				<RadioButton
+					fx:id="urgentRButton"
+					mnemonicParsing="false"
+					text="URGENT" />
+				<RadioButton
+					fx:id="semiUrgentRButton"
+					mnemonicParsing="false"
+					text="SEMI-URGENT" />
+				<RadioButton
+					fx:id="nonUrgentRButton"
+					mnemonicParsing="false"
+					text="NON-URGENT" />
+				<RadioButton
+					fx:id="notAssessedRButton"
+					mnemonicParsing="false"
+					text="NOT-ASSESSED" />
+			</children>
+		</VBox>
+		<Label
+			layoutX="509.0"
+			layoutY="70.0"
+			styleClass="label-subTitle1"
+			text="Triage Category">
+			<font>
+				<Font
+					name="System Bold"
+					size="15.0" />
+			</font>
+		</Label>
+		<Label
+			layoutX="35.0"
+			layoutY="76.0"
+			styleClass="label-subTitle1"
+			text="Patient">
+			<font>
+				<Font
+					name="System Bold"
+					size="15.0" />
+			</font>
+		</Label>
+		<Label
+			layoutX="231.0"
+			layoutY="70.0"
+			text="Patient Symptoms" />
+	</children>
 </AnchorPane>

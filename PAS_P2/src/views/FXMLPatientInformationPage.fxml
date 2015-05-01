@@ -6,23 +6,104 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="420.0" prefWidth="400.0" stylesheets="@../styles/PatientInformationPage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PatientInfoController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="69.0" layoutX="14.0" layoutY="8.0" stroke="WHITE" strokeType="INSIDE" width="423.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-      <Label layoutX="156.0" layoutY="27.0" styleClass="label-Stitle" text="Patient Information" />
-      <Button layoutX="284.0" layoutY="379.0" mnemonicParsing="false" onAction="#btnCancel" styleClass="cancel-button" text="Cancel" />
-      <Button layoutX="102.0" layoutY="379.0" mnemonicParsing="false" onAction="#btnConfirmClick" styleClass="confirm-button" text="Confirm" />
-      <Label fx:id="firstNameLabel" layoutX="94.0" layoutY="188.0" text="Label" />
-      <Label fx:id="lastNameLabel" layoutX="137.0" layoutY="188.0" text="Label" />
-      <Label layoutX="43.0" layoutY="91.0" styleClass="label-subTitle" text="NHS Number:" />
-      <Label layoutX="43.0" layoutY="159.0" styleClass="label-subTitle" text="Name:" />
-      <Label layoutX="43.0" layoutY="225.0" styleClass="label-subTitle" text="Address:" />
-      <Label fx:id="streetNumberLabel" layoutX="45.0" layoutY="250.0" text="streetNumberLabel" />
-      <Label fx:id="streetNameLabel" layoutX="46.0" layoutY="275.0" text="streetNameLabel" />
-      <Label fx:id="cityLabel" layoutX="44.0" layoutY="300.0" text="cityLabel" />
-      <Label fx:id="postCodeLabel" layoutX="46.0" layoutY="326.0" text="postCodeLabel" />
-      <Label fx:id="titleLabel" layoutX="43.0" layoutY="188.0" text="Label" />
-      <Label fx:id="nhsNumberLabel" layoutX="43.0" layoutY="123.0" text="Label" />
-      <Button layoutX="324.0" layoutY="84.0" mnemonicParsing="false" text="Edit details" />
-   </children>
+<AnchorPane
+	prefHeight="420.0"
+	prefWidth="400.0"
+	stylesheets="@../styles/PatientInformationPage1.css"
+	xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controllers.PatientInfoController">
+	<children>
+		<Rectangle
+			arcHeight="5.0"
+			arcWidth="5.0"
+			fill="#517da6"
+			height="69.0"
+			layoutX="14.0"
+			layoutY="8.0"
+			stroke="WHITE"
+			strokeType="INSIDE"
+			width="423.0"
+			AnchorPane.leftAnchor="20.0"
+			AnchorPane.rightAnchor="20.0" />
+		<Label
+			layoutX="156.0"
+			layoutY="27.0"
+			styleClass="label-Stitle"
+			text="Patient Information" />
+		<Button
+			layoutX="284.0"
+			layoutY="379.0"
+			mnemonicParsing="false"
+			onAction="#btnCancel"
+			styleClass="cancel-button"
+			text="Cancel" />
+		<Button
+			layoutX="102.0"
+			layoutY="379.0"
+			mnemonicParsing="false"
+			onAction="#btnConfirmClick"
+			styleClass="confirm-button"
+			text="Confirm" />
+		<Label
+			fx:id="firstNameLabel"
+			layoutX="94.0"
+			layoutY="188.0"
+			text="Label" />
+		<Label
+			fx:id="lastNameLabel"
+			layoutX="137.0"
+			layoutY="188.0"
+			text="Label" />
+		<Label
+			layoutX="43.0"
+			layoutY="91.0"
+			styleClass="label-subTitle"
+			text="NHS Number:" />
+		<Label
+			layoutX="43.0"
+			layoutY="159.0"
+			styleClass="label-subTitle"
+			text="Name:" />
+		<Label
+			layoutX="43.0"
+			layoutY="225.0"
+			styleClass="label-subTitle"
+			text="Address:" />
+		<Label
+			fx:id="streetNumberLabel"
+			layoutX="45.0"
+			layoutY="250.0"
+			text="streetNumberLabel" />
+		<Label
+			fx:id="streetNameLabel"
+			layoutX="46.0"
+			layoutY="275.0"
+			text="streetNameLabel" />
+		<Label
+			fx:id="cityLabel"
+			layoutX="44.0"
+			layoutY="300.0"
+			text="cityLabel" />
+		<Label
+			fx:id="postCodeLabel"
+			layoutX="46.0"
+			layoutY="326.0"
+			text="postCodeLabel" />
+		<Label
+			fx:id="titleLabel"
+			layoutX="43.0"
+			layoutY="188.0"
+			text="Label" />
+		<Label
+			fx:id="nhsNumberLabel"
+			layoutX="43.0"
+			layoutY="123.0"
+			text="Label" />
+		<Button
+			layoutX="324.0"
+			layoutY="84.0"
+			mnemonicParsing="false"
+			text="Edit details" />
+	</children>
 </AnchorPane>

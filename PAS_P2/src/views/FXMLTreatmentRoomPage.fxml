@@ -7,24 +7,70 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="665.0" prefWidth="1385.0" stylesheets="@../styles/TreatmentRoomPage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TreatmentRoomPageController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="90.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane" width="1385.0" />
-      <Label layoutX="535.0" layoutY="16.0" styleClass="label-queueTitle" text="Treatment Rooms">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <TableView fx:id="treatmentRoomTableView" layoutX="250.0" layoutY="197.0" prefHeight="345.0" prefWidth="886.0">
-         <columns>
-            <TableColumn fx:id="treatmentRoomColumn" prefWidth="153.0" text="Treatment Room" />
-            <TableColumn fx:id="triageAssessmentColumn" prefWidth="107.0" text="Status" />
-            <TableColumn fx:id="doctorColumn" prefWidth="118.0" text="Doctor" />
-            <TableColumn fx:id="firstNameColumn" prefWidth="139.0" text="First name" />
-            <TableColumn fx:id="lastNameColumn" prefWidth="144.0" text="Last name" />
-            <TableColumn fx:id="timeEnteredColumn" prefWidth="729.0" text="Time Entered" />
-         </columns>
-      </TableView>
-      <Button layoutX="1200.0" layoutY="25.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
-   </children>
+<AnchorPane
+	prefHeight="665.0"
+	prefWidth="1385.0"
+	stylesheets="@../styles/TreatmentRoomPage1.css"
+	xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controllers.TreatmentRoomPageController">
+	<children>
+		<Rectangle
+			arcHeight="5.0"
+			arcWidth="5.0"
+			fill="#517da6"
+			height="90.0"
+			stroke="WHITE"
+			strokeType="INSIDE"
+			styleClass="rectangle-pane"
+			width="1385.0" />
+		<Label
+			layoutX="535.0"
+			layoutY="16.0"
+			styleClass="label-queueTitle"
+			text="Treatment Rooms">
+			<font>
+				<Font size="30.0" />
+			</font>
+		</Label>
+		<TableView
+			fx:id="treatmentRoomTableView"
+			layoutX="250.0"
+			layoutY="197.0"
+			prefHeight="345.0"
+			prefWidth="886.0">
+			<columns>
+				<TableColumn
+					fx:id="treatmentRoomColumn"
+					prefWidth="153.0"
+					text="Treatment Room" />
+				<TableColumn
+					fx:id="triageAssessmentColumn"
+					prefWidth="107.0"
+					text="Status" />
+				<TableColumn
+					fx:id="doctorColumn"
+					prefWidth="118.0"
+					text="Doctor" />
+				<TableColumn
+					fx:id="firstNameColumn"
+					prefWidth="139.0"
+					text="First name" />
+				<TableColumn
+					fx:id="lastNameColumn"
+					prefWidth="144.0"
+					text="Last name" />
+				<TableColumn
+					fx:id="timeEnteredColumn"
+					prefWidth="729.0"
+					text="Time Entered" />
+			</columns>
+		</TableView>
+		<Button
+			layoutX="1200.0"
+			layoutY="25.0"
+			mnemonicParsing="false"
+			onAction="#btnLogout"
+			text="Logout" />
+	</children>
 </AnchorPane>

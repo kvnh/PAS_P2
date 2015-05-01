@@ -48,7 +48,7 @@ public class Patient extends Person {
 	 * String to represent time entered
 	 */
 	private String timeEnteredString;
-
+	private int treatRoomNum;
 	/**
 	 * default constructor
 	 */
@@ -221,6 +221,14 @@ public class Patient extends Person {
 	 */
 	public void setTimeEnteredString(String timeEnteredString) {
 		this.timeEnteredString = timeEnteredString;
+	}
+
+	public int getTreatRoomNum() {
+		return treatRoomNum;
+	}
+
+	public void setTreatRoomNum(int treatRoomNum) {
+		this.treatRoomNum = treatRoomNum;
 	}
 
 }

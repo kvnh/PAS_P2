@@ -7,31 +7,113 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="665.0" prefWidth="1385.0" stylesheets="@../styles/QueueTabPage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QueueTabPageController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="90.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane" width="1385.0" />
-      <Label layoutX="428.0" layoutY="16.0" styleClass="label-queueTitle" text="Accident &amp; Emergency Queue">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tableView" layoutX="281.0" layoutY="201.0" prefHeight="384.0" prefWidth="825.0">
-        <columns>
-            <TableColumn fx:id="NHSNumberColumn" prefWidth="129.0" text="NHS Number" />
-          <TableColumn fx:id="firstNameColumn" prefWidth="135.0" text="First name" />
-          <TableColumn fx:id="lastNameColumn" prefWidth="153.0" text="Last name" />
-            <TableColumn fx:id="timeEnteredColumn" prefWidth="188.0" text="Time Entered" />
-            <TableColumn fx:id="triageAssessmentColumn" prefWidth="223.0" text="Triage Status" />
-        </columns>
-      </TableView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72b2ee" height="384.0" layoutX="36.0" layoutY="201.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane2" width="232.0" />
-      <Button layoutX="1200.0" layoutY="25.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
-      <TextField layoutX="48.0" layoutY="257.0" promptText="Nhs Number" />
-      <TextField layoutX="48.0" layoutY="315.0" promptText="First Name" />
-      <TextField layoutX="48.0" layoutY="374.0" promptText="Last Name" />
-      <TextField layoutX="49.0" layoutY="428.0" promptText="Triage Category" />
-      <Label layoutX="47.0" layoutY="215.0" prefHeight="17.0" prefWidth="99.0" text="Search Queue" />
-      <Button layoutX="70.0" layoutY="483.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="164.0" text="Search" />
-      <Button layoutX="70.0" layoutY="533.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="164.0" text="Clear" />
-   </children>
+<AnchorPane
+	prefHeight="665.0"
+	prefWidth="1385.0"
+	stylesheets="@../styles/QueueTabPage1.css"
+	xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controllers.QueueTabPageController">
+	<children>
+		<Rectangle
+			arcHeight="5.0"
+			arcWidth="5.0"
+			fill="#517da6"
+			height="90.0"
+			stroke="WHITE"
+			strokeType="INSIDE"
+			styleClass="rectangle-pane"
+			width="1385.0" />
+		<Label
+			layoutX="428.0"
+			layoutY="16.0"
+			styleClass="label-queueTitle"
+			text="Accident &amp; Emergency Queue">
+			<font>
+				<Font size="30.0" />
+			</font>
+		</Label>
+		<TableView
+			fx:id="tableView"
+			layoutX="281.0"
+			layoutY="201.0"
+			prefHeight="384.0"
+			prefWidth="825.0">
+			<columns>
+				<TableColumn
+					fx:id="NHSNumberColumn"
+					prefWidth="129.0"
+					text="NHS Number" />
+				<TableColumn
+					fx:id="firstNameColumn"
+					prefWidth="135.0"
+					text="First name" />
+				<TableColumn
+					fx:id="lastNameColumn"
+					prefWidth="153.0"
+					text="Last name" />
+				<TableColumn
+					fx:id="timeEnteredColumn"
+					prefWidth="188.0"
+					text="Time Entered" />
+				<TableColumn
+					fx:id="triageAssessmentColumn"
+					prefWidth="223.0"
+					text="Triage Status" />
+			</columns>
+		</TableView>
+		<Rectangle
+			arcHeight="5.0"
+			arcWidth="5.0"
+			fill="#72b2ee"
+			height="384.0"
+			layoutX="36.0"
+			layoutY="201.0"
+			stroke="WHITE"
+			strokeType="INSIDE"
+			styleClass="rectangle-pane2"
+			width="232.0" />
+		<Button
+			layoutX="1200.0"
+			layoutY="25.0"
+			mnemonicParsing="false"
+			onAction="#btnLogout"
+			text="Logout" />
+		<TextField
+			layoutX="48.0"
+			layoutY="257.0"
+			promptText="Nhs Number" />
+		<TextField
+			layoutX="48.0"
+			layoutY="315.0"
+			promptText="First Name" />
+		<TextField
+			layoutX="48.0"
+			layoutY="374.0"
+			promptText="Last Name" />
+		<TextField
+			layoutX="49.0"
+			layoutY="428.0"
+			promptText="Triage Category" />
+		<Label
+			layoutX="47.0"
+			layoutY="215.0"
+			prefHeight="17.0"
+			prefWidth="99.0"
+			text="Search Queue" />
+		<Button
+			layoutX="70.0"
+			layoutY="483.0"
+			mnemonicParsing="false"
+			prefHeight="41.0"
+			prefWidth="164.0"
+			text="Search" />
+		<Button
+			layoutX="70.0"
+			layoutY="533.0"
+			mnemonicParsing="false"
+			prefHeight="41.0"
+			prefWidth="164.0"
+			text="Clear" />
+	</children>
 </AnchorPane>

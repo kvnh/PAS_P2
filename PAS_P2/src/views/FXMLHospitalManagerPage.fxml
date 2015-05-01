@@ -7,53 +7,121 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="615.0" prefWidth="1365.0" stylesheets="@../styles/HospitalManagerPage1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HospitalManagerController">
-   <children>
-      <TabPane prefHeight="615.0" prefWidth="1365.0" tabClosingPolicy="UNAVAILABLE">
-         <tabs>
-            <Tab text="Hospital Management">
-               <content>
-                  <AnchorPane prefHeight="615.0" prefWidth="1365.0">
-                     <children>
-                        <TableView layoutX="333.0" layoutY="200.0" prefHeight="338.0" prefWidth="653.0">
-                          <columns>
-                            <TableColumn prefWidth="150.0" text="EmployeeID" />
-                              <TableColumn prefWidth="150.0" text="First Name" />
-                              <TableColumn prefWidth="150.0" text="Last Name" />
-                              <TableColumn prefWidth="209.0" text="Staff Postion" />
-                          </columns>
-                        </TableView>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#517da6" height="90.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane" width="1365.0" />
-                        <Label layoutX="525.0" layoutY="16.0" styleClass="label-title" text="Hospital Manager">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Pane layoutX="41.0" layoutY="200.0" prefHeight="235.0" prefWidth="274.0">
-                           <children>
-                              <ChoiceBox layoutX="14.0" layoutY="124.0" prefHeight="29.0" prefWidth="207.0" />
-                              <TextField layoutX="14.0" layoutY="14.0" />
-                              <TextField layoutX="14.0" layoutY="65.0" />
-                              <Button layoutX="140.0" layoutY="178.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" styleClass="remove-button" text="Remove" />
-                              <Button layoutX="14.0" layoutY="178.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="120.0" styleClass="add-button" text="Add" />
-                           </children>
-                        </Pane>
-                        <Button layoutX="1200.0" layoutY="25.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text="Queue">
-               <content>
-                  <fx:include source="FXMLQueueTabPage.fxml" />
-               </content>
-            </Tab>
-            <Tab closable="false" text="Treatment Rooms">
-               <content>
-                  <fx:include source="FXMLTreatmentRoomPage.fxml" />
-               </content>
-            </Tab>
-         </tabs>
-      </TabPane>
-   </children>
+<AnchorPane
+	prefHeight="615.0"
+	prefWidth="1365.0"
+	stylesheets="@../styles/HospitalManagerPage1.css"
+	xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controllers.HospitalManagerController">
+	<children>
+		<TabPane
+			prefHeight="615.0"
+			prefWidth="1365.0"
+			tabClosingPolicy="UNAVAILABLE">
+			<tabs>
+				<Tab text="Hospital Management">
+					<content>
+						<AnchorPane
+							prefHeight="615.0"
+							prefWidth="1365.0">
+							<children>
+								<TableView
+									layoutX="333.0"
+									layoutY="200.0"
+									prefHeight="338.0"
+									prefWidth="653.0">
+									<columns>
+										<TableColumn
+											prefWidth="150.0"
+											text="EmployeeID" />
+										<TableColumn
+											prefWidth="150.0"
+											text="First Name" />
+										<TableColumn
+											prefWidth="150.0"
+											text="Last Name" />
+										<TableColumn
+											prefWidth="209.0"
+											text="Staff Postion" />
+									</columns>
+								</TableView>
+								<Rectangle
+									arcHeight="5.0"
+									arcWidth="5.0"
+									fill="#517da6"
+									height="90.0"
+									stroke="WHITE"
+									strokeType="INSIDE"
+									styleClass="rectangle-pane"
+									width="1365.0" />
+								<Label
+									layoutX="525.0"
+									layoutY="16.0"
+									styleClass="label-title"
+									text="Hospital Manager">
+									<font>
+										<Font size="18.0" />
+									</font>
+								</Label>
+								<Pane
+									layoutX="41.0"
+									layoutY="200.0"
+									prefHeight="235.0"
+									prefWidth="274.0">
+									<children>
+										<ChoiceBox
+											layoutX="14.0"
+											layoutY="124.0"
+											prefHeight="29.0"
+											prefWidth="207.0" />
+										<TextField
+											layoutX="14.0"
+											layoutY="14.0" />
+										<TextField
+											layoutX="14.0"
+											layoutY="65.0" />
+										<Button
+											layoutX="140.0"
+											layoutY="178.0"
+											mnemonicParsing="false"
+											prefHeight="25.0"
+											prefWidth="120.0"
+											styleClass="remove-button"
+											text="Remove" />
+										<Button
+											layoutX="14.0"
+											layoutY="178.0"
+											mnemonicParsing="false"
+											prefHeight="41.0"
+											prefWidth="120.0"
+											styleClass="add-button"
+											text="Add" />
+									</children>
+								</Pane>
+								<Button
+									layoutX="1200.0"
+									layoutY="25.0"
+									mnemonicParsing="false"
+									onAction="#btnLogout"
+									text="Logout" />
+							</children>
+						</AnchorPane>
+					</content>
+				</Tab>
+				<Tab text="Queue">
+					<content>
+						<fx:include source="FXMLQueueTabPage.fxml" />
+					</content>
+				</Tab>
+				<Tab
+					closable="false"
+					text="Treatment Rooms">
+					<content>
+						<fx:include source="FXMLTreatmentRoomPage.fxml" />
+					</content>
+				</Tab>
+			</tabs>
+		</TabPane>
+	</children>
 </AnchorPane>
