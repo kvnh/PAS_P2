@@ -1,5 +1,11 @@
 package app;
 
+/**
+ * class to represent a timer for patient's time spent in treatment room
+ * 
+ * @author Fergus
+ *
+ */
 public class TreatmentTimer {
 
 	/**

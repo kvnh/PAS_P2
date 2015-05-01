@@ -13,7 +13,7 @@ import sortQueue.PatientTriageComparator;
 import sortQueue.PatientWaitTimeComparator;
 
 /**
- * Class to hold queue methods
+ * Class to hold queue methods and functionality
  * 
  * @author FTaylor, CGollogly, LConnolly
  *
@@ -25,8 +25,14 @@ public class Queue {
 	 */
 	public static LinkedList<Patient> queue = new LinkedList<Patient>();
 
+	/**
+	 * temporary linked list to represent queue
+	 */
 	public static LinkedList<Patient> tempQueue = new LinkedList<Patient>();
 
+	/**
+	 * temporary linked list to represent queue
+	 */
 	public static LinkedList<Patient> onCall = new LinkedList<Patient>();
 
 	/**
@@ -175,16 +181,13 @@ public class Queue {
 	 */
 	public static void checkoutPatient(TreatmentRoom tr) {
 
+		// remove patient from treatment room
 		inTreatment.remove();
+		// set treatment room values to 'empty'...
 		tr.setPatient(null);
 		tr.setAvailable(true);
 		tr.setTimeEntered(DateTime.now().plusDays(30));
 
-	}
-
-	public static void extend5mins(TreatmentRoom tr) {
-
-		tr.setTimeEntered(tr.getTimeEntered().minusMinutes(5));
 	}
 
 	/**
@@ -374,6 +377,11 @@ public class Queue {
 
 	}
 
+	/**
+	 * method to set status code for queue waiting time
+	 * 
+	 * @return
+	 */
 	public static String checkStatusCode() {
 
 		String statusCode = "1";
