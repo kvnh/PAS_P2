@@ -24,7 +24,14 @@
             <TableColumn fx:id="triageAssessmentColumn" prefWidth="223.0" text="Triage Status" />
         </columns>
       </TableView>
-      <Button fx:id="btnRefreshQueue" layoutX="334.0" layoutY="133.0" mnemonicParsing="false" onAction="#btnRefreshQueueClick" text="Refresh Queue" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72b2ee" height="384.0" layoutX="36.0" layoutY="201.0" stroke="WHITE" strokeType="INSIDE" styleClass="rectangle-pane2" width="232.0" />
       <Button layoutX="1200.0" layoutY="25.0" mnemonicParsing="false" onAction="#btnLogout" text="Logout" />
+      <TextField layoutX="48.0" layoutY="257.0" promptText="Nhs Number" />
+      <TextField layoutX="48.0" layoutY="315.0" promptText="First Name" />
+      <TextField layoutX="48.0" layoutY="374.0" promptText="Last Name" />
+      <TextField layoutX="49.0" layoutY="428.0" promptText="Triage Category" />
+      <Label layoutX="47.0" layoutY="215.0" prefHeight="17.0" prefWidth="99.0" text="Search Queue" />
+      <Button layoutX="70.0" layoutY="483.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="164.0" text="Search" />
+      <Button layoutX="70.0" layoutY="533.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="164.0" text="Clear" />
    </children>
 </AnchorPane>

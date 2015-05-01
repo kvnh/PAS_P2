@@ -8,6 +8,20 @@
     -fx-background-color: #B9CBDB;
 }
 
+ .text-field {
+    -fx-font-size: 12pt; 
+    -fx-border-width: 1.5;
+    -fx-text-fill: #3F527E;
+    -fx-border-color: #004E8A;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+.label {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Helvetica bold";
+    -fx-text-fill: #ffffff;
+    }
+    
 .label-queueTitle {
   -fx-font-size: 30pt;
     -fx-font-family: "Segoe UI bold";
