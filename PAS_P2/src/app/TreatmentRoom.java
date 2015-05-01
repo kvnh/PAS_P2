@@ -131,28 +131,7 @@ public class TreatmentRoom {
 	 *            the timeEntered to set
 	 */
 	public void setTimeEntered(DateTime timeEntered) {
-
 		this.timeEntered = timeEntered;
-
-	}
-
-	/**
-	 * @return the extension
-	 */
-	public DateTime getKickout() {
-		
-		
-		return this.getTimeEntered().plusMinutes(1);
-	}
-
-	/**
-	 * @param extension
-	 *            the extension to set
-	 */
-	public void setKickout(DateTime kickout) {
-	
-		
-		this.kickout = kickout;
 	}
 
 }

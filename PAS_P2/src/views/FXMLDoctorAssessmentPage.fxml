@@ -27,7 +27,7 @@
 								<Label layoutX="58.0" layoutY="201.0" styleClass="label-info" text="NHS Number:" />
 								<Label fx:id="lastNameLabel" layoutX="164.0" layoutY="282.0" prefHeight="20.0" prefWidth="90.0" styleClass="label-subTitle" text="Label" />
 								<Label fx:id="firstNameLabel" layoutX="107.0" layoutY="282.0" prefHeight="20.0" prefWidth="57.0" styleClass="label-subTitle" text="Label" />
-								<Button fx:id="btnExtend5mins" layoutX="1038.0" layoutY="389.0" mnemonicParsing="false" onAction="#btnExtend5minsClick" prefHeight="53.0" prefWidth="161.0" styleClass="button-extension" text="5+ minutes" />
+								<Button fx:id="btnExtend5mins" layoutX="1038.0" layoutY="389.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="161.0" styleClass="button-extension" text="5+ minutes" />
 								<Button layoutX="1038.0" layoutY="124.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="161.0" text="Finalise Patient" />
 								<TextArea layoutX="325.0" layoutY="122.0" prefHeight="321.0" prefWidth="270.0" promptText="Triage assessment" />
 								<Label id="label-subTitle1" layoutX="57.0" layoutY="167.0" text="Patient" textFill="WHITE">

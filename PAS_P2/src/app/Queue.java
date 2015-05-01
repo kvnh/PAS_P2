@@ -95,8 +95,7 @@ public class Queue {
 
 		Collections.sort(queue, new PatientComparator(
 				new PatientInQueueComparator(),
-				new PatientWaitTimeComparator(), new PatientTriageComparator(),
-				new PatientEntryComparator()));
+				new PatientWaitTimeComparator(), new PatientTriageComparator()));
 
 		// initialise counter
 		int count = 0;

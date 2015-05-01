@@ -54,8 +54,6 @@ public class Patient extends Person {
 	
 	private int treatRoomNum;
 	
-	
-
 	/**
 	 * default constructor
 	 */
