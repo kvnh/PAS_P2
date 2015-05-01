@@ -1,4 +1,5 @@
 package app;
+
 import org.joda.time.DateTime;
 
 import objects.Patient;
@@ -11,9 +12,6 @@ import objects.Patient;
  */
 public class TreatmentRoom {
 
-	/**
-	 * int to represent max number of treatment rooms
-	 */
 	private static final int TREATMENT_MAX = 5;
 
 	/**

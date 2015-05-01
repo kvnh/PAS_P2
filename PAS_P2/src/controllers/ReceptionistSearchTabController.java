@@ -89,7 +89,12 @@ public class ReceptionistSearchTabController implements Initializable {
 				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
 						"streetName"));
 
-
+		try {
+			tableView.setItems(bal.selectAllBAL());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
