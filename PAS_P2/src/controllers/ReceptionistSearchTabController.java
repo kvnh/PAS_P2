@@ -25,9 +25,9 @@ import objects.Patient;
 import app.Queue;
 import businessLayer.ReceptionistBAL;
 
-
 /**
  * class to represent receptionist search page controller
+ * 
  * @author Fergus
  *
  */
@@ -65,9 +65,8 @@ public class ReceptionistSearchTabController implements Initializable {
 
 	ReceptionistBAL bal = new ReceptionistBAL();
 
-	
 	/**
-	 * method to initialise receptionist search page 
+	 * method to initialise receptionist search page
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -99,12 +98,6 @@ public class ReceptionistSearchTabController implements Initializable {
 				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
 						"streetName"));
 
-		try {
-			tableView.setItems(bal.selectAllBAL());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	/**

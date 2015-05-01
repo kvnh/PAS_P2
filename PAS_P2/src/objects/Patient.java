@@ -1,5 +1,4 @@
 package objects;
-import java.util.Date;
 
 import org.joda.time.DateTime;
 
@@ -12,6 +11,8 @@ import app.Status;
  *
  */
 public class Patient extends Person {
+
+	private static final int MAX_WAIT_TIME = 25;
 
 	/**
 	 * Boolean to represent Patient has been in the queue previously
@@ -42,18 +43,12 @@ public class Patient extends Person {
 	 * DateTime to represent time patient entered the queue
 	 */
 	private DateTime timeEntered;
-	
+
 	/**
 	 * String to represent time entered
 	 */
 	private String timeEnteredString;
-	
-	private Date newTimeCurrent;
-	
-	private DateTime newTimeRecieved;
-	
-	private int treatRoomNum;
-	
+
 	/**
 	 * default constructor
 	 */
@@ -66,10 +61,13 @@ public class Patient extends Person {
 	 * @param firstName
 	 * @param lastName
 	 */
-	public Patient(String nhsNumber, String title, String firstName, String lastName, String streetNumber,
-			String streetName, String city, String postCode, boolean previouslyInQueue, boolean waitingTime,
-			String bloodType, String allergies, Status triage) {
-		super(nhsNumber, title, firstName, lastName, streetNumber, streetName, city, postCode);
+	public Patient(String nhsNumber, String title, String firstName,
+			String lastName, String streetNumber, String streetName,
+			String city, String postCode, boolean previouslyInQueue,
+			boolean waitingTime, String bloodType, String allergies,
+			Status triage) {
+		super(nhsNumber, title, firstName, lastName, streetNumber, streetName,
+				city, postCode);
 		this.previouslyInQueue = previouslyInQueue;
 		this.waitingTime = waitingTime;
 		this.bloodType = bloodType;
@@ -84,7 +82,6 @@ public class Patient extends Person {
 	public Status getTriage() {
 		return triage;
 	}
-	
 
 	/**
 	 * 
@@ -94,13 +91,6 @@ public class Patient extends Person {
 	public void setTriage(Status triage) {
 		this.triage = triage;
 	}
-	
-//	public void setTriage(String triage) {
-//		System.out.println("HIT");
-//		Status demoType = Status.valueOf(triage);
-//		
-//		this.triage = demoType;
-//	}
 
 	/**
 	 * method to allow comparison of patients by triage status
@@ -148,7 +138,7 @@ public class Patient extends Person {
 		DateTime current = DateTime.now();
 		DateTime d = this.getTimeEntered();
 
-		if (current.isBefore(d.plusMinutes(2))) {
+		if (current.isBefore(d.plusMinutes(MAX_WAIT_TIME))) {
 			this.waitingTime = false;
 		} else {
 			this.waitingTime = true;
@@ -199,9 +189,10 @@ public class Patient extends Person {
 	 * toString method to output patient information to screen
 	 */
 	public String toString() {
-		return "Patient Name: " + this.getFirstName() + " " + this.getLastName() + "\nTriage status: " + this.triage;
+		return "Patient Name: " + this.getFirstName() + " "
+				+ this.getLastName() + "\nTriage status: " + this.triage;
 	}
-	
+
 	/**
 	 * @return the timeEntered
 	 */
@@ -210,26 +201,11 @@ public class Patient extends Person {
 	}
 
 	/**
-	 * @param timeEntered the timeEntered to set
+	 * @param timeEntered
+	 *            the timeEntered to set
 	 */
 	public void setTimeEntered(DateTime timeEntered) {
 		this.timeEntered = timeEntered;
-	}
-
-	public Date getTimeRecieved() {
-		return newTimeCurrent;
-	}
-
-	public void setTimeRecieved(Date date) {
-		this.newTimeCurrent = date;
-	}
-
-	public DateTime getNewTimeRecieved() {
-		return newTimeRecieved;
-	}
-
-	public void setNewTimeRecieved(DateTime date) {
-		this.newTimeRecieved = date;
 	}
 
 	/**
@@ -240,24 +216,11 @@ public class Patient extends Person {
 	}
 
 	/**
-	 * @param timeEnteredString the timeEnteredString to set
+	 * @param timeEnteredString
+	 *            the timeEnteredString to set
 	 */
 	public void setTimeEnteredString(String timeEnteredString) {
 		this.timeEnteredString = timeEnteredString;
-	}
-
-	/**
-	 * @return the treatRoomNum
-	 */
-	public int getTreatRoomNum() {
-		return treatRoomNum;
-	}
-
-	/**
-	 * @param treatRoomNum the treatRoomNum to set
-	 */
-	public void setTreatRoomNum(int treatRoomNum) {
-		this.treatRoomNum = treatRoomNum;
 	}
 
 }
