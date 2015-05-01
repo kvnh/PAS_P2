@@ -62,6 +62,10 @@ public class ExtendTimePageController implements Initializable {
 		stage.close();
 	}
 
+	/**
+	 * method to assign extension to a treatment room
+	 * @param treatmentRoom
+	 */
 	public void assignExtension(TreatmentRoom[] treatmentRoom) {
 		// set nhsNumber equal to the nhsNumberLabel on the page
 		String nhsNumber = nhsNumberLabel.getText();

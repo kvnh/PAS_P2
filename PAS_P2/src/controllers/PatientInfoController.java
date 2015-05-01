@@ -3,13 +3,10 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.LinkedList;
 import java.util.ResourceBundle;
-
 import objects.Patient;
 import businessLayer.PatientServices;
 import app.Queue;
-import app.Status;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,8 +17,9 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 /**
- * Controller to manage the display of patient information
- * on the PatientInfo page
+ * Controller to manage the display of patient information on the PatientInfo
+ * page
+ * 
  * @author KHackett
  *
  */
@@ -60,12 +58,15 @@ public class PatientInfoController implements Initializable {
 
 	/**
 	 * Button to confirm patient and add them to the triage/waiting queue
+	 * 
 	 * @param event
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
 	@FXML
-	private void btnConfirmClick(ActionEvent event) throws IOException, SQLException {
-		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	private void btnConfirmClick(ActionEvent event) throws IOException,
+			SQLException {
+		Stage appStage = (Stage) ((Node) event.getSource()).getScene()
+				.getWindow();
 
 		// pass the nhsNumber from the nhsNumberLabel on PatientInfo screen
 		// to the getPatientByNHSNumber method in the service layer
@@ -76,8 +77,6 @@ public class PatientInfoController implements Initializable {
 		if (checkIfInQueue(p) == false) {
 			System.out.println(p.getFirstName() + " is not is the queue");
 			// add this patient, p, to the queue
-			
-			
 			Queue.addToQueue(p);
 		} else {
 			System.out.println("already in the queue");
@@ -91,13 +90,15 @@ public class PatientInfoController implements Initializable {
 	/**
 	 * check if a patient already exists in the queue
 	 * 
-	 * @param p the patient to be checked
+	 * @param p
+	 *            the patient to be checked
 	 * @return true if patient is in queue, false if not is queue
 	 */
 	public boolean checkIfInQueue(Patient p) {
 		// set nhsNumber equal to the nhsNumberLabel on the page
 		String nhsNumber = nhsNumberLabel.getText();
-		System.out.println("Checking if " + nhsNumber + " is already in the queue");
+		System.out.println("Checking if " + nhsNumber
+				+ " is already in the queue");
 
 		// create boolean to state whether a person is in the queue or not
 		boolean isInQueue = false;
@@ -105,11 +106,13 @@ public class PatientInfoController implements Initializable {
 		for (int i = 0; i < Queue.queue.size(); i++) {
 			String nhsnumber = Queue.queue.get(i).getNhsNumber();
 			if (nhsnumber.equalsIgnoreCase(p.getNhsNumber()) == true) {
-				System.out.println(p.getFirstName() + " is already in the queue (checkIfInQueue() method)");
+				System.out.println(p.getFirstName()
+						+ " is already in the queue (checkIfInQueue() method)");
 				isInQueue = true;
 				break;
 			} else {
-				System.out.println(p.getFirstName() + " is not in the queue (checkIfInQueue() method)");
+				System.out.println(p.getFirstName()
+						+ " is not in the queue (checkIfInQueue() method)");
 				isInQueue = false;
 			}
 		}
@@ -119,13 +122,15 @@ public class PatientInfoController implements Initializable {
 
 	/**
 	 * Button to send user back to receptionist homepage
+	 * 
 	 * @param event
 	 * @throws IOException
 	 */
 	@FXML
 	private void btnCancel(ActionEvent event) throws IOException {
 		// create a stage object for the PatientInfo page
-		Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+		Stage stage = (Stage) ((Node) (event.getSource())).getScene()
+				.getWindow();
 		// close the PatientInfo page
 		stage.close();
 	}

@@ -22,6 +22,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+/**
+ * class to represent treatment room page controller
+ * @author Fergus
+ *
+ */
 public class TreatmentRoomPageController implements Initializable {
 
 	@FXML
@@ -50,6 +55,9 @@ public class TreatmentRoomPageController implements Initializable {
 
 	private ObservableList<Patient> tableData;
 
+	/**
+	 * method to initialise treatment room psge controller
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -110,6 +118,7 @@ public class TreatmentRoomPageController implements Initializable {
 					// wrap update tableView
 					Platform.runLater(r);
 
+					//put thread to sleep
 					Thread.sleep(5000);
 				}
 				return null;

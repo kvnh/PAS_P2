@@ -1,10 +1,5 @@
 package controllers;
 
-/**
- * This class displays the treatment queue for the doctor only - allows extension of treatment time
- * @author Ciaran Gollogly
- */
-
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
@@ -27,8 +22,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+/**
+ * This class displays the treatment queue for the doctor only
+ * 
+ * @author Ciaran Gollogly
+ */
+
 public class DoctorTreatmentRoomController implements Initializable {
-	
+
 	@FXML
 	private TableView<Patient> treatmentRoomTableView;
 
@@ -55,17 +56,31 @@ public class DoctorTreatmentRoomController implements Initializable {
 
 	private ObservableList<Patient> tableData;
 
+	/**
+	 * method to initialise Doctor treatment room controller
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		assert treatmentRoomTableView != null : "fx:id=\"treatmentRoomTableView\" was not injected: check your FXML file 'FXMLDoctorTreatmentRoomPage.fxml'";
 
-		treatmentRoomColumn.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("treatRoomNum"));
-		// StatusColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("triage"));
-		triageAssessmentColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("triage"));
-		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
-		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
-		timeEnteredColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("timeEnteredString"));
+		treatmentRoomColumn
+				.setCellValueFactory(new PropertyValueFactory<Patient, Integer>(
+						"treatRoomNum"));
+		// StatusColumn.setCellValueFactory(new PropertyValueFactory<Patient,
+		// String>("triage"));
+		triageAssessmentColumn
+				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
+						"triage"));
+		firstNameColumn
+				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
+						"firstName"));
+		lastNameColumn
+				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
+						"lastName"));
+		timeEnteredColumn
+				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
+						"timeEnteredString"));
 
 		// display the current queue to screen when opening page each time
 		displayTreatmentQueue(Queue.inTreatment);
@@ -74,6 +89,7 @@ public class DoctorTreatmentRoomController implements Initializable {
 
 	/**
 	 * button to send user back to login screen
+	 * 
 	 * @param event
 	 * @throws Exception
 	 */
@@ -90,9 +106,10 @@ public class DoctorTreatmentRoomController implements Initializable {
 		// hides current page
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
-	
+
 	/**
 	 * button to extend selected patient time in queue by 5 mins
+	 * 
 	 * @param event
 	 * @throws Exception
 	 */
@@ -101,12 +118,16 @@ public class DoctorTreatmentRoomController implements Initializable {
 		System.out.println("Changing to extend time for patient");
 
 		// Patient patient = new Patient();
-		Patient patient = treatmentRoomTableView.getSelectionModel().getSelectedItem();
+		Patient patient = treatmentRoomTableView.getSelectionModel()
+				.getSelectedItem();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FXMLExtendTimePage.fxml"));
-		loader.setLocation(getClass().getResource("/views/FXMLExtendTimePage.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(
+				"/views/FXMLExtendTimePage.fxml"));
+		loader.setLocation(getClass().getResource(
+				"/views/FXMLExtendTimePage.fxml"));
 		loader.load();
 		Parent p = loader.getRoot();
+		// create new stage
 		Stage stage = new Stage();
 		stage.setScene(new Scene(p));
 
@@ -120,7 +141,9 @@ public class DoctorTreatmentRoomController implements Initializable {
 	}
 
 	/**
-	 * method to populate the latest queue information in a table view for display
+	 * method to populate the latest queue information in a table view for
+	 * display
+	 * 
 	 * @param queue
 	 */
 	public void displayTreatmentQueue(LinkedList<Patient> treatQueue) {
@@ -136,13 +159,15 @@ public class DoctorTreatmentRoomController implements Initializable {
 					// hide the columns that are not updating
 					// reshow the columns
 					Runnable r = () -> {
-						treatmentRoomTableView.getColumns().get(0).setVisible(false);
-						treatmentRoomTableView.getColumns().get(0).setVisible(true);
+						treatmentRoomTableView.getColumns().get(0)
+								.setVisible(false);
+						treatmentRoomTableView.getColumns().get(0)
+								.setVisible(true);
 					};
 
 					// wrap update tableView
 					Platform.runLater(r);
-
+					// put thread to sleep
 					Thread.sleep(5000);
 				}
 				return null;

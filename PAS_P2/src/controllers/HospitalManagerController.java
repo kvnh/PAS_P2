@@ -12,8 +12,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * class to represent the hospital manager controller page
+ * @author Fergus
+ *
+ */
 public class HospitalManagerController implements Initializable {
 
+	/**
+	 * method to initialise hospital manager controller 
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub

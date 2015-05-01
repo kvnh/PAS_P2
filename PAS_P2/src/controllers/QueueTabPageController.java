@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
-
 import objects.Patient;
 import app.Queue;
 import javafx.application.Platform;
@@ -23,11 +22,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+/**
+ * class to represent queue tab page controller
+ */
+
 public class QueueTabPageController implements Initializable {
 
 	@FXML
 	private TableView<Patient> tableView;
-	
+
 	@FXML
 	private TableColumn<Patient, String> NHSNumberColumn;
 
@@ -50,13 +53,17 @@ public class QueueTabPageController implements Initializable {
 
 	// public static LinkedList<Patient> displayQueue;
 
+	/**
+	 * method to initialise queue tab page controller
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'FXMLQueueTabPage.fxml'";
 
-		NHSNumberColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>(
-				"nhsNumber"));
+		NHSNumberColumn
+				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
+						"nhsNumber"));
 		firstNameColumn
 				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
 						"firstName"));
@@ -134,6 +141,7 @@ public class QueueTabPageController implements Initializable {
 					// wrap update tableView
 					Platform.runLater(r);
 
+					//put thread to sleep
 					Thread.sleep(5000);
 				}
 				return null;
