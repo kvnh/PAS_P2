@@ -1,18 +1,26 @@
 package app;
 
 import org.joda.time.DateTime;
-
 import objects.Patient;
 
 /**
- * class to represent a treatment room in the PAS
+ * class to represent a treatment room in the A&E
+ * each treatment room can contain a reference to a patient
  * 
  * @author KHackett
  *
  */
 public class TreatmentRoom {
 
+	/**
+	 * the maximum amount of treatment rooms allowed
+	 */
 	private static final int TREATMENT_MAX = 5;
+	
+	/**
+	 * constant to initialize the treatment room timer in days
+	 */
+	public static final int TREATMENT_ROOM_TIMER = 30;
 
 	/**
 	 * array to represent 5 treatment rooms
@@ -40,37 +48,40 @@ public class TreatmentRoom {
 	private DateTime timeEntered;
 
 	/**
-	 * Date time to represent kickout time
-	 */
-	private DateTime kickout;
-
-	/**
 	 * default constructor
 	 */
 	public TreatmentRoom() {
-
 	}
 
 	/**
 	 * constructor with arguments
 	 * 
-	 * @param roomNum
 	 * @param isAvailable
 	 * @param patient
+	 * @param roomNum
+	 * @param timeEntered
 	 */
-	public TreatmentRoom(boolean isAvailable, Patient patient) {
+	public TreatmentRoom(boolean isAvailable, Patient patient, int roomNum, DateTime timeEntered) {
 		super();
 		this.isAvailable = isAvailable;
 		this.patient = patient;
+		this.roomNum = roomNum;
+		this.timeEntered = timeEntered;
 	}
 
+	/**
+	 * method to create treatment rooms and initialize with time values
+	 */
 	public static void createTreatmentRooms() {
+		// iterate through each treatment room
 		for (int i = 0; i < treat.length; i++) {
 			treat[i] = new TreatmentRoom();
+			// set each one to available
 			treat[i].setAvailable(true);
-			treat[i].setTimeEntered(DateTime.now().plusDays(30));
+			// initialize a time value for each
+			treat[i].setTimeEntered(DateTime.now().plusDays(TREATMENT_ROOM_TIMER));
 		}
-	}
+	} // end of createTreatmentRooms method
 
 	/**
 	 * check if the room is available or not
@@ -82,8 +93,7 @@ public class TreatmentRoom {
 	}
 
 	/**
-	 * @param isAvailable
-	 *            the isAvailable to set
+	 * @param isAvailable the isAvailable to set
 	 */
 	public void setAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
@@ -97,8 +107,7 @@ public class TreatmentRoom {
 	}
 
 	/**
-	 * @param patient
-	 *            the patient to set
+	 * @param patient the patient to set
 	 */
 	public void setPatient(Patient patient) {
 		this.patient = patient;
@@ -112,8 +121,7 @@ public class TreatmentRoom {
 	}
 
 	/**
-	 * @param roomNum
-	 *            the roomNum to set
+	 * @param roomNum the roomNum to set
 	 */
 	public void setRoomNum(int roomNum) {
 		this.roomNum = roomNum;
@@ -127,8 +135,7 @@ public class TreatmentRoom {
 	}
 
 	/**
-	 * @param timeEntered
-	 *            the timeEntered to set
+	 * @param timeEntered the timeEntered to set
 	 */
 	public void setTimeEntered(DateTime timeEntered) {
 		this.timeEntered = timeEntered;

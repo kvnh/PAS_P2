@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 
 import org.joda.time.DateTime;
-
 import objects.Patient;
 import sortQueue.PatientComparator;
 import sortQueue.PatientEntryComparator;
@@ -13,7 +12,8 @@ import sortQueue.PatientTriageComparator;
 import sortQueue.PatientWaitTimeComparator;
 
 /**
- * Class to hold queue methods
+ * Class to represent the various queues in the PAS
+ * inc. waiting room queue, in treatment queue.
  * 
  * @author FTaylor, CGollogly, LConnolly
  *
@@ -21,12 +21,40 @@ import sortQueue.PatientWaitTimeComparator;
 public class Queue {
 
 	/**
+	 * constant to represent maximum allowable size of waiting queue
+	 */
+	private static final int QUEUE_MAX = 10;
+	
+	/**
+	 * constant to represent the extension time for a patient in treatment room
+	 */
+	public static final int TREATMENT_TIME_EXTENSION = 5;
+	
+	/**
+	 * constant to represent the minimum waiting time for a patient 
+	 * before status code 2 is enabled
+	 */
+	public static final int STATUS_CODE_2_MIN_TIME = 10;
+	
+	/**
+	 * constant to represent the minimum waiting time for a patient 
+	 * before status code 3 is enabled
+	 */
+	public static final int STATUS_CODE_3_MIN_TIME = 20;
+
+	/**
 	 * linked list of patient objects to represent queue
 	 */
 	public static LinkedList<Patient> queue = new LinkedList<Patient>();
 
+	/**
+	 * temporary linked list to add an emergency patient to a treatment room
+	 */
 	public static LinkedList<Patient> tempQueue = new LinkedList<Patient>();
 
+	/**
+	 * linked list 
+	 */
 	public static LinkedList<Patient> onCall = new LinkedList<Patient>();
 
 	/**
@@ -45,11 +73,6 @@ public class Queue {
 	public static LinkedList<Patient> holdingArea = new LinkedList<Patient>();
 
 	/**
-	 * int constant to represent maximum size of queue
-	 */
-	private static final int QUEUE_MAX = 10;
-
-	/**
 	 * method to add patient object to queue
 	 * 
 	 * @param patient
@@ -62,8 +85,7 @@ public class Queue {
 			queue.add(patient);
 			Queue.checkStatusCode();
 			System.out.println("Patient added to queue");
-		} else if ((queue.getFirst().getTriage() != Status.NOT_ASSESSED)
-				&& (inTreatment.size() == 5)) {
+		} else if ((queue.getFirst().getTriage() != Status.NOT_ASSESSED) && (inTreatment.size() == 5)) {
 			// alert on call team and hospital manager
 			MailClient.contactOnCall();
 			MailClient.contactHospitalManager();
@@ -93,9 +115,8 @@ public class Queue {
 	 */
 	public static void sortQueue() {
 
-		Collections.sort(queue, new PatientComparator(
-				new PatientInQueueComparator(),
-				new PatientWaitTimeComparator(), new PatientTriageComparator()));
+		Collections.sort(queue, new PatientComparator(new PatientInQueueComparator(), new PatientWaitTimeComparator(),
+				new PatientTriageComparator()));
 
 		// initialise counter
 		int count = 0;
@@ -103,21 +124,16 @@ public class Queue {
 		// go through queue
 		for (Patient p : queue) {
 
-			// if 2 patients have been waiting more than 30 mins, alert hospital
-			// manager
+			// if 2 patients have been waiting more than 30 mins, alert hospital manager
 			if (p.getTimeEntered().plusMinutes(30).isBeforeNow()) {
-
 				count++;
-
 				if (count == 2) {
-
 					// alert hospital manager
 					MailClient.contactHospitalManager();
-
 				}
 			}
 		}
-	}
+	} // end of sortQueue method
 
 	/**
 	 * method to check if treatment is free and remove from queue
@@ -127,9 +143,7 @@ public class Queue {
 
 		for (int i = 0; i < TreatmentRoom.treat.length; i++) {
 
-			if ((TreatmentRoom.treat[i].isAvailable())
-					&& (inTreatment.size() <= 4)
-					&& (Queue.queue.size() != 0)
+			if ((TreatmentRoom.treat[i].isAvailable()) && (inTreatment.size() <= 4) && (Queue.queue.size() != 0)
 					&& (Queue.queue.getFirst().getTriage() != Status.NOT_ASSESSED)) {
 
 				// add patient to inTreatment list for future sorting...
@@ -143,8 +157,7 @@ public class Queue {
 
 				// if free, add patient to treatment room
 				TreatmentRoom.treat[i].setPatient(inTreatment.getFirst());
-				System.out.println("sent to treatment room"
-						+ TreatmentRoom.treat[i]);
+				System.out.println("sent to treatment room" + TreatmentRoom.treat[i]);
 
 				// set time entered to current time
 				TreatmentRoom.treat[i].setTimeEntered(DateTime.now());
@@ -157,15 +170,13 @@ public class Queue {
 
 			} else {
 				System.out.println("Treatment room is not available");
-
 			}
 
 		}
-		System.out.println("end of for");
 		for (Patient p1 : inTreatment) {
 			System.out.println(p1.getFirstName() + " " + p1.getLastName());
 		}
-	}
+	} // end of addToTreatmentRoom method
 
 	/**
 	 * Doctor checks patient out of treatment room
@@ -173,17 +184,18 @@ public class Queue {
 	 * @param p
 	 */
 	public static void checkoutPatient(TreatmentRoom tr) {
-
 		inTreatment.remove();
 		tr.setPatient(null);
 		tr.setAvailable(true);
 		tr.setTimeEntered(DateTime.now().plusDays(30));
+	} // end of checkoutPatient method
 
-	}
-
+	/**
+	 * method to extend the waiting time for a patient by 5 minutes
+	 * @param tr
+	 */
 	public static void extend5mins(TreatmentRoom tr) {
-
-		tr.setTimeEntered(tr.getTimeEntered().minusMinutes(5));
+		tr.setTimeEntered(tr.getTimeEntered().minusMinutes(TREATMENT_TIME_EXTENSION));
 	}
 
 	/**
@@ -205,10 +217,8 @@ public class Queue {
 				// sortTreatment = new LinkedList<Patient>(inTreatment);
 
 				// sort patients in treatment room by triage status
-				Collections.sort(sortTreatment, new PatientComparator(
-						new PatientTriageComparator(),
-						new PatientWaitTimeComparator(),
-						new PatientInQueueComparator()));
+				Collections.sort(sortTreatment, new PatientComparator(new PatientTriageComparator(),
+						new PatientWaitTimeComparator(), new PatientInQueueComparator()));
 
 				// if queue is at limit, remove last patient in queue to
 				// holding
@@ -220,10 +230,8 @@ public class Queue {
 					for (int i = 0; i < TreatmentRoom.treat.length; i++) {
 
 						if (TreatmentRoom.treat[i].isAvailable()) {
-
 							TreatmentRoom.treat[i].setPatient(p);
 							TreatmentRoom.treat[i].setAvailable(false);
-
 						}
 
 						holdingArea.add(queue.getLast());
@@ -289,53 +297,32 @@ public class Queue {
 
 	/**
 	 * method to move emergency patient from queue to on call area
+	 * and any subsequent patients to be diverted to another hospital,
+	 * and also send a message to the hospital manager
 	 */
-
 	public static void onCallArea() {
-
 		LinkedList<Patient> tempQ = new LinkedList<Patient>(queue);
-
 		int count = 0;
-
 		// search through patients in treatment
 		for (Patient p : inTreatment) {
-
+			// check if patients status is EMERGENCY
 			if (p.getTriage().equals(Status.EMERGENCY)) {
-
 				count++;
-
-				// all treatment rooms have emergency
+				// check if all treatment rooms have EMERGENCY patients
 				if (count == 5) {
-
 					for (Patient p2 : tempQ) {
-
-						if (p2.getTriage().equals(Status.EMERGENCY)
-								&& (onCall.isEmpty())) {
-
+						if ((onCall.isEmpty())) {
 							// add patient to on call area
 							onCall.add(p2);
-
 							System.out.println("\t\t\tTreated by on call.....");
 							// remove patient from queue
 							queue.remove(p2);
-
-						} else if ((!onCall.isEmpty())
-								&& (p2.getTriage().equals(Status.EMERGENCY))) {
-
-							System.out
-									.println("\t\t\tDivert to another hospital...");
+						} else {
+							System.out.println("\t\t\tDivert to another hospital...");
 							queue.remove(p2);
-
 							// alert hospital manager
 							MailClient.contactHospitalManager();
-							System.out.println("\t\t\t BOOM!");
-
 						}
-
-						else {
-							System.out.println("\t\t\thello....");
-						}
-
 					}
 
 				} else {
@@ -350,11 +337,8 @@ public class Queue {
 	 * method to handle on call team when queue is at limit
 	 */
 	public static void onCallMax() {
-
 		// get first patient in queue and add to holding area
 		holdingArea.add(queue.getFirst());
-
-		System.out.println("\t\t\t added to holding....");
 
 		// remove first patient from queue
 		queue.poll();
@@ -364,37 +348,38 @@ public class Queue {
 		enter = DateTime.now();
 
 		if (enter.plusMinutes(1).isBeforeNow()) {
-
 			holdingArea.poll();
-
 			System.out.println("\t\t\t\ton call removed....");
-
 		}
-
 	}
 
+	/**
+	 * method to check the status code in the A&E
+	 * @return
+	 */
 	public static String checkStatusCode() {
 
+		// declare and initialise the statusCode
 		String statusCode = "1";
 
+		// check if there is anyone in the queue
 		if (queue.size() > 0) {
+			// sort the queue
+			Collections.sort(queue, new PatientComparator(new PatientEntryComparator()));
 
-			Collections.sort(queue, new PatientComparator(
-					new PatientEntryComparator()));
-
+			// assign to 'd' value equal to the first patient in the queue's time entered
 			DateTime d = queue.getFirst().getTimeEntered();
 
-			if (d.plusMinutes(1).isBeforeNow()) {
+			// if first patients
+			if (d.plusMinutes(STATUS_CODE_2_MIN_TIME).isBeforeNow()) {
 				statusCode = "2";
-
-			} else if (d.plusMinutes(2).isBeforeNow()) {
+			} else if (d.plusMinutes(STATUS_CODE_3_MIN_TIME).isBeforeNow()) {
 				statusCode = "3";
-
 			} else if (queue.size() == QUEUE_MAX) {
 				statusCode = "4";
-
 			}
 		}
+		// return statusCode value
 		return statusCode;
 
 	}

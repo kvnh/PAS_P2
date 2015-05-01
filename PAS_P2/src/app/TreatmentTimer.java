@@ -1,12 +1,16 @@
 package app;
 
+/**
+ * class to handle the time validation for a patient in the treatment room
+ * @author KHackett
+ *
+ */
 public class TreatmentTimer {
 
 	/**
 	 * method to remove patient from treatment room after a certain time period
 	 */
 	public static void treatmentRoomTimer() {
-
 		// check that there are patient(s) in treatment
 		if (Queue.inTreatment.size() != 0) {
 			for (TreatmentRoom tr : TreatmentRoom.treat) {
@@ -16,21 +20,18 @@ public class TreatmentTimer {
 					// remove patient
 					Queue.checkoutPatient(tr);
 				} else {
-					System.out.println("in else...");
+					// patient still has time in treatment
 				}
 			}
 		}
-		System.out.println("leaving treatment timer...");
-	}
+	} // end of treatmentRoomTimer method
 
 	/**
 	 * method to extend treatment time by 5 minutes
-	 * 
 	 * @param t
 	 */
 	public static void extendTreatment(TreatmentRoom t) {
 		// increase kick out time by 5 minutes
 		t.setTimeEntered(t.getTimeEntered().plusMinutes(2));
-	}
+	} // end of extendTreatment method
 }
-

@@ -3,35 +3,39 @@ package app;
 import java.util.Iterator;
 import objects.Patient;
 
+/**
+ * class to kick off the thread
+ * @author KHackett
+ *
+ */
 public class ControlQueue implements Runnable {
 
 	@Override
 	public void run() {
 		Iterator<Patient> it = Queue.queue.iterator();
-		System.out.println("thread running");
+		// While there is a patient in the queue, enter the while loop
 		while ((it.hasNext()) || (Queue.queue.size() == 0)) {
-			System.out.println("in while");
-			// sort queue
+			// run method to sort queue
 			Queue.sortQueue();
-
-			// about to take off element
 			if (Queue.queue.isEmpty() && TreatmentRoom.treat.length == 0) {
 				System.out.println("Queue empty and treatmentRoom empty");
-			} else {
+			} else // otherwise if there are patients in the queue + treatment area 
+			{
+				// Add an emergency patient to on call area if treatment rooms have 5 emergency patients
 				Queue.onCallArea();
-				System.out.println("Add to treatment room");
+				// Add a patient to the treatment room
 				Queue.addToTreatmentRoom();
-				System.out.println("Add emergency patient");
+				// Add an emergency patient to the the treatment room
 				Queue.addEmergencyPatient();
+				// Check how long patient has been in the treatment room
 				TreatmentTimer.treatmentRoomTimer();
 			}
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
-				System.out.println("Problems");
+				e.printStackTrace();
 			}
 		}
-		System.out.println("exiting while loop");
-	}
+	} // end of run method
 
 }

@@ -6,12 +6,35 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+/**
+ * main class to start application
+ * @author KHackett
+ *
+ */
 public class Main extends Application {
 
-	// compiler looks for start, this is the starting point for JavaFX applications
+	/**
+	 * main method to kick off the application
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// initialize all treatment rooms
+		TreatmentRoom.createTreatmentRooms();
+
+		// start thread running in the ControlQueue class
+		ControlQueue cq = new ControlQueue();
+		Thread thread = new Thread(cq);
+		thread.start();
+
+		launch(args);
+	}
+
+	/**
+	 * start method to kick off the JavaFX application
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		try { //comment
+		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/views/FXMLLoginPage.fxml"));
 			Scene scene = new Scene(root);
 			// load css file
@@ -22,16 +45,6 @@ public class Main extends Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static void main(String[] args) {
-		TreatmentRoom.createTreatmentRooms();
-		
-		ControlQueue cq = new ControlQueue();
-		Thread thread = new Thread(cq);
-		thread.start();
-
-		launch(args);
 	}
 
 }

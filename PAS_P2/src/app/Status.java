@@ -7,23 +7,28 @@ package app;
  */
 public enum Status {
 
-	EMERGENCY ("Emergency"), URGENT ("Urgent"), SEMI_URGENT("Semi-urgent"), NON_URGENT ("Non-urgent"), NOT_ASSESSED ("Not-assessed");
-	
+	// decalre ENUM values for traige categories
+	EMERGENCY("Emergency"), URGENT("Urgent"), SEMI_URGENT("Semi-urgent"), NON_URGENT("Non-urgent"), NOT_ASSESSED(
+			"Not-assessed");
+
+	/**
+	 * variable to represent the status as a string
+	 */
 	final String name;
-	
-	Status(String s){
+
+	/**
+	 * set status to string
+	 * @param s
+	 */
+	Status(String s) {
 		name = s;
 	}
 	
-	  public boolean equalsName(String otherName){
-	        return (otherName == null)? false:name.equals(otherName);
-	    }
-
-	    public String toString(){
-	       return name;
-	    }
-
+	/**
+	 * return status as a string
+	 */
+	public String toString() {
+		return name;
 	}
-	
-	
 
+}
