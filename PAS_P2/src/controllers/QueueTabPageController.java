@@ -27,6 +27,9 @@ public class QueueTabPageController implements Initializable {
 
 	@FXML
 	private TableView<Patient> tableView;
+	
+	@FXML
+	private TableColumn<Patient, String> NHSNumberColumn;
 
 	@FXML
 	private TableColumn<Patient, String> firstNameColumn;
@@ -52,6 +55,8 @@ public class QueueTabPageController implements Initializable {
 
 		assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'FXMLQueueTabPage.fxml'";
 
+		NHSNumberColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>(
+				"nhsNumber"));
 		firstNameColumn
 				.setCellValueFactory(new PropertyValueFactory<Patient, String>(
 						"firstName"));
