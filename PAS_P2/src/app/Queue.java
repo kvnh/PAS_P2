@@ -2,7 +2,6 @@ package app;
 
 import java.util.Collections;
 import java.util.LinkedList;
-
 import org.joda.time.DateTime;
 import objects.Patient;
 import sortQueue.PatientComparator;
@@ -24,18 +23,18 @@ public class Queue {
 	 * constant to represent maximum allowable size of waiting queue
 	 */
 	private static final int QUEUE_MAX = 10;
-	
+
 	/**
 	 * constant to represent the extension time for a patient in treatment room
 	 */
 	public static final int TREATMENT_TIME_EXTENSION = 5;
-	
+
 	/**
 	 * constant to represent the minimum waiting time for a patient 
 	 * before status code 2 is enabled
 	 */
 	public static final int STATUS_CODE_2_MIN_TIME = 10;
-	
+
 	/**
 	 * constant to represent the minimum waiting time for a patient 
 	 * before status code 3 is enabled
@@ -258,9 +257,7 @@ public class Queue {
 						if (TreatmentRoom.treat[i].isAvailable()) {
 							TreatmentRoom.treat[i].setPatient(p);
 							TreatmentRoom.treat[i].setAvailable(false);
-
 						}
-
 					}
 					queue.add(sortTreatment.getLast());
 					inTreatment.remove(sortTreatment.getLast());
@@ -381,7 +378,6 @@ public class Queue {
 		}
 		// return statusCode value
 		return statusCode;
-
-	}
+	} // end of checkStatusCode method
 
 }

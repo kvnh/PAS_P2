@@ -25,6 +25,10 @@ public class ConnectionFactory {
 		}
 	}
 
+	/**
+	 * create a connection to the database
+	 * @return
+	 */
 	private Connection createConnection() {
 		Connection connection = null;
 		try {
@@ -35,6 +39,10 @@ public class ConnectionFactory {
 		return connection;
 	}
 
+	/**
+	 * get a connection to the database
+	 * @return
+	 */
 	public static Connection getConnection() {
 		return connectionFactory.createConnection();
 	}
