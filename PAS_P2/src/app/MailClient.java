@@ -68,7 +68,7 @@ public class MailClient {
 			MailClient client = new MailClient();
 
 			String from = "ciaran.gollogly@gmail.com";
-			String to = "07900991768@mmail.co.uk";
+			String to = "07523235821@mmail.co.uk";
 			String to1 = "c_gollogly@msn.com";
 			String subject = "On Call Team";
 			String message = "Your assistance is required at the hospital";

@@ -120,16 +120,16 @@ public class Queue {
 			// add patient if there is room in queue
 			queue.add(patient);
 			Queue.checkStatusCode();
-		} else if ((queue.getFirst().getTriage() != Status.NOT_ASSESSED)
-				&& (inTreatment.size() == MAX_TREATMENT_SIZE)) {
-			// alert on call team and hospital manager
+		} else if (queue.size() == QUEUE_MAX) {
 			MailClient.contactOnCall();
 			MailClient.contactHospitalManager();
 
-			// call onCall team to treat a patient if the queue is full
-			onCallMax();
-		} else {
+			if ((queue.getFirst().getTriage() != Status.NOT_ASSESSED)
+					&& (inTreatment.size() == MAX_TREATMENT_SIZE)) {
 
+				// call onCall team to treat a patient if the queue is full
+				onCallMax();
+			} 
 		}
 
 	}
@@ -158,23 +158,23 @@ public class Queue {
 						new PatientWaitTimeComparator(),
 						new PatientTriageComparator()));
 
-		// initialise counter
-		int count = 0;
-
-		// go through queue
-		for (Patient p : queue) {
-
-			// if 2 patients have been waiting more than 30 mins, alert hospital
-			// manager
-			if (p.getTimeEntered().plusMinutes(TARGET_WAITING_TIME)
-					.isBeforeNow()) {
-				count++;
-				if (count == MAX_NUMBER_OF_PATIENTS_ABOVE_WAITING_TIME) {
-					// alert hospital manager
-					MailClient.contactHospitalManager();
-				}
-			}
-		}
+		// // initialise counter
+		// int count = 0;
+		//
+		// // go through queue
+		// for (Patient p : queue) {
+		//
+		// // if 2 patients have been waiting more than 30 mins, alert hospital
+		// // manager
+		// if (p.getTimeEntered().plusMinutes(TARGET_WAITING_TIME)
+		// .isBeforeNow()) {
+		// count++;
+		// if (count == MAX_NUMBER_OF_PATIENTS_ABOVE_WAITING_TIME) {
+		// // alert hospital manager
+		// MailClient.contactHospitalManager();
+		// }
+		// }
+		// }
 	} // end of sortQueue method
 
 	/**
@@ -307,6 +307,7 @@ public class Queue {
 							TreatmentRoom.treat[i].setAvailable(false);
 						}
 					}
+					sortTreatment.getLast().setPreviouslyInQueue(true);
 					queue.add(sortTreatment.getLast());
 					inTreatment.remove(sortTreatment.getLast());
 					p.setPreviouslyInQueue(true);
@@ -327,6 +328,7 @@ public class Queue {
 						}
 					}
 					p.setTreatRoomNum(inTreatment.getLast().getTreatRoomNum() + 1);
+					p.setPreviouslyInQueue(true);
 					inTreatment.add(p);
 					sortTreatment.remove(p);
 					queue.remove(p);
@@ -363,6 +365,7 @@ public class Queue {
 							System.out.println("\t\t\tTreated by on call.....");
 							// remove patient from queue
 							queue.remove(p2);
+							MailClient.contactOnCall();
 						} else if ((!onCall.isEmpty())
 								&& (p2.getTriage().equals(Status.EMERGENCY))) {
 							System.out

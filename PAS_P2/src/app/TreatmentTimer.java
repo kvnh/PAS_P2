@@ -11,7 +11,7 @@ public class TreatmentTimer {
 	/**
 	 * Constant to represent target treatment time set by trust
 	 */
-	public static final int TARGET_TREATMENT_TIME = 10;
+	public static final int TARGET_TREATMENT_TIME = 2;
 
 	/**
 	 * Constant to represent treatment time extension

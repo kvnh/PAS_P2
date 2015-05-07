@@ -136,6 +136,7 @@ public class TriageNurseHomePageController implements Initializable {
 					// update your ObservableList
 					tableData = FXCollections.observableArrayList(queue);
 					tableView.setItems(tableData);
+					Queue.checkStatusCode();
 					// hide the columns that are not updating
 					// reshow the columns
 					Runnable r = () -> {
