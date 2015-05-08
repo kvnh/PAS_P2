@@ -158,23 +158,23 @@ public class Queue {
 						new PatientWaitTimeComparator(),
 						new PatientTriageComparator()));
 
-		// // initialise counter
-		// int count = 0;
-		//
-		// // go through queue
-		// for (Patient p : queue) {
-		//
-		// // if 2 patients have been waiting more than 30 mins, alert hospital
-		// // manager
-		// if (p.getTimeEntered().plusMinutes(TARGET_WAITING_TIME)
-		// .isBeforeNow()) {
-		// count++;
-		// if (count == MAX_NUMBER_OF_PATIENTS_ABOVE_WAITING_TIME) {
-		// // alert hospital manager
-		// MailClient.contactHospitalManager();
-		// }
-		// }
-		// }
+		 // initialise counter
+		 int count = 0;
+		
+		 // go through queue
+		 for (Patient p : queue) {
+		
+		 // if 2 patients have been waiting more than 30 mins, alert hospital
+		 // manager
+		 if (p.getTimeEntered().plusMinutes(TARGET_WAITING_TIME)
+		 .isBeforeNow()) {
+		 count++;
+		 if (count == MAX_NUMBER_OF_PATIENTS_ABOVE_WAITING_TIME) {
+		 // alert hospital manager
+		 MailClient.contactHospitalManager();
+		 }
+		 }
+		 }
 	} // end of sortQueue method
 
 	/**
@@ -372,7 +372,7 @@ public class Queue {
 									.println("\t\t\tdivert to another hospital");
 							queue.remove(p2);
 							// alert hospital manager
-							MailClient.contactHospitalManager();
+							MailClient.contactHospitalManagerEmergency();
 
 						} else {
 

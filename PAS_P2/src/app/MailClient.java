@@ -99,5 +99,25 @@ public class MailClient {
 			e.printStackTrace(System.out);
 		}
 	}
+	
+	/**
+	 * method to contact hospital manager
+	 */
+	public static void contactHospitalManagerEmergency() {
+
+		try {
+			MailClient client = new MailClient();
+
+			String from = "ciaran.gollogly@gmail.com";
+			String to = "07900991768@mmail.co.uk";
+			String to1 = "c_gollogly@msn.com";
+			String subject = "Hospital Manager";
+			String message = "Cannot treat anymore emergency patients";
+			client.sendMail(from, to, to1, subject, message);
+
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+		}
+	}
 
 }
